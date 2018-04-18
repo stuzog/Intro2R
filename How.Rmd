@@ -20,15 +20,79 @@ date: "March&ndash;May 2018"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-![](images/uc_bar450.png)
-
-
 ## Requirements
 
-## Download links
+**This project is best used by setting it up as an RStudio Project**.
 
-## RStudio Setup
+The necessary files are available in a [GitHub repository](https://github.com/stuzog/Intro2R.git). To download and use it, the following programs must be installed on your computer:
+
+* [R](https://www.r-project.org/)
+* [RStudio](https://www.rstudio.com/products/rstudio/download/)
+* [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
+Once these are available, you can proceed to the next step:
+
+## Create The Project Directory
+
+1. In your Terminal program, `cd` into the directory where you want to create the new project. This can be located wherever you want. It will be called `Intro2R`, so there should not be an existing directory with the same name in that location.
+
+2. Enter the following commands at the command line, one at a time, followed by `RETURN`:
+
+```
+git clone https://github.com/stuzog/Intro2R.git
+cd Intro2R
+ls -al
+```
+
+You should see a listing of the GitHub repository files (with your user name):
+
+```
+total 184
+drwxr-xr-x   18 (username)  staff    612 18 Apr 09:10 .
+drwxr-xr-x@ 149 (username)  staff   5066 18 Apr 09:10 ..
+-rw-r--r--    1 (username)  staff      0 18 Apr 09:10 .Rhistory
+-rw-r--r--    1 (username)  staff    117 18 Apr 09:10 .Rprofile
+drwxr-xr-x   12 (username)  staff    408 18 Apr 09:10 .git
+-rw-r--r--    1 (username)  staff     26 18 Apr 09:10 .gitignore
+-rw-r--r--    1 (username)  staff    536 18 Apr 09:10 How.Rmd
+-rw-r--r--    1 (username)  staff    225 18 Apr 09:10 Intro2R.Rproj
+-rw-r--r--    1 (username)  staff  18366 18 Apr 09:10 Part1_R_Data Science.Rmd
+-rw-r--r--    1 (username)  staff  13654 18 Apr 09:10 Part2_R_Programming.Rmd
+-rw-r--r--    1 (username)  staff   1360 18 Apr 09:10 README.md
+-rw-r--r--    1 (username)  staff  12253 18 Apr 09:10 RStudio.Rmd
+-rw-r--r--    1 (username)  staff   8000 18 Apr 09:10 RStudio_Ecosystem.Rmd
+-rw-r--r--    1 (username)  staff   2071 18 Apr 09:10 R_Learning_Resources.Rmd
+-rw-r--r--    1 (username)  staff    817 18 Apr 09:10 _site.yml
+drwxr-xr-x   31 (username)  staff   1054 18 Apr 09:10 images
+-rw-r--r--    1 (username)  staff   1682 18 Apr 09:10 index.Rmd
+-rw-r--r--    1 (username)  staff    687 18 Apr 09:10 intro.css
+```
+
+## Make It An RStudio Project
+
+1. **Launch RStudio on your computer**. Unless you have used RStudio before, you will see a fairly unpopulated RStudio window.
+
+2. **Start a new RStudio project** by clicking on `R Projects` in the upper-right corner of the RStudio window, or via the _File > New Project..._ menu item. The _Create New Project_ window will appear:
+
+![](images/RStudio_new_project_window.png)
+
+3. **Select _Existing Directory_** and navigate to the newly-created `Intro2R` project directory. Click _Open in new session_ if you wish to preserve the current RStudio session.
+
+![](images/RStudio_create_from_existing_directory_window.png)
+
+4. **Click _Create Project_**. You will see the following errors, which you can ignore for now. They will be corrected later in the setup.
+
+```
+Error in file(filename, "r", encoding = encoding) : 
+  cannot open the connection
+In addition: Warning message:
+In file(filename, "r", encoding = encoding) :
+  cannot open file 'packrat/init.R': No such file or directory
+```
+
+
 
 ## Some Helpful Tips
 
+![](images/uc_bar450.png)
 
