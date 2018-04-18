@@ -1,0 +1,34 @@
+---
+title: "How To Use This Series"
+author: "by Stuart Hertzog"
+date: "March&ndash;May 2018"
+---
+
+<script>
+    $(document).ready(function() {
+      $items = $('div#TOC li');
+      $items.each(function(idx) {
+        num_ul = $(this).parentsUntil('#TOC').length;
+        $(this).css({'text-indent': num_ul * 10, 'padding-left': 0});
+      });
+
+    });
+</script>
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+![](images/uc_bar450.png)
+
+
+## Requirements
+
+## Download links
+
+## RStudio Setup
+
+## Some Helpful Tips
+
+

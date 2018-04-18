@@ -1,0 +1,200 @@
+---
+title: "The RStudio Ecosystem"
+author: "by Stuart Hertzog"
+date: "March&ndash;May 2018"
+---
+
+<script>
+    $(document).ready(function() {
+      $items = $('div#TOC li');
+      $items.each(function(idx) {
+        num_ul = $(this).parentsUntil('#TOC').length;
+        $(this).css({'text-indent': num_ul * 10, 'padding-left': 0});
+      });
+
+    });
+</script>
+
+![](images/RStudio_full_logo.png)
+
+## Products
+
+The RStudio IDE is the flagship of a large and growing RStudio ecosystem:
+
+### Software
+
+* [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop)
+* [RStudio Server](https://www.rstudio.com/products/rstudio/#Server)
+* [RMarkdown](https://rmarkdown.rstudio.com/)
+* [R Notebooks](https://rmarkdown.rstudio.com/r_notebooks.html)
+* [R Packages](https://www.rstudio.com/products/rpackages/)
+* [Shiny](https://www.rstudio.com/products/shiny/)
+* [Shiny Server](https://www.rstudio.com/products/shiny/shiny-server2/)
+
+### Associated Software
+
+* [bookdown](https://bookdown.org/yihui/bookdown/)
+* [blogdown](https://bookdown.org/yihui/blogdown/)
+
+### Cloud Services
+
+* [RStudio Server Pro](https://www.rstudio.com/products/rstudio-server-pro/)
+* [RStudio Connect](https://www.rstudio.com/products/connect/)
+* [RStudio Cloud (in alpha)](https://rstudio.cloud/)
+* [Shiny Server Pro](https://www.rstudio.com/products/shiny-server-pro/)
+* [shinyapps.io](https://www.rstudio.com/products/shinyapps/)
+
+### Associated Cloud Services
+
+* [Bookdown Book Publishing](https://bookdown.org/)
+
+### Resources
+
+* [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/)
+* [RStudio Community](https://community.rstudio.com/)
+* [RStudio Documentation](https://support.rstudio.com/hc/en-us/categories/200035113-Documentation)
+* [RStudio Server> Getting Started](https://support.rstudio.com/hc/en-us/articles/234653607-Getting-Started-with-RStudio-Server)
+* [RStudio Server Pro Administration Guide](http://docs.rstudio.com/ide/server-pro/)
+
+## RMarkdown
+
+**[RMarkdown documents](https://rmarkdown.rstudio.com/) are the default RStudio document type**.
+
+They are plain-text files with the `.Rmd` extension that can be used to generate many different types of output. The main ones are:
+
+* [HTML documents](https://rmarkdown.rstudio.com/html_document_format.html) -- `.html`
+* [PDF Documents](https://rmarkdown.rstudio.com/pdf_document_format.html) -- `.pdf`
+* [Word Documents](https://rmarkdown.rstudio.com/word_document_format.html) -- `.docx`
+
+(_the links go to their RStudio documentation_)
+
+#### Other Output Formats
+
+In addition to the standard output formats (above), RMarkdown documents can generate output in many other formats, via the [pandoc](#pandoc) conversion engine.
+
+[Beamer](https://rmarkdown.rstudio.com/beamer_presentation_format.html), [HTML5 slides](https://rmarkdown.rstudio.com/ioslides_presentation_format.html), [Tufte-style handouts](https://rmarkdown.rstudio.com/tufte_handout_format.html), [books](https://bookdown.org/yihui/bookdown/), [dashboards](https://rmarkdown.rstudio.com/flexdashboard/), [interactive documents](https://rmarkdown.rstudio.com/authoring_shiny.html), [scientific articles](https://github.com/rstudio/rticles), and [websites](https://rmarkdown.rstudio.com/rmarkdown_websites.html).
+
+[**RStudio maintains a gallery of examples**](https://rmarkdown.rstudio.com/gallery.html) of the many uses of RMarkdown.
+
+### Language Engines
+
+**RMarkdown uses the [knitr](https://yihui.name/knitr/) report generation package** to output to the different file formats. This enables integration of R code into [LaTeX](https://en.wikipedia.org/wiki/LaTeX), [LyX](https://en.wikipedia.org/wiki/LyX), [HTML](https://en.wikipedia.org/wiki/HTML), [Markdown](https://en.wikipedia.org/wiki/Markdown), [AsciiDoc](https://en.wikipedia.org/wiki/AsciiDoc), and [reStructuredText](https://en.wikipedia.org/wiki/ReStructuredText) documents.
+
+**The knitr package can execute chunks in a variety of languages**. It does this with [knitr Language Engines](https://rmarkdown.rstudio.com/authoring_knitr_engines.html), which include engines for:
+
+* Python
+* SQL
+* Bash
+* Rcpp
+* Stan
+* JavaScript
+* CSS
+
+**To process a code chunk using an alternate language engine** simply use the name of the engine in place of `{r}` in the chunk declaration, for example:
+
+```
+## {bash}
+## cat flights1.csv flights2.csv flights3.csv > flights.csv
+```
+
+### pandoc
+
+The RStudio installation includes [pandoc](http://pandoc.org/), which is used for conversion between RMarkdown and [the various output formats](#other-output-formats). You may have to [install pandoc on your system](http://pandoc.org/installing.html) for conversion to take place, especially for `.pdf` output, which goes through an intermediate `LaTeX` stage.
+
+`pandoc` can also be run from the commond line if it is installed separately. This is explained in detail in the [pandoc manual](http://pandoc.org/MANUAL.html).
+
+## R Notebooks
+
+**[R Notebooks](https://rmarkdown.rstudio.com/r_notebooks.html) are the most basic type of [RMarkdown](#rmarkdown) document**. They are the RStudio equivalent to [Jupyter Notebooks](https://jupyter.org/).
+
+As described by [RStudio](https://rmarkdown.rstudio.com/r_notebooks.html):
+
+> An R Notebook is an R Markdown document with chunks that can be executed independently and interactively, with output visible immediately beneath the input.
+
+Any R Markdown document can be used as a notebook, and all R Notebooks can be rendered to other R Markdown document types.
+
+### Creating An R Notebook File
+
+**The RStudio menu item `File -> New File -> R Notebook`** creates a new [RStudio Notebook](https://rmarkdown.rstudio.com/r_notebooks.html) containing some initial instructions on using an R Notebook.
+
+````
+---
+title: "R Notebook"
+output:
+  html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```
+{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+````
+
+This can be overwritten to create new content.
+
+For more information see [RStudio Notebook](https://rmarkdown.rstudio.com/r_notebooks.html).
+
+### R Notebook HTML files
+
+**An [R Notebook HTML file](https://rmarkdown.rstudio.com/r_notebook_format.html) is a special type of [R Notebook](#r-notebook)**.
+
+It is an HTML file that uses the `.nb.html` extension and it enables:
+
+* **the source .Rmd document** and
+* **chunk outputs** to be recovered.
+
+The `html_notebook` output format is specified in the YAML metadata:
+
+```
+title: "my_document_title"
+output:
+    html_notebook
+```
+
+With the `_yaml` file written this way, the command `rmarkdown::render()` will create an `.nb.html` R Notebook HTML Format file.
+
+For more information, see [Details of the R Notebook HTML Format](https://rmarkdown.rstudio.com/r_notebook_format.html).
+
+**Note**: The [RStudio instructions](https://rmarkdown.rstudio.com/r_notebook_format.html#generating-r-notebooks-with-custom-output) show an incorrect `YAML` header. You must use the `_yaml` format shown above or RStudio will throw an error and not compile.
+
+## Interactive Documents
+
+![](images/uc_bar450.png)
+
+### Interactive Widgets
+
+### Dashboards
+
+![](images/uc_bar450.png)
+
+## Books
+
+![](images/uc_bar450.png)
+
+### LaTeX
+
+![](images/uc_bar450.png)
+
+### pandoc
+
+![](images/uc_bar450.png)
+
+### Online Books
+
+![](images/uc_bar450.png)
+
+## Blogs
+
+![](images/uc_bar450.png)
+

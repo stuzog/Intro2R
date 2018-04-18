@@ -1,0 +1,48 @@
+.author, .date {
+  margin-top: 0.5em;
+  margin-bottom: 0.25em;
+  font-weight: normal;
+  }
+
+.date {
+  margin-bottom: 1em;
+  font-size: small;
+  font-style: normal;
+  }
+
+a:link {
+	color: #dd4814; /* dark orange */
+	text-decoration: none;
+	}
+
+a:visited {
+	color: #ff8e65; /* light orange */
+	text-decoration: none;
+	}
+
+a:hover	{
+	color: #F30; /* red */
+	text-decoration: underline;
+	}
+
+a:active {
+	color: #F60; /* orange */
+	text-decoration: underline;
+	}
+
+.dropcap	{
+	padding-bottom: 10px;
+	font-size: 3.2em;
+	vertical-align: bottom;
+	float: left;
+	position: relative;
+	top:  7px;
+  }
+
+img.small-left	{
+	float: left;
+	margin: 0.25em 1em 0.25em 0pt;
+	vertical-align: top;
+	width: 60pt;
+	}
+
