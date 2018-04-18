@@ -24,15 +24,38 @@ knitr::opts_chunk$set(echo = TRUE)
 
 **This project is best used by setting it up as an RStudio Project**.
 
-The necessary files are available in a [GitHub repository](https://github.com/stuzog/Intro2R.git). To download and use it, the following programs must be installed on your computer:
+This project can be run on all major computer platforms. The necessary files are available in a [GitHub repository](https://github.com/stuzog/Intro2R.git). To download and use them, the following programs must be installed on your computer:
 
 * [R](https://www.r-project.org/)
 * [RStudio](https://www.rstudio.com/products/rstudio/download/)
 * [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-Once these are available, you can proceed to the next step:
+Once these are properly set up, you can proceed to installation:
 
-## Create The Project Directory
+## Quick Summary
+
+Here are the stages of installing this project:
+
+1. Install `r` and `git` on your computer
+1. Decide where to put the _Project Directory_
+1. `cd` into what will be its parent directory
+1. Clone the project files from GitHub
+1. Install and open RStudio on your computer
+1. Create a new RStudio Project in the _Project Directory_
+1. Install and initialise `packrat`
+1. Set up an account on GitHub if you don't have one
+1. Create a new repository in your GitHub account
+1. Add it to RStudio as a _Github destination_
+1. Push the files in your Project Directory to GitHub
+1. Continue to [Part1](Part1_R_Data_Science.html) of your introduction to R
+
+It may look like an long list, but it's fairly easy to work through.
+
+## Installation Details
+
+Carefully follow these instructions, in their order.
+
+### Create The Project Directory
 
 1. In your Terminal program, `cd` into the directory where you want to create the new project. This can be located wherever you want. It will be called `Intro2R`, so there should not be an existing directory with the same name in that location.
 
@@ -68,7 +91,7 @@ drwxr-xr-x   31 (username)  staff   1054 18 Apr 09:10 images
 -rw-r--r--    1 (username)  staff    687 18 Apr 09:10 intro.css
 ```
 
-## Make It An RStudio Project
+### Make It An RStudio Project
 
 3. **Launch RStudio on your computer**. Unless you have used RStudio before, you will see a fairly unpopulated RStudio window.
 
@@ -90,7 +113,7 @@ In file(filename, "r", encoding = encoding) :
   cannot open file 'packrat/init.R': No such file or directory
 ```
 
-## Install `packrat`
+### Install `packrat`
 
 **Because R packages are updated frequently**, it is recommended that you use a [project package management](http://r.stuzog.com/RStudio.html#project-package-management) system. This project uses the [`packrat`](https://rstudio.github.io/packrat/) package dependency management system for R, so this should now be installed.
 

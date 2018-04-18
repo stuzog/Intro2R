@@ -2,8 +2,6 @@ name: "Introduction To R"
 navbar:
   title: "Introduction To R"
   left:
-    - text: "How To Use"
-      href: How.html
     - text: "Part1"
       menu: 
       - text: "R For Data Science"
@@ -16,6 +14,8 @@ navbar:
       href: Part2_R_Programming.html
     - text: "Learning Resources"
       href: R_Learning_Resources.html
+    - text: "Setup"
+      href: setup.html
 output:
   html_document:
     theme: united
