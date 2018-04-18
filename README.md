@@ -1,6 +1,6 @@
 # An Introduction To R
  
-<img src="images/Rlogo.png" style="margin-bottom: 1.5em; width: 150" />
+<img src="images/Rlogo.png" width="150" />
 
 **This material is my own process of learning the R programming language. It can be yours, too.**
 
