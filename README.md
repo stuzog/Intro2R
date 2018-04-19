@@ -1,3 +1,9 @@
+---
+title: "RStudio IDE"
+author: "by Stuart Hertzog"
+date: "March&ndash;May 2018"
+---
+
 # An Introduction To R
  
 <img src="images/Rlogo.png" width="150" />

@@ -239,7 +239,9 @@ From now, all new packages will be installed in this project-specific library.
 
 ## GitHub Version Control
 
-**It's a really good idea to track your R coding with some form of [version control](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN)**. RStudio makes this easy for you. 
+**It's a really good idea to track your R coding with some form of [version control](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN)**.
+
+RStudio makes this easy for you. 
 
 [git](https://git-scm.com/) has become the leading version control system --- there's even comprehensive a [free eBook on git](https://git-scm.com/book/en/v2) that you can download and study. There also are some [easy-to-understand explanations on how `git` works ](https://r-bio.github.io/intro-git-rstudio/) available on the Web.
 

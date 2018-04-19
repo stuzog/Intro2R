@@ -1,21 +1,21 @@
-name: "Introduction To R"
+name: Introduction To R
 navbar:
-  title: "Introduction To R"
+  title: Introduction To R
   left:
-    - text: "Setup"
-      href: Setup.html
-    - text: "Part1"
-      menu: 
-      - text: "R For Data Science"
-        href: Part1_R_Data_Science.html
-      - text: "The RStudio IDE"
-        href: RStudio.html
-      - text: "RStudio Ecosystem"
-        href: RStudio_Ecosystem.html
-    - text: "Part2"
-      href: Part2_R_Programming.html
-    - text: "Learning Resources"
-      href: R_Learning_Resources.html
+  - text: Setup
+    href: Setup.html
+  - text: Part1
+    menu:
+    - text: R For Data Science
+      href: Part1_R_Data_Science.html
+    - text: The RStudio IDE
+      href: RStudio.html
+    - text: RStudio Ecosystem
+      href: RStudio_Ecosystem.html
+  - text: Part2
+    href: Part2_R_Programming.html
+  - text: Learning Resources
+    href: R_Learning_Resources.html
 output:
   html_document:
     theme: united
@@ -27,11 +27,9 @@ output:
       smooth_scroll: yes
     css: intro.css
     df_print: paged
-  word_document:
-    toc: yes
-    toc_depth: 6
-  pdf_document:
-    toc: yes
-    toc_depth: 6
-editor_options: 
-    chunk_output_type: inline
+    lib_dir: site_libs
+    self_contained: no
+editor_options:
+  chunk_output_type: inline
+output_dir: _site
+
