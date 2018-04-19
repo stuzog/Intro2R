@@ -1,5 +1,5 @@
 ---
-title: "How To Use This Series"
+title: "How To Set Up This Project"
 author: "by Stuart Hertzog"
 date: "March&ndash;May 2018"
 ---
@@ -49,7 +49,7 @@ Here are the stages of installing this project:
 1. Push the files in your Project Directory to GitHub
 1. Continue to [Part1](Part1_R_Data_Science.html) of your introduction to R
 
-It may look like an long list, but it's fairly easy to work through.
+It may look intimidating, but it's fairly easy to work through.
 
 ## Installation Details
 
@@ -236,6 +236,32 @@ Restarting R session...
 From now, all new packages will be installed in this project-specific library.
 
 9. **Click _Update_ in the _Packages tab toolbar_** to ensure that all project packages are current. Packages are updated frequently, so it is advisable to do this from time to time.
+
+## GitHub Version Control
+
+**It's a really good idea to track your R coding with some form of [version control](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN)**. RStudio makes this easy for you. 
+
+[git](https://git-scm.com/) has become the leading version control system --- there's even comprehensive a [free eBook on git](https://git-scm.com/book/en/v2) that you can download and study. There also are some [easy-to-understand explanations on how `git` works ](https://r-bio.github.io/intro-git-rstudio/) available on the Web.
+
+**`git` support is built-in to RStudio**. This makes keeping track of your many ch-ch-ch-changes an integral part of your R programming workflow.
+
+### Setting Up `git` In RStudio
+
+How you set up `git` in RStudio depends on whether you are:
+
+* Starting a new Project:
+  * [first from GitHub](http://happygitwithr.com/new-github-first.html)
+  * [from RStudio](http://happygitwithr.com/existing-github-last.html)
+  * [from a GitHub clone](http://happygitwithr.com/clone.html)
+* Adding `git` to an existing Project
+  * [starting from GitHub](http://happygitwithr.com/existing-github-first.html), or
+  * [starting from RStudio](http://happygitwithr.com/existing-github-last.html)
+
+Each alternative takes a slightly different path through the RStudio/GitHub maze. They are best detailed in [Happy Git and GitHub for the useR](http://happygitwithr.com/) by Jenny Bryan and the STAT 545 Teaching Assistants of UBC. [RStudio's version control guide](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN) also shows how to use `git` or an [SVN repository](http://subversion.apache.org/) for version control.
+
+### Using `git` In RStudio
+
+
 
 ## Some Helpful Tips
 
