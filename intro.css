@@ -14,6 +14,10 @@
   font-style: normal;
   }
 
+.caption {
+  padding-top: 0.5em;
+  }
+
 a:link {
 	color: #dd4814; /* dark orange */
 	text-decoration: none;

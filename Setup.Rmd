@@ -263,9 +263,35 @@ Each alternative takes a slightly different path through the RStudio/GitHub maze
 
 ### Using `git` In RStudio
 
+**When `git` is properly set up a new _Git_ tab** will appear in the _Environment... Build_ pane. Clicking on this tab will show files and directories that have changed since the last synchronisation with the _GitHub repository_ associated with this Project. If you keep this tab open, you will see its contents change each time you Save a file, or rebuild an entire Web site.
 
+![***Above:** The Git pane showing changes during work on this .Rmd file*](images/RStudio_Git_pane.png)
 
-## Some Helpful Tips
+The _GitHub Push_ workflow is:
+
+1. _Stage_ any modified file or directory
+1. _Commit_ selected _Staged_ files or directories, adding a brief _Commit message_
+1. _Push_ all _Committed_ files/directories to a _GitHub repository_.
+
+**If you're new to `git` and somewhat intimidated by it**, [A Visual Introduction to Git](https://medium.com/@ashk3l/a-visual-introduction-to-git-9fdca5d3b43a) gives an amusing introduction to the basic `git` workflow.
+
+**For a detailed overview from a developer perspective** see [Git and GitHub](http://r-pkgs.had.co.nz/git.html) by Hadley Wickham. It particulaly refers to R package development.
+
+#### Staging Changed Items
+
+1. **Click its _Staged_ checkbox**. A small blue box labelled `M` appears in the left _Status_ column, showing that the file or directory was _Modified_ and ready for a _Commit_. If you had only added the file, a small green box labelled `A` will appear.
+
+1. **If you click on a listed directory**, its contents will all appear, marked _Staged_ and with small green boxes signifying that they have been _Added._
+
+![_**Above:** Staging a directory will result in its contents all being shown Staged._](images/RStudio_staged_directories.png)
+
+3. **To _Unstage_ added sub-directories or files** you either deselect each individually then deselect the _Staged_ parent directory, or `SHIFT Click` all of them and uncheck  one _Selected_ radio button.
+
+#### Committing Staged Items
+
+#### Pushing To Repository
+
+## Best Usage
 
 ![](images/uc_bar450.png)
 

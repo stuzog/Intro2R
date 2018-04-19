@@ -32,6 +32,8 @@ Good luck with your R learning!
 
 ## Contents
 
+[Setup](Setup.html)
+
 **Part 1**
 
 * [R For Data Science](Part1_R_Data_Science.html)
@@ -43,7 +45,5 @@ Good luck with your R learning!
 * [R Fundamentals](Part2_R_Programming.html)
 
 [Learning Resources](R_Learning_Resources.html)
-
-[Setup](Setup.html)
 
 ![](images/uc_bar450.png)
