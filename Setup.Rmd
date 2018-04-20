@@ -1,5 +1,5 @@
 ---
-title: "How To Set Up This Project"
+title: "How To Set Up This Tutorial Series"
 author: "by Stuart Hertzog"
 date: "March&ndash;May 2018"
 ---
@@ -20,11 +20,13 @@ date: "March&ndash;May 2018"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+> **You will get the most benefit from this Tutorial Series if you set it up as an RStudio Project and become familiar with the RStudio IDE**.
+
 ## Requirements
 
-**This project is best used by setting it up as an RStudio Project**.
+**This series of tutorials on R can be run on the major computer platforms -- Windows, Mac, and Linux**.
 
-This project can be run on all major computer platforms. The necessary files are available in a [GitHub repository](https://github.com/stuzog/Intro2R.git). To download and use them, the following programs must be installed on your computer:
+The necessary files are available in a [GitHub repository](https://github.com/stuzog/Intro2R.git). To download and use them you will need these programs installed on your computer:
 
 * [R](https://www.r-project.org/)
 * [RStudio](https://www.rstudio.com/products/rstudio/download/)
@@ -34,7 +36,7 @@ Once these are properly set up, you can proceed to installation:
 
 ## Quick Summary
 
-Here are the stages of installing this project:
+**The stages of installing this RStudio Project are**:
 
 1. Install `r` and `git` on your computer
 1. Decide where to put the _Project Directory_
@@ -53,13 +55,13 @@ It may look intimidating, but it's fairly easy to work through.
 
 ## Installation Details
 
-Carefully follow these instructions, in their order.
+Carefully follow these instructions, in this order.
 
 ### Create The Project Directory
 
-1. In your Terminal program, `cd` into the directory where you want to create the new project. This can be located wherever you want. It will be called `Intro2R`, so there should not be an existing directory with the same name in that location.
+1. In your Terminal program, `cd` into the directory where you want to create the new Project. This can be located wherever you want. It will be called `Intro2R`, so there should not be an existing directory with the same name in that location.
 
-2. Enter the following commands at the command line, one at a time, followed by `RETURN`:
+2. Enter the following commands one at a time at the command line in your Terminal program. Follow each line by a `RETURN`:
 
 ```
 git clone https://github.com/stuzog/Intro2R.git
@@ -229,11 +231,11 @@ Restarting R session...
 > 
 ```
 
-8. **Click the _Packages tab_ in the _Files....Viewer pane_** (usually bottom right). It will now show a listing of packages installed in the project _Packrat Library_:
+8. **Click the _Packages tab_ in the _Files....Viewer pane_** (usually bottom right). It will now show a list of packages installed in the Project's dedicated  _Packrat Library_:
 
-![](images/RStudio_packages.png)
+![_**Above:** All Project packages will be installed in this project-specific library_.](images/RStudio_packages.png)
 
-From now, all new packages will be installed in this project-specific library.
+
 
 9. **Click _Update_ in the _Packages tab toolbar_** to ensure that all project packages are current. Packages are updated frequently, so it is advisable to do this from time to time.
 
@@ -243,7 +245,7 @@ From now, all new packages will be installed in this project-specific library.
 
 RStudio makes this easy for you. 
 
-[git](https://git-scm.com/) has become the leading version control system --- there's even comprehensive a [free eBook on git](https://git-scm.com/book/en/v2) that you can download and study. There also are some [easy-to-understand explanations on how `git` works ](https://r-bio.github.io/intro-git-rstudio/) available on the Web.
+**[git](https://git-scm.com/) and [GitHub](https://github.com/explore) have become the leading version control system** --- there's even a [free eBook](https://git-scm.com/book/en/v2) about `git` available for download . There also are some [easy-to-understand explanations](https://r-bio.github.io/intro-git-rstudio/) on how `git` works available on the Web.
 
 **`git` support is built-in to RStudio**. This makes keeping track of your many ch-ch-ch-changes an integral part of your R programming workflow.
 
@@ -251,11 +253,11 @@ RStudio makes this easy for you.
 
 How you set up `git` in RStudio depends on whether you are:
 
-* Starting a new Project:
+* **Starting a new Project**:
   * [first from GitHub](http://happygitwithr.com/new-github-first.html)
   * [from RStudio](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN)
   * [from a GitHub clone](http://happygitwithr.com/clone.html)
-* Adding `git` to an existing Project
+* **Adding `git` to an existing Project**
   * [starting from GitHub](http://happygitwithr.com/existing-github-first.html), or
   * [starting from RStudio](http://happygitwithr.com/existing-github-last.html)
 
@@ -263,7 +265,7 @@ Each alternative takes a slightly different path through the RStudio/GitHub maze
 
 ### Using `git` In RStudio
 
-**When `git` is properly set up a new _Git_ tab** will appear in the _Environment... Build_ pane. Clicking on this tab will show files and directories that have changed since the last synchronisation with the _GitHub repository_ associated with this Project. If you keep this tab open, you will see its contents change each time you Save a file, or rebuild an entire Web site.
+**When `git` is properly set up, a new _Git_ tab** will appear in the _Environment... Build_ pane. Clicking on this tab will show files and directories that have changed since the last synchronisation with the _GitHub repository_ associated with this Project. If you keep this tab open, you will see its contents change each time you save a file, or rebuild an entire Web site.
 
 ![***Above:** The Git pane showing changes during work on this .Rmd file*](images/RStudio_Git_pane.png)
 
