@@ -281,13 +281,34 @@ Each alternative takes a slightly different path through the RStudio/GitHub maze
 
 #### Staging Changed Items
 
-1. **Click its _Staged_ checkbox**. A small blue box labelled `M` appears in the left _Status_ column, showing that the file or directory was _Modified_ and ready for a _Commit_. If you had only added the file, a small green box labelled `A` will appear.
+1. **Click its _Staged_ checkbox** ![](images/git-blank-button.png) A small blue box ![](images/git-blue-M.png) appears in the left _Status_ column, showing that the file or directory was _Modified_ and ready for a _Commit_. If you had only added the file, a small green box ![](images/git-green-A.png) will appear. The _Staged_ checkbox then changes to a tickmark ![](images/git-check-button.png).
 
-1. **If you click on a listed directory**, its contents will all appear, marked _Staged_ and with small green boxes signifying that they have been _Added._
+1. **If you click on a listed directory**, its contents will all appear, marked _Staged_ and with small green boxes ![](images/git-green-A.png) signifying that they have been _Added._
 
 ![_**Above:** Staging a directory will result in its contents all being shown Staged._](images/RStudio_staged_directories.png)
 
 3. **To _Unstage_ added sub-directories or files** you either deselect each individually then deselect the _Staged_ parent directory, or `SHIFT Click` all of them and uncheck  one _Selected_ radio button.
+
+#### Those little `git` icons?
+
+In the _Status_ column, you'll see little yellow, blue, or red icons. They mean:
+
+![](images/git-yellow-N.png) - _New file_ or directory that does not exist in the `git` repository  
+![](images/git-blue-M.png) - _Modified_ from what is in the `git` _Repository_  
+![](images/git-green-A.png) - _Staging_ a file or adding it to be committed  
+![](images/git-red-D.png) - The item has been _Deleted_
+
+The _Status_ column has a _left_ and _right_ icon alignment:
+
+_icon on the left_ - the item has been _Staged_  
+_icon on the right_ - the item is _Not Staged_
+
+Sometimes you'll see icons in both columns
+
+![](images/git-yellow-N.png) ![](images/git-yellow-N.png) - _Not in the Repository_ and has changed recently  
+![](images/git-blue-M.png) ![](images/git-blue-M.png) - _Staged_ and _Modified_ since it was _Staged_
+
+In the last case, the _Staged_ checkbox will be filled with a solid blue ![](images/git-blue-button.png).
 
 #### Committing Staged Items
 
@@ -307,9 +328,9 @@ A smaller _Progress window_ will open over the _Review window_. It is actually a
 
 ![_**Above:** The Push only happens when you click the green Push button._](images/RStudio-push-progress.png)
 
-6. If everything went well, you will see this message in the _Progress window_ (opens automatically if you had closed it).
+6. If everything went well, you will see the above message in the _Progress window_ (opens automatically if you had closed it).
 
-![_**Above:** After a successful Push, everything is up-to-date._](images/RStudio-push-changes.png)
+![_**Above:** After a successful Push, a second Push shows everything up-to-date._](images/RStudio-push-changes.png)
 
 ## Best Usage
 
