@@ -289,6 +289,10 @@ The _GitHub Push_ workflow is:
 
 #### Committing Staged Items
 
+![_**Above:** The RStudio Review Changes window. Here is where you add a Commit message._](images/RStudio-Review-Changes.png)
+
+
+
 #### Pushing To Repository
 
 ## Best Usage
