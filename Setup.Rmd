@@ -287,13 +287,13 @@ Each alternative takes a slightly different path through the RStudio/GitHub maze
 
 ![_**Above:** Staging a directory will result in its contents all being shown Staged._](images/RStudio_staged_directories.png)
 
-3. **To _Unstage_ added sub-directories or files** you either deselect each individually then deselect the _Staged_ parent directory, or `SHIFT Click` all of them and uncheck  one _Selected_ radio button.
+3. **To _Unstage_ added sub-directories or files** you either deselect each individually then deselect the _Staged_ parent directory (_Tip:_ Start with the bottom one and keep clicking!), or `SHIFT Click` all of them and uncheck  one _Selected_ radio button.
 
 #### Those little `git` icons?
 
 In the _Status_ column, you'll see little yellow, blue, or red icons. They mean:
 
-![](images/git-yellow-N.png) - _New file_ or directory that does not exist in the `git` repository  
+![](images/git-yellow-N.png) - _New file_ or directory that does not exist in the `git` _Repository_  
 ![](images/git-blue-M.png) - _Modified_ from what is in the `git` _Repository_  
 ![](images/git-green-A.png) - _Staging_ a file or adding it to be committed  
 ![](images/git-red-D.png) - The item has been _Deleted_
@@ -303,12 +303,14 @@ The _Status_ column has a _left_ and _right_ icon alignment:
 _icon on the left_ - the item has been _Staged_  
 _icon on the right_ - the item is _Not Staged_
 
-Sometimes you'll see icons in both columns
+Sometimes you'll see icons in both columns:
 
 ![](images/git-yellow-N.png) ![](images/git-yellow-N.png) - _Not in the Repository_ and has changed recently  
 ![](images/git-blue-M.png) ![](images/git-blue-M.png) - _Staged_ and _Modified_ since it was _Staged_
 
 In the last case, the _Staged_ checkbox will be filled with a solid blue ![](images/git-blue-button.png).
+
+You'll see how it all works as you continue with RStudio.
 
 #### Committing Staged Items
 
