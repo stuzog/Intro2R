@@ -253,7 +253,7 @@ How you set up `git` in RStudio depends on whether you are:
 
 * Starting a new Project:
   * [first from GitHub](http://happygitwithr.com/new-github-first.html)
-  * [from RStudio](http://happygitwithr.com/existing-github-last.html)
+  * [from RStudio](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN)
   * [from a GitHub clone](http://happygitwithr.com/clone.html)
 * Adding `git` to an existing Project
   * [starting from GitHub](http://happygitwithr.com/existing-github-first.html), or
