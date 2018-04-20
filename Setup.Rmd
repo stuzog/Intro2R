@@ -293,7 +293,7 @@ Each alternative takes a slightly different path through the RStudio/GitHub maze
 
 When you have _Staged_ everything you want, the next step is to _Commit_ those _Staged_ items.
 
-4.**Click the _Committ_ button to do this**. The _Review Changes_ window appears. You can add a message to remind you (and others) what you have done in this _Commit_. This is always advisable, especially for others reviewing your repository.
+4.**Click the _Commit_ button to do this**. The _Review Changes_ window appears. You can add a message to remind you (and others) what you have done in this _Commit_. This is always advisable, especially for others reviewing your repository.
 
 ![_**Above:** The RStudio Review Changes window with a Commit message._](images/RStudio-review-changes.png)
 
