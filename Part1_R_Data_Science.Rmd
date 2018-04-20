@@ -15,6 +15,10 @@ date: "March&ndash;May 2018"
     });
 </script>
 
+> **"In Data Science there's always a human in the loop: someone is understanding the insight, seeing the figure, or benefitting from the conclusion."<br />** --- [_David Robinson, Variance Explained Blog_](http://varianceexplained.org/r/ds-ml-ai/)
+
+That person can be called a __Data Scientist__.
+
 ## What Is Data Science?
 
 * [Data Science](https://en.wikipedia.org/wiki/Data_science) is a discipline that uses *statistics, data analysis, machine learning* and their *related methods* to __understand and analyze actual phenomena__.
@@ -42,10 +46,6 @@ According to Wikipedia:
 * **Data Science** produces _**insights**_
 * **Machine Learning** produces _**prediction**s_
 * **Artificial Intelligence** produces _**actions**_
-
-> *"In Data Science theres always a human in the loop: someone is understanding the insight, seeing the figure, or benefitting from the conclusion."<br />--- [David Robinson, Variance Explained Blog](http://varianceexplained.org/r/ds-ml-ai/)*
-
-That person is a __Data Scientist__.
 
 ## What Is R?
 
