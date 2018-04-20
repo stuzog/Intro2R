@@ -44,6 +44,10 @@ Good luck with your R learning!
 
 * [R Fundamentals](Part2_R_Programming.html)
 
-[Learning Resources](R_Learning_Resources.html)
+<hr />
+
+<--- [_**Back:** Learning Resources_](R_Learning_Resources.html) | [_**Next:** How To Set Up This Series_](Setup.html) --->
+
+<hr />
 
 ![](images/uc_bar450.png)

@@ -706,3 +706,9 @@ list3
 ```
 
 
+
+<hr />
+
+<--- [_**Back:** Part 1 - RStudio Ecosystem_](RStudio_Ecosystem.html) | [_**Next:** Learning Resources_](R_Learning_Resources.html) --->
+
+<hr />

@@ -224,3 +224,8 @@ Until recently it has not been possible to easily use Python in RStudio. The new
 **[reticulate](https://rstudio.github.io/reticulate/index.html) embeds a Python session within your R session**, enabling seamless, high-performance interoperability. If you are a Python developer, or an R developer who uses Python for some of your work, or a member of data science team that uses both languages, [reticulate](https://rstudio.github.io/reticulate/index.html) can dramatically streamline your workflow.
 
 
+<hr />
+
+<--- [_**Back:** Part 1 - R For Data Science_](Part1_R_Data_Science.html) | [_**Next:** Part 1 - RStudio Ecosystem_](RStudio_Ecosystem.html) --->
+
+<hr />

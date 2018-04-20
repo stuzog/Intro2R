@@ -70,3 +70,9 @@ If you're into listening to podcasts, there are many great podcasts about R, Dat
 
 Collected from: [A few podcast recommendations | R-bloggers](https://www.r-bloggers.com/a-few-podcast-recommendations/)
 
+
+<hr />
+
+<--- [_**Back:** Part 2 - Fundamentals of R_](Part2_R_Programming.html) | [_**Next:** Home_](index.html) --->
+
+<hr />

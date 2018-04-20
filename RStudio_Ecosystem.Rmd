@@ -198,3 +198,9 @@ For more information, see [Details of the R Notebook HTML Format](https://rmarkd
 
 ![](images/uc_bar450.png)
 
+
+<hr />
+
+<--- [_**Back:** Part 1 - RStudio IDE_](RStudio.html) | [_**Next:** Part 2 - Fundamentals of R_](Part2_R_Programming.html) --->
+
+<hr />

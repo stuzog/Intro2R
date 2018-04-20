@@ -245,3 +245,8 @@ with `tidyverse_update()`.
 
 **A suite of tools to solve problems with factors**. R uses factors to handle categorical variables that have a fixed and known set of possible values. Many base R functions convert character vectors to factors, but [tidyverse](http://tidyverse.org/) packages don't create them automatically.
 
+<hr />
+
+<--- [_**Back:** How To Set Up This Series_](Setup.html) | [_**Next:** Part 1 - RStudio IDE_](RStudio.html) --->
+
+<hr />
