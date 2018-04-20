@@ -289,11 +289,25 @@ The _GitHub Push_ workflow is:
 
 #### Committing Staged Items
 
-![_**Above:** The RStudio Review Changes window. Here is where you add a Commit message._](images/RStudio-Review-Changes.png)
+When you have _Staged_ everything you want, the next step is to _Commit_ those _Staged_ items.
 
+4.**Click the _Committ_ button to do this**. The _Review Changes_ window appears. You can add a message to remind you (and others) what you have done in this _Commit_. This is always advisable, especially for others reviewing your repository.
 
+![_**Above:** The RStudio Review Changes window with a Commit message._](images/RStudio-review-changes.png)
 
-#### Pushing To Repository
+A smaller _Progress window_ will open over the _Review window_. It is actually a small _Terminal window_ showing what you would see if you were at the command line.
+
+![_**Above:** The Progress window shows the result of your Commit command._](images/RStudio-git-commit-progress.png)
+
+#### Pushing To GitHub
+
+5. Your files are now Committed; the next step is to **Push** them to the Repository. The `green up-arrow` is the **Push button**. You may have to close the _Progress window_ first.
+
+![_**Above:** The Push only happens when you click the green Push button._](images/RStudio-push-progress.png)
+
+6. If everything went well, you will see this message in the _Progress window_ (it wil open automatically if you had closed it).
+
+![_**Above:** After a successful Push, everything is up-to-date._](images/RStudio-push-changes.png)
 
 ## Best Usage
 
