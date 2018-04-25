@@ -1,11 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto: 400, 500');
+
 .main-container {
-  margin-left: auto !important;
-  margin-right: auto !important;
+  font-family: 'Roboto', sans-serif;
   }
 
 .toc-content {
   max-width: 600px;
-}
+  }
 
 .section h2 {
   padding-top: 64px !important;
@@ -69,9 +70,20 @@ a:active {
 	top:  7px;
   }
 
-img.small-left	{
+blockquote  {
+  color: teal;
+  }
+
+.small-left	{
 	float: left;
 	margin: 0.25em 1em 0.25em 0pt;
+	vertical-align: top;
+	width: 60pt;
+	}
+
+.small-left-1em	{
+	float: left;
+	margin: 0.25em 1em 0.25em 1em;
 	vertical-align: top;
 	width: 60pt;
 	}
