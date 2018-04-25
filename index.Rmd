@@ -44,9 +44,11 @@ Good luck with your R learning!
 
 * [R Fundamentals](Part2_R_Programming.html)
 
+[Learning Resources](R_Learning_Resources.html)
+
 <hr />
 
-<--- [_**Back:** Learning Resources_](R_Learning_Resources.html) | [_**Next:** How To Set Up This Series_](Setup.html) --->
+<span class="glyphicon glyphicon-arrow-left"></span> [_Learning Resources_](R_Learning_Resources.html) | [_How To Set Up This Series_](Setup.html) <span class="glyphicon glyphicon-arrow-right"></span>
 
 <hr />
 

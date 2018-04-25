@@ -20,7 +20,7 @@ date: "March&ndash;May 2018"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-> **You will get the most benefit from this Tutorial Series if you set it up as an RStudio Project and become familiar with the RStudio IDE**.
+> You will get the most benefit from this Tutorial Series if you set it up as an RStudio Project and become familiar with the RStudio IDE.
 
 ## Requirements
 
@@ -336,6 +336,6 @@ A smaller _Progress window_ will open over the _Review window_. It is actually a
 
 <hr />
 
-<-- [_**Back:** Home_](index.html) | [_**Next:** Part 1 - R For Data Science_](Part1_R_Data_Science.html) -->
+<span class="glyphicon glyphicon-arrow-left"></span> [_Home_](index.html) | [_Part 1 - R For Data Science_](Part1_R_Data_Science.html) <span class="glyphicon glyphicon-arrow-right"></span>
 
 <hr />
