@@ -15,7 +15,7 @@ date: "March&ndash;May 2018"
     });
 </script>
 
-> **"In Data Science there's always a human in the loop: someone is understanding the insight, seeing the figure, or benefitting from the conclusion."<br />** --- [_David Robinson, Variance Explained Blog_](http://varianceexplained.org/r/ds-ml-ai/)
+> "In Data Science there's always a human in the loop: someone is understanding the insight, seeing the figure, or benefitting from the conclusion."<br /> --- [_David Robinson, Variance Explained Blog_](http://varianceexplained.org/r/ds-ml-ai/)
 
 That person can be called a __Data Scientist__.
 
@@ -49,7 +49,7 @@ According to Wikipedia:
 
 ## What Is R?
 
-> __R is a functional programming language__ developed specifically to __manipulate, display__, and __analyse statistical data__.
+> R is a functional programming language designed to manipulate, display, and analyse statistical data.
 
 R  is a __free, case-sensitive, interpreted__ language that uses statistical techniques __to perform__ [Data Analysis](https://en.wikipedia.org/wiki/Data_analysis), [Data Mining](https://en.wikipedia.org/wiki/Data_mining), [Data Modeling](https://en.wikipedia.org/wiki/Data_modeling), and [Machine Learning](https://en.wikipedia.org/wiki/Machine_learning), __and to create__  [Artifical Intelligence](https://www.innoarchitech.com/python-vs-or-r-artificial-intelligence-ai-machine-learning-data-science-which-use/) and [Business Intelligence](https://en.wikipedia.org/wiki/Business_intelligence).
 
@@ -247,6 +247,6 @@ with `tidyverse_update()`.
 
 <hr />
 
-<--- [_**Back:** How To Set Up This Series_](Setup.html) | [_**Next:** Part 1 - RStudio IDE_](RStudio.html) --->
+<span class="glyphicon glyphicon-arrow-left"></span> [_How To Set Up This Series_](Setup.html) | [_Part 1 - RStudio IDE_](RStudio.html) <span class="glyphicon glyphicon-arrow-right"></span>
 
 <hr />

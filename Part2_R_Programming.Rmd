@@ -709,6 +709,6 @@ list3
 
 <hr />
 
-<--- [_**Back:** Part 1 - RStudio Ecosystem_](RStudio_Ecosystem.html) | [_**Next:** Learning Resources_](R_Learning_Resources.html) --->
+<span class="glyphicon glyphicon-arrow-left"></span> [_Part 1 - RStudio Ecosystem_](RStudio_Ecosystem.html) | [_Learning Resources_](R_Learning_Resources.html) <span class="glyphicon glyphicon-arrow-right"></span>
 
 <hr />
