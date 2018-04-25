@@ -3,6 +3,8 @@ title: "The RStudio Ecosystem"
 author: "by Stuart Hertzog"
 date: "March&ndash;May 2018"
 output:
+  html_document:
+    df_print: paged
   pdf_document: default
   word_document: default
 ---
@@ -20,58 +22,19 @@ output:
 
 ![](images/RStudio_full_logo.png)
 
-## Products
-
-The RStudio IDE is the flagship of a large and growing RStudio ecosystem:
-
-### Software
-
-* [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop)
-* [RStudio Server](https://www.rstudio.com/products/rstudio/#Server)
-* [RMarkdown](https://rmarkdown.rstudio.com/)
-* [R Notebooks](https://rmarkdown.rstudio.com/r_notebooks.html)
-* [R Packages](https://www.rstudio.com/products/rpackages/)
-* [Shiny](https://www.rstudio.com/products/shiny/)
-* [Shiny Server](https://www.rstudio.com/products/shiny/shiny-server2/)
-
-### Associated Software
-
-* [bookdown](https://bookdown.org/yihui/bookdown/)
-* [blogdown](https://bookdown.org/yihui/blogdown/)
-
-### Cloud Services
-
-* [RStudio Server Pro](https://www.rstudio.com/products/rstudio-server-pro/)
-* [RStudio Connect](https://www.rstudio.com/products/connect/)
-* [RStudio Cloud (in alpha)](https://rstudio.cloud/)
-* [Shiny Server Pro](https://www.rstudio.com/products/shiny-server-pro/)
-* [shinyapps.io](https://www.rstudio.com/products/shinyapps/)
-
-### Associated Cloud Services
-
-* [Bookdown Book Publishing](https://bookdown.org/)
-
-### Resources
-
-* [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/)
-* [RStudio Community](https://community.rstudio.com/)
-* [RStudio Documentation](https://support.rstudio.com/hc/en-us/categories/200035113-Documentation)
-* [RStudio Server> Getting Started](https://support.rstudio.com/hc/en-us/articles/234653607-Getting-Started-with-RStudio-Server)
-* [RStudio Server Pro Administration Guide](http://docs.rstudio.com/ide/server-pro/)
+**The RStudio IDE is the flagship of a comprehensive RStudio ecosystem.**
 
 ## R Notebooks
 
-**[R Notebooks](https://rmarkdown.rstudio.com/r_notebooks.html) are the most basic type of [RMarkdown](#rmarkdown) document**. They are the RStudio equivalent to [Jupyter Notebooks](https://jupyter.org/).
-
-As described by [RStudio](https://rmarkdown.rstudio.com/r_notebooks.html):
+[R Notebooks](https://rmarkdown.rstudio.com/r_notebooks.html) are the most basic type of [RMarkdown](#rmarkdown) document. They are the RStudio equivalent to [Jupyter Notebooks](https://jupyter.org/). As described by [RStudio](https://rmarkdown.rstudio.com/r_notebooks.html):
 
 > An R Notebook is an R Markdown document with chunks that can be executed independently and interactively, with output visible immediately beneath the input.
 
-Any R Markdown document can be used as a notebook, and all R Notebooks can be rendered to other R Markdown document types.
+**Any R Markdown document can be used as a Notebook, and all R Notebooks can be rendered to other R Markdown document types**.
 
 ### Creating An R Notebook File
 
-**The RStudio menu item `File -> New File -> R Notebook`** creates a new [RStudio Notebook](https://rmarkdown.rstudio.com/r_notebooks.html) containing some initial instructions on using an R Notebook.
+**The RStudio menu item _File -> New File -> R Notebook_** creates a new [RStudio Notebook](https://rmarkdown.rstudio.com/r_notebooks.html) containing instructions on how to use an R Notebook.
 
 ````
 ---
@@ -96,8 +59,6 @@ When you save the notebook, an HTML file containing the code and output will be 
 The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
 
 ````
-
-This can be overwritten to create new content.
 
 For more information see [RStudio Notebook](https://rmarkdown.rstudio.com/r_notebooks.html).
 
@@ -275,10 +236,90 @@ tinytex::install_tinytex()
 
 <span class="glyphicon glyphicon-hand-right"></span> **[PDF output](https://rmarkdown.rstudio.com/pdf_document_format.html) (including [Beamer slides](https://rmarkdown.rstudio.com/beamer_presentation_format.html)) requires a full TeX installation.**
 
-## Blogs
+## blogdown
 
-![](images/uc_bar450.png)
+<img src="images/blogdown.png" class="small-left-1em" />
 
+> Just as [WordPress](https://wordpress.com/) changed the Web by bringing blogging to the masses, [blogdown](https://bookdown.org/yihui/blogdown/) has opened a path for the more computer-savvy to create quick-loading, static blog sites using [RMarkdown](#rmarkdown).
+
+Not content with authoring [`bookdown`](#bookdown), RStudio developer [Yihui Xie](http://yihui.name) took the next logical step by writing the [`blogdown` R package](https://bookdown.org/yihui/blogdown/).
+
+**Based on the [Hugo website framework](https://gohugo.io/), `blogdown` lets you write posts in RStudio as RMarkdown.Rmd files These are automatically converted to blog posts for uploading to a hosting service, including [GitHub pages](https://pages.github.com/)**.
+
+### Learning `blogdown`
+
+It is advisable to first read Yihui Xie and Alison Presmanes Hill's `bookdown` book [Creating Websites with R Markdown](https://bookdown.org/yihui/blogdown/) to become familiar with `bookdown` concepts and the [Hugo framework](https://gohugo.io/) before you embark on creating your first blog site.
+
+**These links offer practical Setup hints and guidance:**
+
+#### blogdown Setup
+
+* [Up and running with blogdown | Alison Presmanes Hill](https://alison.rbind.io/post/up-and-running-with-blogdown/)
+* [Getting Started With Blogdown | Borasky Research Journal](https://www.znmeb.mobi/2017/05/12/getting-started-with-blogdown/)
+* [R Blogdown Setup in GitHub (2) | Tales of R](https://aurora-mareviv.github.io/talesofr/2018/02/r-blogdown-setup-in-github-2/)
+* [A Technical Introduction to Yihui's personal website ](https://support.rbind.io/2017/04/25/yihui-website/#fnref:For-two-reasons)
+* [A not-so-technical introduction to Daijiang's personal website](https://support.rbind.io/2017/04/28/daijiang-website/#fnref:frankly-I-cloned)
+
+#### blogdown Links
+
+* [blogdown: Creating Websites with R Markdown](https://bookdown.org/yihui/blogdown/)
+* [Announcing blogdown - Yihui Xie, RStudio 2017-09-11](https://blog.rstudio.com/2017/09/11/announcing-blogdown/)
+* [GitHub - rstudio/blogdown: Create Blogs and Websites with R Markdown](https://github.com/rstudio/blogdown)
+* [GitHub - rbind/blogdown-demo: A minimal website example using blogdown](https://github.com/rbind/blogdown-demo)
+* [Twitter hashtag #blogdown](https://twitter.com/hashtag/blogdown)
+
+### Hugo Themes
+
+**`blogdown` uses [Hugo themes](https://gohugo.io/themes/) to style the look and feel of its blogs**. The default theme for `blogdown` is [_hugo-lithium_](https://github.com/yihui/hugo-lithium), a minimal theme that offers several options, detailed in [Section 2.4.1](https://bookdown.org/yihui/blogdown/themes.html#the-default-theme) of the `blogdown` book. The base theme can be modified to suit your taste, or it can be replaced by another theme.
+
+**The [Hugo web site](https://gohugo.io/) showcases many [user-contributed themes](https://themes.gohugo.io)**. These can be examined online and downloaded for use as-is or as a starting point for themeing.
+
+#### Hugo Links
+
+* [Hugo](https://gohugo.io/) --- world's fastest (?) framework for building websites
+* [Hugo Setup Guide](https://gohugo.io/getting-started/installing/) --- applies to `blogdown` blog sites
+* [Hugo Themeing](https://gohugo.io/themes/) --- how to choose and fine-tune a blog
+* [Contributed Hugo Themes](https://themes.gohugo.io) -- hundreds of excellent Hugo themes
+* [Converting Old Wordpress Posts To Hugo](https://riinu.netlify.com/2018/02/converting-old-wordpress-posts-to-hugo/) --- goodbye WordPress!
+
+### `blogdown` Blogs
+
+A list of R-related `blogdown` blogs is kept at [rbind on Github](https://github.com/rbind). R-blogs made with `blogdown` can be viewed [here](https://github.com/search?q=org%3Arbind+blogdown).
+
+An interesting and uncluttered example is [Simply Statistics](https://simplystatistics.org/), a statistics blog by Rafa Irizarry, Roger Peng, and Jeff Leek.
+
+## RStudio Products
+
+![](images/RStudio_full_logo.png)
+
+**Some RStudio products are open-source and free for student and personal use**. Others are priced for professional or Enterprise deployment.
+
+### Software
+
+* [R Notebooks](https://rmarkdown.rstudio.com/r_notebooks.html) --- equivalent to [Jupyter Notebooks](https://jupyter.org/)
+* [RMarkdown](https://rmarkdown.rstudio.com/) --- creates `.Rmd` files using [Pandoc Markdown](https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html) 
+* [R Packages](https://www.rstudio.com/products/rpackages/) --- available on [CRAN](https://cran.r-project.org/) and [GitHub](https://github.com/rstudio)
+* [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) --- the RStudio IDE, also on [GitHub](https://github.com/rstudio)
+* [RStudio Server](https://www.rstudio.com/products/rstudio/#Server) --- free for personal and local Network use
+* [Shiny](https://www.rstudio.com/products/shiny/) --- build interactive Web pages and  [JavaScript](https://www.javascript.com) apps
+* [Shiny Server](https://www.rstudio.com/products/shiny/shiny-server2/) --- free for local network and Web access behind a firewall
+
+### Cloud Services
+
+* [RStudio Server Pro](https://www.rstudio.com/products/rstudio-server-pro/) -- enhanced admin, Enterprise security and pricing
+* [RStudio Connect](https://www.rstudio.com/products/connect/) -- team management, Enterprise security and pricing
+* [RStudio Cloud (in alpha)](https://rstudio.cloud/) --- Do, Share, Teach, and Learn Data Science
+* [Shiny Server Pro](https://www.rstudio.com/products/shiny-server-pro/) -- share Shiny apps, Enterprise security and pricing
+* [shinyapps.io](https://www.rstudio.com/products/shinyapps/) -- deploy Shiny apps, enhanced security, scalable
+* [Bookdown Book Publishing](https://bookdown.org/) --- free for `bookdown` static page books
+
+### Resources
+
+* [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/) --- PDF format
+* [RStudio Community](https://community.rstudio.com/) --- register for full Forum access
+* [RStudio Documentation](https://support.rstudio.com/hc/en-us/categories/200035113-Documentation) --- Help articles for all RStudio products
+* [RStudio Server> Getting Started](https://support.rstudio.com/hc/en-us/articles/234653607-Getting-Started-with-RStudio-Server) --- lists many links for setup and use
+* [RStudio Server Pro Admin. Guide](http://docs.rstudio.com/ide/server-pro/) --- web-accessible User Manual
 
 <hr />
 
