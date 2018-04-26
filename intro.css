@@ -88,3 +88,21 @@ blockquote  {
 	width: 60pt;
 	}
 
+.bottom-navbar  {
+  padding: 0.5em;
+  padding-left: 2em;
+  margin-top: 2em;
+  border: 1pt solid #bf3e11;
+  border-radius: 10px;
+  background-color: #dd4814;
+  }
+
+.bottom-navbar-link {
+  text-emphasis: bold;
+  font-style: italic;
+  color: white;
+  }
+
+.bottom-navbar-contents {
+  margin: 0 auto;
+  }

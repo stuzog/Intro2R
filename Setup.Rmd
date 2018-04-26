@@ -334,8 +334,5 @@ A smaller _Progress window_ will open over the _Review window_. It is actually a
 
 ![_**Above:** After a successful Push, a second Push shows everything up-to-date._](images/RStudio-push-changes.png)
 
-<hr />
+<p class="bottom-navbar"><span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> [<span class="bottom-navbar-link">Home</span>](index.html)&nbsp;&nbsp; | &nbsp;[<span class="bottom-navbar-link">Part 1 - R For Data Science</span>](Part1_R_Data_Science.html)&nbsp; <span class="glyphicon glyphicon-arrow-right"></span></span></p>
 
-<span class="glyphicon glyphicon-arrow-left"></span> [_Home_](index.html) | [_Part 1 - R For Data Science_](Part1_R_Data_Science.html) <span class="glyphicon glyphicon-arrow-right"></span>
-
-<hr />
