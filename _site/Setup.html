@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="by Stuart Hertzog" />
+
+
+<title>How To Set Up This Series</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="intro.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4,h5,h6",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Introduction To R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="Setup.html">Setup</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Part1
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Part1_R_Data_Science.html">R For Data Science</a>
+    </li>
+    <li>
+      <a href="RStudio.html">The RStudio IDE</a>
+    </li>
+    <li>
+      <a href="RStudio_Ecosystem.html">RStudio Ecosystem</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="Part2_R_Programming.html">Part2</a>
+</li>
+<li>
+  <a href="R_Learning_Resources.html">Learning Resources</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">How To Set Up This Series</h1>
+<h4 class="author"><em>by Stuart Hertzog</em></h4>
+<h4 class="date"><em>March–May 2018</em></h4>
+
+</div>
+
+
+<script>
+    $(document).ready(function() {
+      $items = $('div#TOC li');
+      $items.each(function(idx) {
+        num_ul = $(this).parentsUntil('#TOC').length;
+        $(this).css({'text-indent': num_ul * 10, 'padding-left': 0});
+      });
+
+    });
+</script>
+<blockquote>
+<p>You will get the most benefit from this Tutorial Series if you set it up as an RStudio Project and become familiar with the RStudio IDE.</p>
+</blockquote>
+<div id="requirements" class="section level2">
+<h2>Requirements</h2>
+<p><strong>This series of tutorials on R can be run on the major computer platforms – Mac, Linux, and Windows</strong>.</p>
+<p>The necessary files are available in a <a href="https://github.com/stuzog/Intro2R.git">GitHub repository</a>. To download and use them you will need these programs installed on your computer:</p>
+<ul>
+<li><a href="https://www.r-project.org/">R</a></li>
+<li><a href="https://www.rstudio.com/products/rstudio/download/">RStudio</a></li>
+<li><a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">git</a></li>
+</ul>
+<p>Once these are properly set up, you can proceed to Installation:</p>
+</div>
+<div id="quick-summary" class="section level2">
+<h2>Quick Summary</h2>
+<p><strong>The stages of installing this RStudio Project are</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>Install <code>r</code> and <code>git</code> on your computer</li>
+<li>Decide where to put the <em>Project Directory</em></li>
+<li><code>cd</code> into what will be its parent directory</li>
+<li>Clone the project files from GitHub</li>
+<li>Install and open RStudio on your computer</li>
+<li>Create a new RStudio Project in the <em>Project Directory</em></li>
+<li>Install and initialise <code>packrat</code></li>
+<li>Set up an account on GitHub if you don’t have one</li>
+<li>Create a new repository in your GitHub account</li>
+<li>Add it to RStudio as a <em>Github destination</em></li>
+<li>Push the files in your Project Directory to GitHub</li>
+<li>Continue to <a href="Part1_R_Data_Science.html">Part1</a> of your introduction to R</li>
+</ol>
+<p>It may look intimidating, but it’s fairly easy to work through.</p>
+</div>
+<div id="installation-details" class="section level2">
+<h2>Installation Details</h2>
+<p>Carefully follow these instructions, in this order.</p>
+<div id="create-the-project-directory" class="section level3">
+<h3>Create The Project Directory</h3>
+<ol style="list-style-type: decimal">
+<li><p>In your Terminal program, <code>cd</code> into the directory where you want to create the new Project. This can be located wherever you want. It will be called <code>Intro2R</code>, so there should not be an existing directory with the same name in that location.</p></li>
+<li><p>Enter the following commands one at a time at the command line in your Terminal program. Follow each line by a <code>RETURN</code>:</p></li>
+</ol>
+<pre><code>git clone https://github.com/stuzog/Intro2R.git
+cd Intro2R
+ls -al</code></pre>
+<p>You should see a listing of the GitHub repository files (with your user name):</p>
+<pre><code>total 184
+drwxr-xr-x   18 (username)  staff    612 18 Apr 09:10 .
+drwxr-xr-x@ 149 (username)  staff   5066 18 Apr 09:10 ..
+-rw-r--r--    1 (username)  staff      0 18 Apr 09:10 .Rhistory
+-rw-r--r--    1 (username)  staff    117 18 Apr 09:10 .Rprofile
+drwxr-xr-x   12 (username)  staff    408 18 Apr 09:10 .git
+-rw-r--r--    1 (username)  staff     26 18 Apr 09:10 .gitignore
+-rw-r--r--    1 (username)  staff    536 18 Apr 09:10 How.Rmd
+-rw-r--r--    1 (username)  staff    225 18 Apr 09:10 Intro2R.Rproj
+-rw-r--r--    1 (username)  staff  18366 18 Apr 09:10 Part1_R_Data Science.Rmd
+-rw-r--r--    1 (username)  staff  13654 18 Apr 09:10 Part2_R_Programming.Rmd
+-rw-r--r--    1 (username)  staff   1360 18 Apr 09:10 README.md
+-rw-r--r--    1 (username)  staff  12253 18 Apr 09:10 RStudio.Rmd
+-rw-r--r--    1 (username)  staff   8000 18 Apr 09:10 RStudio_Ecosystem.Rmd
+-rw-r--r--    1 (username)  staff   2071 18 Apr 09:10 R_Learning_Resources.Rmd
+-rw-r--r--    1 (username)  staff    817 18 Apr 09:10 _site.yml
+drwxr-xr-x   31 (username)  staff   1054 18 Apr 09:10 images
+-rw-r--r--    1 (username)  staff   1682 18 Apr 09:10 index.Rmd
+-rw-r--r--    1 (username)  staff    687 18 Apr 09:10 intro.css</code></pre>
+</div>
+<div id="make-it-an-rstudio-project" class="section level3">
+<h3>Make It An RStudio Project</h3>
+<ol start="3" style="list-style-type: decimal">
+<li><p><strong>Launch RStudio on your computer</strong>. Unless you have used RStudio before, you will see a fairly unpopulated RStudio window.</p></li>
+<li><p><strong>Start a new RStudio project</strong> by clicking on <code>R Projects</code> in the upper-right corner of the RStudio window, or via the <em>File &gt; New Project…</em> menu item. The <em>Create New Project</em> window will appear:</p></li>
+</ol>
+<p><img src="images/RStudio_new_project_window.png" /></p>
+<ol start="5" style="list-style-type: decimal">
+<li><strong>Select <em>Existing Directory</em></strong> and navigate to the newly-created <code>Intro2R</code> project directory. Click <em>Open in new session</em> if you wish to preserve the current RStudio session.</li>
+</ol>
+<p><img src="images/RStudio_create_from_existing_directory_window.png" /></p>
+<ol start="6" style="list-style-type: decimal">
+<li><strong>Click <em>Create Project</em></strong>. You will see the following <code>Error</code> and <code>Warning</code> messages, which you can ignore for now. They will be corrected later in the setup.</li>
+</ol>
+<pre><code>Error in file(filename, &quot;r&quot;, encoding = encoding) : 
+  cannot open the connection
+In addition: Warning message:
+In file(filename, &quot;r&quot;, encoding = encoding) :
+  cannot open file &#39;packrat/init.R&#39;: No such file or directory</code></pre>
+</div>
+<div id="install-packrat" class="section level3">
+<h3>Install <code>packrat</code></h3>
+<p><strong>Because R packages are updated frequently</strong>, it is recommended that you use a <a href="http://r.stuzog.com/RStudio.html#project-package-management">project package management</a> system. This project uses the <a href="https://rstudio.github.io/packrat/"><code>packrat</code></a> package dependency management system for R, so this should now be installed.</p>
+<ol start="7" style="list-style-type: decimal">
+<li><strong>In the <em>Console window</em></strong> at the bottom left of the RStudio interface, enter the following commands followed by <code>RETURN</code>, one at a time:</li>
+</ol>
+<pre><code>install.packages(&quot;packrat&quot;)
+packrat::init()</code></pre>
+<p>The Console will install <code>packrat</code> and the dependencies required for the project:</p>
+<pre><code>&gt; install.packages(&quot;packrat&quot;)
+Installing package into ‘/Users/(username)/Library/R/3.4/library’
+(as ‘lib’ is unspecified)
+trying URL &#39;https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.4/packrat_0.4.9-1.tgz&#39;
+Content type &#39;application/x-gzip&#39; length 214137 bytes (209 KB)
+==================================================
+downloaded 209 KB
+
+
+The downloaded binary packages are in
+    /var/folders/qt/6jh4c4yn5zdbf07t61nmz0_w0000gn/T//Rtmptyh6x4/downloaded_packages
+&gt; packrat::init()
+Initializing packrat project in directory:
+- &quot;~/Intro2R&quot;
+
+Adding these packages to packrat:
+              _        
+    Rcpp        0.12.16
+    backports   1.1.2  
+    base64enc   0.1-3  
+    digest      0.6.15 
+    evaluate    0.10.1 
+    glue        1.2.0  
+    highr       0.6    
+    htmltools   0.3.6  
+    jsonlite    1.5    
+    knitr       1.20   
+    magrittr    1.5    
+    markdown    0.8    
+    mime        0.5    
+    packrat     0.4.9-1
+    rmarkdown   1.9    
+    rprojroot   1.3-2  
+    stringi     1.1.7  
+    stringr     1.3.0  
+    yaml        2.1.18 
+
+Fetching sources for Rcpp (0.12.16) ... OK (CRAN current)
+Fetching sources for backports (1.1.2) ... OK (CRAN current)
+Fetching sources for base64enc (0.1-3) ... OK (CRAN current)
+Fetching sources for digest (0.6.15) ... OK (CRAN current)
+Fetching sources for evaluate (0.10.1) ... OK (CRAN current)
+Fetching sources for glue (1.2.0) ... OK (CRAN current)
+Fetching sources for highr (0.6) ... OK (CRAN current)
+Fetching sources for htmltools (0.3.6) ... OK (CRAN current)
+Fetching sources for jsonlite (1.5) ... OK (CRAN current)
+Fetching sources for knitr (1.20) ... OK (CRAN current)
+Fetching sources for magrittr (1.5) ... OK (CRAN current)
+Fetching sources for markdown (0.8) ... OK (CRAN current)
+Fetching sources for mime (0.5) ... OK (CRAN current)
+Fetching sources for packrat (0.4.9-1) ... OK (CRAN current)
+Fetching sources for rmarkdown (1.9) ... OK (CRAN current)
+Fetching sources for rprojroot (1.3-2) ... OK (CRAN current)
+Fetching sources for stringi (1.1.7) ... OK (CRAN current)
+Fetching sources for stringr (1.3.0) ... OK (CRAN current)
+Fetching sources for yaml (2.1.18) ... OK (CRAN current)
+Snapshot written to &#39;/Users/Stuart/Intro2R/packrat/packrat.lock&#39;
+Installing Rcpp (0.12.16) ... 
+    OK (downloaded binary)
+Installing backports (1.1.2) ... 
+    OK (downloaded binary)
+Installing base64enc (0.1-3) ... 
+    OK (downloaded binary)
+Installing digest (0.6.15) ... 
+    OK (downloaded binary)
+Installing glue (1.2.0) ... 
+    OK (downloaded binary)
+Installing highr (0.6) ... 
+    OK (downloaded binary)
+Installing jsonlite (1.5) ... 
+    OK (downloaded binary)
+Installing magrittr (1.5) ... 
+    OK (downloaded binary)
+Installing mime (0.5) ... 
+    OK (downloaded binary)
+Installing packrat (0.4.9-1) ... 
+    OK (downloaded binary)
+Installing stringi (1.1.7) ... 
+    OK (downloaded binary)
+Installing yaml (2.1.18) ... 
+    OK (downloaded binary)
+Installing rprojroot (1.3-2) ... 
+    OK (downloaded binary)
+Installing htmltools (0.3.6) ... 
+    OK (downloaded binary)
+Installing markdown (0.8) ... 
+    OK (downloaded binary)
+Installing stringr (1.3.0) ... 
+    OK (downloaded binary)
+Installing evaluate (0.10.1) ... 
+    OK (downloaded binary)
+Installing knitr (1.20) ... 
+    OK (downloaded binary)
+Installing rmarkdown (1.9) ... 
+    OK (downloaded binary)
+Initialization complete!
+
+Restarting R session...
+
+&gt; </code></pre>
+<ol start="8" style="list-style-type: decimal">
+<li><strong>Click the <em>Packages tab</em> in the <em>Files….Viewer pane</em></strong> (usually bottom right). It will now show a list of packages installed in the Project’s dedicated <em>Packrat Library</em>:</li>
+</ol>
+<div class="figure">
+<img src="images/RStudio_packages.png" alt="Above: All Project packages will be installed in this project-specific library." />
+<p class="caption"><em><strong>Above:</strong> All Project packages will be installed in this project-specific library</em>.</p>
+</div>
+<ol start="9" style="list-style-type: decimal">
+<li><strong>Click <em>Update</em> in the <em>Packages tab toolbar</em></strong> to ensure that all project packages are current. Packages are updated frequently, so it is advisable to do this from time to time.</li>
+</ol>
+</div>
+</div>
+<div id="github-version-control" class="section level2">
+<h2>GitHub Version Control</h2>
+<p><strong>It’s a really good idea to track your R coding with some form of <a href="https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN">version control</a></strong>.</p>
+<p>RStudio makes this easy for you.</p>
+<p><strong><a href="https://git-scm.com/">git</a> and <a href="https://github.com/explore">GitHub</a> have become the leading version control system</strong> — there’s even a <a href="https://git-scm.com/book/en/v2">free eBook</a> about <code>git</code> available for download . There also are some <a href="https://r-bio.github.io/intro-git-rstudio/">easy-to-understand explanations</a> on how <code>git</code> works available on the Web.</p>
+<p><strong><code>git</code> support is built-in to RStudio</strong>. This makes keeping track of your many ch-ch-ch-changes an integral part of your R programming workflow.</p>
+<div id="setting-up-git-in-rstudio" class="section level3">
+<h3>Setting Up <code>git</code> In RStudio</h3>
+<p>How you set up <code>git</code> in RStudio depends on whether you are:</p>
+<ul>
+<li><strong>Starting a new Project</strong>:
+<ul>
+<li><a href="http://happygitwithr.com/new-github-first.html">first from GitHub</a></li>
+<li><a href="https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN">from RStudio</a></li>
+<li><a href="http://happygitwithr.com/clone.html">from a GitHub clone</a></li>
+</ul></li>
+<li><strong>Adding <code>git</code> to an existing Project</strong>
+<ul>
+<li><a href="http://happygitwithr.com/existing-github-first.html">starting from GitHub</a>, or</li>
+<li><a href="http://happygitwithr.com/existing-github-last.html">starting from RStudio</a></li>
+</ul></li>
+</ul>
+<p>Each alternative takes a slightly different path through the RStudio/GitHub maze. They are best detailed in <a href="http://happygitwithr.com/">Happy Git and GitHub for the useR</a> by Jenny Bryan and the STAT 545 Teaching Assistants of UBC. <a href="https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN">RStudio’s version control guide</a> also shows how to use <code>git</code> or an <a href="http://subversion.apache.org/">SVN repository</a> for version control.</p>
+</div>
+<div id="using-git-in-rstudio" class="section level3">
+<h3>Using <code>git</code> In RStudio</h3>
+<p><strong>When <code>git</code> is properly set up, a new <em>Git</em> tab</strong> will appear in the <em>Environment… Build</em> pane. Clicking on this tab will show files and directories that have changed since the last synchronisation with the <em>GitHub repository</em> associated with this Project. If you keep this tab open, you will see its contents change each time you save a file, or rebuild an entire Web site.</p>
+<div class="figure">
+<img src="images/RStudio_git_pane.png" alt="Above: The Git pane showing changes during work on this .Rmd file" />
+<p class="caption"><em><strong>Above:</strong> The Git pane showing changes during work on this .Rmd file</em></p>
+</div>
+<p><strong>The <em>GitHub Push</em> workflow is</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><em>Stage</em> any modified file or directory</li>
+<li><em>Commit</em> selected <em>Staged</em> files or directories, adding a brief <em>Commit message</em></li>
+<li><em>Push</em> all <em>Committed</em> files/directories to a <em>GitHub repository</em>.</li>
+</ol>
+<p><strong>If you’re new to <code>git</code> and somewhat intimidated by it</strong>, <a href="https://medium.com/@ashk3l/a-visual-introduction-to-git-9fdca5d3b43a">A Visual Introduction to Git</a> gives an amusing introduction to the basic <code>git</code> workflow.</p>
+<p><strong>For a detailed overview from a developer perspective</strong> see <a href="http://r-pkgs.had.co.nz/git.html">Git and GitHub</a> by Hadley Wickham. It particulaly refers to R package development.</p>
+<div id="staging-changed-items" class="section level4">
+<h4>Staging Changed Items</h4>
+<ol style="list-style-type: decimal">
+<li><p><strong>Click its <em>Staged</em> checkbox</strong> <img src="images/git-blank-button.png" /> A small blue box <img src="images/git-blue-M.png" /> appears in the left <em>Status</em> column, showing that the file or directory was <em>Modified</em> and ready for a <em>Commit</em>. If you had only added the file, a small green box <img src="images/git-green-A.png" /> will appear. The <em>Staged</em> checkbox then changes to a tickmark <img src="images/git-check-button.png" />.</p></li>
+<li><p><strong>If you click on a listed directory</strong>, its contents will all appear, marked <em>Staged</em> and with small green boxes <img src="images/git-green-A.png" /> signifying that they have been <em>Added.</em></p></li>
+</ol>
+<div class="figure">
+<img src="images/RStudio_staged_directories.png" alt="Above: Staging a directory will result in its contents all being shown Staged." />
+<p class="caption"><em><strong>Above:</strong> Staging a directory will result in its contents all being shown Staged.</em></p>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>To <em>Unstage</em> added sub-directories or files</strong> you either deselect each individually then deselect the <em>Staged</em> parent directory (<em>Tip:</em> Start with the bottom one and keep clicking!), or <code>SHIFT Click</code> all of them and uncheck one <em>Selected</em> radio button.</li>
+</ol>
+</div>
+<div id="those-little-git-icons" class="section level4">
+<h4>Those little <code>git</code> icons?</h4>
+<p>In the <em>Status</em> column, you’ll see little yellow, blue, or red icons. They mean:</p>
+<p><img src="images/git-yellow-N.png" /> - <em>New file</em> or directory that does not exist in the <code>git</code> <em>Repository</em><br />
+<img src="images/git-blue-M.png" /> - <em>Modified</em> from what is in the <code>git</code> <em>Repository</em><br />
+<img src="images/git-green-A.png" /> - <em>Staging</em> a file or adding it to be committed<br />
+<img src="images/git-red-D.png" /> - The item has been <em>Deleted</em></p>
+<p>The <em>Status</em> column has a <em>left</em> and <em>right</em> icon alignment:</p>
+<p><em>icon on the left</em> - the item has been <em>Staged</em><br />
+<em>icon on the right</em> - the item is <em>Not Staged</em></p>
+<p>Sometimes you’ll see icons in both columns:</p>
+<p><img src="images/git-yellow-N.png" /> <img src="images/git-yellow-N.png" /> - <em>Not in the Repository</em> and has changed recently<br />
+<img src="images/git-blue-M.png" /> <img src="images/git-blue-M.png" /> - <em>Staged</em> and <em>Modified</em> since it was <em>Staged</em></p>
+<p>In the last case, the <em>Staged</em> checkbox will be filled with a solid blue <img src="images/git-blue-button.png" />.</p>
+<p>You’ll see how it all works as you continue with RStudio.</p>
+</div>
+<div id="committing-staged-items" class="section level4">
+<h4>Committing Staged Items</h4>
+<p>When you have <em>Staged</em> everything you want, the next step is to <em>Commit</em> those <em>Staged</em> items.</p>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Click the <em>Commit</em> button to do this</strong>. The <em>Review Changes</em> window appears. You can add a message to remind you (and others) what you have done in this <em>Commit</em>. This is always advisable, especially for others reviewing your repository.</li>
+</ol>
+<div class="figure">
+<img src="images/RStudio-review-changes.png" alt="Above: The RStudio Review Changes window with a Commit message." />
+<p class="caption"><em><strong>Above:</strong> The RStudio Review Changes window with a Commit message.</em></p>
+</div>
+<p>A smaller <em>Progress window</em> will open over the <em>Review window</em>. It is actually a small <em>Terminal window</em> showing what you would see if you were at the command line.</p>
+<div class="figure">
+<img src="images/RStudio-git-commit-progress.png" alt="Above: The Progress window shows the result of your Commit command." />
+<p class="caption"><em><strong>Above:</strong> The Progress window shows the result of your Commit command.</em></p>
+</div>
+</div>
+<div id="pushing-to-github" class="section level4">
+<h4>Pushing To GitHub</h4>
+<ol start="5" style="list-style-type: decimal">
+<li>Your files are now Committed; the next step is to <strong>Push</strong> them to the Repository. The <code>green up-arrow</code> is the <strong>Push button</strong>. You may have to close the <em>Progress window</em> first.</li>
+</ol>
+<div class="figure">
+<img src="images/RStudio-push-progress.png" alt="Above: The Push only happens when you click the green Push button." />
+<p class="caption"><em><strong>Above:</strong> The Push only happens when you click the green Push button.</em></p>
+</div>
+<ol start="6" style="list-style-type: decimal">
+<li>If everything went well, you will see the above message in the <em>Progress window</em> (opens automatically if you had closed it).</li>
+</ol>
+<div class="figure">
+<img src="images/RStudio-push-changes.png" alt="Above: After a successful Push, a second Push shows everything up-to-date." />
+<p class="caption"><em><strong>Above:</strong> After a successful Push, a second Push shows everything up-to-date.</em></p>
+</div>
+<p class="bottom-navbar">
+<span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> <a href="index.html"><span class="bottom-navbar-link">Home</span></a>   |  <a href="Part1_R_Data_Science.html"><span class="bottom-navbar-link">Part 1 - R For Data Science</span></a>  <span class="glyphicon glyphicon-arrow-right"></span></span>
+</p>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

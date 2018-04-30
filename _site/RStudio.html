@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="by Stuart Hertzog" />
+
+
+<title>RStudio IDE</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="intro.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4,h5,h6",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Introduction To R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="Setup.html">Setup</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Part1
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Part1_R_Data_Science.html">R For Data Science</a>
+    </li>
+    <li>
+      <a href="RStudio.html">The RStudio IDE</a>
+    </li>
+    <li>
+      <a href="RStudio_Ecosystem.html">RStudio Ecosystem</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="Part2_R_Programming.html">Part2</a>
+</li>
+<li>
+  <a href="R_Learning_Resources.html">Learning Resources</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">RStudio IDE</h1>
+<h4 class="author"><em>by Stuart Hertzog</em></h4>
+<h4 class="date"><em>March–May 2018</em></h4>
+
+</div>
+
+
+<script>
+    $(document).ready(function() {
+      $items = $('div#TOC li');
+      $items.each(function(idx) {
+        num_ul = $(this).parentsUntil('#TOC').length;
+        $(this).css({'text-indent': num_ul * 10, 'padding-left': 0});
+      });
+
+    });
+</script>
+<p><a href="https://www.rstudio.com/products/rstudio"><img src="images/RStudio-Logo-Blue-Gradient.png" style="float: left; margin-right: 1em; margin-bottom: 0.25em;" width=200></a><strong>is a free, open-source, professionally-designed IDE for programming in R</strong> (and other languages including Python and associated Python packages).</p>
+<p><a href="https://en.wikipedia.org/wiki/RStudio">RStudio</a> is available in two free versions:</p>
+<ul>
+<li><a href="https://www.rstudio.com/products/rstudio/#Desktop">RStudio Desktop</a>, run locally as a desktop application. and</li>
+<li><a href="https://www.rstudio.com/products/rstudio/#Server">RStudio Server</a>, which runs on a networked or remote Linux server.</li>
+</ul>
+<p><a href="https://www.rstudio.com/products/rstudio-server-pro/">RStudio Server Pro</a> is a full-service, paid edition for business and government use.</p>
+<p><strong>The advantages of using RStudio include</strong>:</p>
+<ul>
+<li>Free and open source for non-commercial use</li>
+<li>Easy to install on Windows, Mac, and Linux</li>
+<li>Well-designed, multi-pane GUI interface</li>
+<li>Paid, full-service, professional versions</li>
+<li>Git and Subversion versioning support</li>
+<li>Can import data from online sources</li>
+<li>Outputs to HTML, PDF, Word files</li>
+<li>Built-in R package management</li>
+<li>Keyboard shortcuts display</li>
+<li>Active community support</li>
+<li>Tab key code completion</li>
+<li>Ongoing development</li>
+<li>Well-documented</li>
+<li>Code folding</li>
+<li>It’s So Cool</li>
+<li>So is R!</li>
+</ul>
+<p>From the <a href="https://www.rstudio.com/products/rstudio/features/">RStudio web Site</a>:</p>
+<p><strong>An IDE that was built just for R</strong></p>
+<ul>
+<li>Syntax highlighting, code completion, and smart indentation</li>
+<li>Execute R code directly from the source editor</li>
+<li>Quickly jump to function definitions</li>
+</ul>
+<p><strong>Bring your workflow together</strong></p>
+<ul>
+<li>Integrated R help and documentation</li>
+<li>Easily manage multiple working directories using projects</li>
+<li>Workspace browser and data viewer</li>
+</ul>
+<p><strong>Powerful authoring &amp; Debugging</strong></p>
+<ul>
+<li>Interactive debugger to diagnose and fix errors quickly</li>
+<li>Extensive package development tools</li>
+<li>Authoring with Sweave and R Markdown</li>
+</ul>
+<div id="the-rstudio-interface" class="section level2">
+<h2>The RStudio Interface</h2>
+<div class="figure">
+<img src="images/RStudio_console.png" alt="Above: The four-pane default RStudio Console. Pane arrangement can be changed." />
+<p class="caption"><em><strong>Above:</strong> The four-pane default RStudio Console. Pane arrangement can be changed.</em></p>
+</div>
+<p><strong>The RStudio Console interface is flexible, rich, and capable</strong>:</p>
+<ul>
+<li>Tabs in each pane display different aspects of the current project</li>
+<li>Panes can share a column or be raised to fill an entire column</li>
+<li>File and Viewer panes can be zoomed into a larger new window</li>
+<li>Toolbars in each tab allow direct control of content elements</li>
+<li>Console comands are integrated into the running OS and files</li>
+<li>Console display can be changed by selecting a different theme</li>
+<li>Code syntax colors can be changed with another editor theme</li>
+</ul>
+</div>
+<div id="rstudio-projects" class="section level2">
+<h2>RStudio Projects</h2>
+<p><img src="images/RStudio_project_dropdown.png" style="float: left; margin: 0 1em 0.25em 0;" width=200></p>
+<p>RStudio advises that <strong>all data files and packages</strong> belonging to a project be contained in a dedicated directory as an <strong>RStudio Project</strong> with an executable <strong><code>.Rproj</code> file</strong>.</p>
+<p><strong>Project management is built into RStudio</strong>. Start a new Project either from the <em>File -&gt; New Project</em> main menu, or from the drop-down <strong>Project menu</strong> at the top right of the RStudio window (left).</p>
+<p><em>New Project…</em> opens a dialogue window that enables a Project to be created in a <em>New</em> or <em>Existing</em> directory, or from a <em>Version Control Repository</em>.</p>
+<p>If an existing Project has unsaved changes, you will be asked to save them.</p>
+<p><em>Open Project…</em> brings up a File dialogue to locate an existing project directory and double-click its <code>.Rproj</code> file.</p>
+<p><em>Open Project in New Session…</em> allows you to create a new Project in a new R session without closing the existing Project R session.</p>
+<p><em>Close Project</em> will close the running R session and after saving any changes.</p>
+<p><strong>Existing RStudio Projects</strong> are listed below these to facilitate switching between active projects. Entries are created when a project is started by RStudio. This list can be emptied by selecting <em>Clear Project List</em>.</p>
+<p><strong>Project Options</strong> lets you set options specific only to the running Project.</p>
+</div>
+<div id="package-management-in-rstudio" class="section level2">
+<h2>Package Management In RStudio</h2>
+<p><strong>Package management is an integral part of the RStudio interface</strong>. The <em>Packages</em> tab in the Files/Viewer pane shows all locally-installed and system packages.</p>
+<p><img src="images/RStudio_packages.png" /></p>
+<p><strong>Clicking the checkbox to the left of each package listing</strong> will load a package’s library into memory and make its functions available. The corresponding installation command will appear immediately in the Console plus any warning messages.</p>
+<p><strong>Packages with checkmarks have already been loaded</strong>. Unclicking a loaded package will unload it unless it is required by RMarkdown, in which case a warning message will inform you of that restriction and the package will remain loaded.</p>
+<p><strong>There are two ways of installing packages</strong> in the RStudio interface:</p>
+<ul>
+<li>Using the <strong><em>Install Packages</em> GUI</strong></li>
+<li>Entering commands in the <strong>Console</strong>.</li>
+</ul>
+<p>The progress of any compilation or installation will be displayed in the Console.</p>
+<div id="the-install-packages-gui" class="section level3">
+<h3>The Install Packages GUI</h3>
+<p><img src="images/RStudio_install_package.png" style="float: left; margin-right: 1em; margin-bottom: 0.25em;" width=200></p>
+<p><strong>Clicking <em>Install</em> on the Packages tab toolbar</strong> opens an <em>Install Packages</em> dialogue (left) that gives the choice of installing a package directly from CRAN or from a local package archive.</p>
+<p><strong>Multiple packages can be installed</strong> by separating the package names with commas. This installs and makes the packages available for use.</p>
+<p><strong>The <em>Install to Library</em> drop-down menu</strong> allows you to chose the Library where you want the package installed. The <em>default location</em> is selected: this is usually acceptable.</p>
+<p><strong>The location of the R installation on your system</strong> can be found by entering <code>R.home(component = &quot;home&quot;)</code> in the Console. Other component values for the paths to specific directories of the current R installation are <code>&quot;bin&quot;</code>, <code>&quot;doc&quot;</code>, <code>&quot;etc&quot;</code>, <code>&quot;include&quot;</code>, <code>library</code>, <code>&quot;modules&quot;</code> and <code>&quot;share&quot;</code>.</p>
+<p><strong>Clicking the <em>Install dependencies</em> checkbox</strong> will also download and install any other packages required for the requested package(s). This is recommended.</p>
+<p><strong>NOTE: This option will not work when installing from a local archive</strong>. In this case the dependencies must be installed first, or the installation will fail.</p>
+<p>###Installing From The Console</p>
+<p><strong>Packages can be installed and loaded from the Console</strong>. The command sequence is:</p>
+<p><code>install.packages(&quot;PackageName&quot;)</code><br />
+<code>library(PackageName)</code></p>
+<p>The delimiters <code>&quot; &quot;</code> or <code>' '</code> must be used to install a package.</p>
+<p>Most R packages are hosted on CRAN, but some are only available on <a href="https://github.com">GitHub</a> or <a href="https://bitbucket.org">Bitbucket</a>. To install from these locations, the <code>devtools</code> package first must be installed, as <a href="#installing-packages-from-github">described above</a>.</p>
+</div>
+<div id="project-package-management" class="section level3">
+<h3>Project Package Management</h3>
+<p><strong>RStudio projects are built with different versions of <code>R</code></strong> using the then-current versions of any installed packages. As both <code>R</code> and <code>R packages</code> are constantly being updated, this can cause problems when developing packages or <code>RMarkdown</code> documents.</p>
+<p><strong>There are four solutions to project package management</strong>:</p>
+<ul>
+<li><p>Installing the <a href="https://rstudio.github.io/packrat/"><code>packrat</code></a> package to write package versions in a <code>packrat.lock</code> text file and store the packages in a project <code>packrat</code> directory;</p></li>
+<li><p>Using <a href="https://mran.microsoft.com/timemachine">MRAN</a> (Microsoft R Application Network) to determine dependencies based on the “snapshot” of CRAN that Microsoft has stored on a given day;</p></li>
+<li><p>Installing the <a href="https://cran.r-project.org/web/packages/checkpoint/vignettes/checkpoint.html"><code>checkpoint</code></a> package to choose package versions based on a given day in MRAN history.</p></li>
+</ul>
+<p>For more information, see <a href="https://rviews.rstudio.com/2018/01/18/package-management-for-reproducible-r-code/">Package Management for Reproducible R Code</a></p>
+</div>
+<div id="installing-and-using-packrat" class="section level3">
+<h3>Installing And Using <code>packrat</code></h3>
+<p><strong>Packrat stores all added packages in its own directory library</strong>, rather than relying on the user R library that is shared across all R sessions.</p>
+<p>The advantages of this are:</p>
+<ul>
+<li><p><strong>Isolation</strong>: Installing a new or updated package for one project does not break other projects, and vice versa;</p></li>
+<li><p><strong>Portability</strong>: Enables moving projects from one computer to another, even across different platforms. (NOTE: this requires installation for each OS as the compiled libraries are not always identical);</p></li>
+<li><p><strong>Reproducibility</strong>: Ensures the correct package versions are assembled where and whenever the project is installed.</p></li>
+</ul>
+<p><strong><code>packrat</code> is integrated into the RStudio environment</strong> so it is easy to install and initiate. The <em>Packages</em> tab in the <em>Files/Viewer</em> window has a <code>packrat</code> item menu. Clicking on this brings up the <strong>Packrat Options</strong> window:</p>
+<p><a name="packrat_options"></a> <img src="images/RStudio_packrat_options.png" alt="Above: The Packrat Options window sets up packrat to manage project packages." /></p>
+<p><strong>It’s advisable to select the <em>Automatically snapshot local changes</em> option.</strong></p>
+<p><strong>Clicking <code>OK</code> will download, install, and initiate<code>packrat</code></strong> in exactly the same way the same as issuing the commands from the Console:</p>
+<blockquote>
+<p>install.packages(“packrat”)<br />
+packrat::init()</p>
+</blockquote>
+<p><strong>There also is an option in the <em>New Project</em> window</strong> to create a new project with <code>packrat</code> pre-installed and initiated.</p>
+<p><img src="images/RStudio_packrat_menu.png" style="float: left; margin-right: 1em; margin-bottom: 0.25em;" width=200></p>
+<p><strong>Once <code>packrat</code> is up and running</strong> the <em>Packrat</em> link will become a drop-down menu (left), containing the following options:</p>
+<p><em>Check Library Status…</em> – shows if any packages require updating</p>
+<p><em>Clean Unused Packages</em> – removes unneccessary packages. If you want to keep a package from appearing in the Unused list, just add a <code>library(PackageName)</code> call to any .R file in your Project directory.</p>
+<p><em>Export Project Bundle</em> – creates a zipped bundle of your Project in the <code>packrat</code> directory, for transport to another system. The bundle contains application code, a manifest file, an html file, and a <code>packrat</code> folder with a <code>packrat.lock</code> file.</p>
+<p><em>Packrat Options…</em> – brings up the options window. (<a href="#packrat_options">See above</a>)</p>
+<p><strong>For more information see</strong></p>
+<ul>
+<li><a href="https://rstudio.github.io/packrat/">Packrat</a></li>
+<li><a href="https://rstudio.github.io/packrat/commands.html">Packrat Commands</a></li>
+<li><a href="https://rstudio.github.io/packrat/walkthrough.html">Packrat by example</a></li>
+<li><a href="https://rstudio.github.io/packrat/rstudio.html">Using Packrat with RStudio</a></li>
+<li><a href="https://support.rstudio.com/hc/en-us/articles/115003639788-Bundle-Downloads">Bundle Downloads</a></li>
+</ul>
+</div>
+</div>
+<div id="using-python-in-rstudio" class="section level2">
+<h2>Using Python In RStudio</h2>
+<div id="reticulate" class="section level3">
+<h3><img src="images/reticulated_python.png" class="small-left"><a href="https://rstudio.github.io/reticulate/index.html">reticulate</a></h3>
+<p>Until recently it has not been possible to easily use Python in RStudio. The newly-developed <a href="https://rstudio.github.io/reticulate/index.html">reticulate</a> package provides a <strong>comprehensive set of tools for interoperability between Python and R</strong> within RStudio.</p>
+<p><strong><a href="https://rstudio.github.io/reticulate/index.html">reticulate</a> includes facilities for</strong>:</p>
+<ul>
+<li><p><strong>Calling Python from R</strong> in a variety of ways including R Markdown, sourcing Python scripts, importing Python modules, and using Python interactively within an R session.</p></li>
+<li><p><strong>Translation between R and Python objects</strong> (for example, between R and Pandas data frames, or between R matrices and NumPy arrays).</p></li>
+<li><p><strong>Flexible binding to different versions of Python</strong> including virtual environments and Conda environments.</p></li>
+</ul>
+<p><strong><a href="https://rstudio.github.io/reticulate/index.html">reticulate</a> embeds a Python session within your R session</strong>, enabling seamless, high-performance interoperability. If you are a Python developer, or an R developer who uses Python for some of your work, or a member of data science team that uses both languages, <a href="https://rstudio.github.io/reticulate/index.html">reticulate</a> can dramatically streamline your workflow.</p>
+<p class="bottom-navbar">
+<span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> <a href="Part1_R_Data_Science.html"><span class="bottom-navbar-link">Part 1 - R For Data Science</span></a>   |  <a href="RStudio_Ecosystem.html"><span class="bottom-navbar-link">Part 1 - RStudio Ecosystem</span></a>  <span class="glyphicon glyphicon-arrow-right"></span></span>
+</p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

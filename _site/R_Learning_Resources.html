@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="by Stuart Hertzog" />
+
+
+<title>R Learning Resources</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="intro.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4,h5,h6",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Introduction To R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="Setup.html">Setup</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Part1
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Part1_R_Data_Science.html">R For Data Science</a>
+    </li>
+    <li>
+      <a href="RStudio.html">The RStudio IDE</a>
+    </li>
+    <li>
+      <a href="RStudio_Ecosystem.html">RStudio Ecosystem</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="Part2_R_Programming.html">Part2</a>
+</li>
+<li>
+  <a href="R_Learning_Resources.html">Learning Resources</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">R Learning Resources</h1>
+<h4 class="author"><em>by Stuart Hertzog</em></h4>
+<h4 class="date"><em>March–May 2018</em></h4>
+
+</div>
+
+
+<script>
+    $(document).ready(function() {
+      $items = $('div#TOC li');
+      $items.each(function(idx) {
+        num_ul = $(this).parentsUntil('#TOC').length;
+        $(this).css({'text-indent': num_ul * 10, 'padding-left': 0});
+      });
+
+    });
+</script>
+<blockquote>
+<p>A rich and responsive consellation of print and online information, explanation, guidance, and discussion make up the lively and growing R universe. Help is available at any time — you just have to know where to find it.</p>
+</blockquote>
+<div id="books-on-r" class="section level2">
+<h2>Books On R</h2>
+<ul>
+<li><a href="http://ucanalytics.com/blogs/learn-r-12-books-and-online-resources/">Learn R : 12 Free Books and Online Resources</a></li>
+<li><a href="https://www.manning.com/books/practical-data-science-with-r">Practical Data Science With R</a></li>
+<li><a href="https://www.manning.com/books/r-in-action-second-edition?a_bid=5c2b1e1d&amp;a_aid=RiA2ed">R in Action, Second Edition</a></li>
+<li><a href="https://www.amazon.com/R-Data-Science-Hadley-Wickham/dp/1491910399/ref=as_li_ss_tl?ie=UTF8&amp;qid=1469550189&amp;sr=8-1&amp;keywords=R+for+data+science&amp;linkCode=sl1&amp;tag=devtools-20&amp;linkId=6fe0069f9605cf847ed96c191f4e84dd"><strong>R For Data Science</strong> by Hadley Wickham</a></li>
+<li><a href="https://www.jaredlander.com/r-for-everyone/">R for Everyone by Jared Lander</a></li>
+<li><a href="https://www.informit.com/store/r-in-24-hours-sams-teach-yourself-9780672338489">Teach Yourself R In 24 Hours</a></li>
+<li><a href="https://www.crcpress.com/Chapman--HallCRC-The-R-Series/book-series/CRCTHERSER">The R Series | CRC Press Online</a></li>
+</ul>
+<div id="online-r-books" class="section level3">
+<h3>Online R Books</h3>
+<ul>
+<li><a href="https://bookdown.org/yihui/bookdown/">bookdown: Authoring Books With RMarkdown by Yihui Xie</a></li>
+<li><a href="https://bookdown.org/">bookdown.org: R books made with bookdown</a></li>
+<li><a href="http://socviz.co/index.html">Data Visualization by Kieran Healy</a></li>
+<li><a href="https://csgillespie.github.io/efficientR/">Efficient R programming by Colin Gillespie &amp; Robin Lovelace</a></li>
+<li><a href="http://happygitwithr.com/">Happy Git and GitHub for the useR by Jenny Bryan &amp; Others</a></li>
+<li><a href="http://r4ds.had.co.nz/"><strong>R For Data Science</strong> by Hadley Wickham</a></li>
+<li><a href="http://r-pkgs.had.co.nz/">R packages by Hadley Wickham</a></li>
+<li><a href="https://www.tidytextmining.com/">Text Mining with R by Julia Silge and David Robinson</a></li>
+</ul>
+</div>
+<div id="wikibooks-on-r" class="section level3">
+<h3>WikiBooks on R</h3>
+<ul>
+<li><a href="https://en.wikibooks.org/wiki/Data_Mining_Algorithms_In_R">Data Mining Algorithms In R</a></li>
+<li><a href="https://en.wikibooks.org/wiki/R_Programming">R Programming</a></li>
+<li><a href="https://en.wikibooks.org/wiki/Statistical_Analysis:_an_Introduction_using_R">Statistical Analysis: an Introduction using R</a></li>
+</ul>
+</div>
+</div>
+<div id="r-blogs" class="section level2">
+<h2>R Blogs</h2>
+<div id="aggregation-sites" class="section level3">
+<h3>Aggregation Sites</h3>
+<ul>
+<li><a href="https://www.r-bloggers.com/"><strong>R-bloggers | R news and tutorials by R bloggers</strong></a></li>
+<li><a href="https://rweekly.org/">RWeekly.org - Blogs to Learn R from the Community</a></li>
+<li><a href="http://www.statsblogs.com/">Statistics Blogs @ StatsBlogs.com | All About Statistics |</a></li>
+</ul>
+</div>
+<div id="corporatengo" class="section level3">
+<h3>Corporate/NGO</h3>
+<ul>
+<li><a href="https://blog.rstudio.org/">RStudio Blog</a></li>
+<li><a href="https://rviews.rstudio.com/">RStudio RViews</a></li>
+<li><a href="http://blog.revolutionanalytics.com/">Revolutions</a></li>
+<li><a href="https://ropensci.org/blog/">rOpenSci Blog</a></li>
+</ul>
+</div>
+<div id="personal" class="section level3">
+<h3>Personal</h3>
+<ul>
+<li><a href="https://www.jaredlander.com/">Jared Lander</a></li>
+<li><a href="http://www.johnmyleswhite.com/">John Myles White</a></li>
+<li><a href="http://andrewgelman.com/">Andrew Gelman</a></li>
+<li><a href="https://jehrlinger.wordpress.com/">Learning Slowly</a></li>
+<li><a href="https://trinkerrstuff.wordpress.com/">TRinker’s R Blog</a></li>
+<li><a href="http://ucanalytics.com/blogs/">You Canalytics</a></li>
+</ul>
+</div>
+</div>
+<div id="r-tutorials" class="section level2">
+<h2>R Tutorials</h2>
+<ul>
+<li><a href="https://github.com/qinwf/awesome-R">Awesome-R: A curated list | GitHub</a></li>
+<li><a href="http://socviz.co/index.html">Data Visualization</a></li>
+<li><a href="https://support.rstudio.com/hc/en-us/sections/200271437-Getting-Started">Getting Started | RStudio Support</a></li>
+<li><a href="https://www.r-bloggers.com/how-to-get-started-with-data-science-using-r/">How to get started with Data Science using R | R-bloggers</a></li>
+<li><a href="https://github.com/sjmgarnier/viridis">Implementation of the Matplolib ‘viridis’ color map in R | GitHub</a></li>
+<li><a href="https://www.datacamp.com/">Learn R, Python &amp; Data Science Online | DataCamp</a></li>
+<li><a href="https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages">Quick list of useful R packages | RStudio Support</a></li>
+<li><a href="https://www.statmethods.net/r-tutorial/index.html">Quick R | DataCamp</a></li>
+<li><a href="https://stat.ethz.ch/R-manual/R-devel/library/utils/html/packageStatus.html">R Package Management Tools</a></li>
+<li><a href="https://www.r-exercises.com/r-courses/">R-Courses | R-Exercises</a></li>
+<li><a href="https://www.r-exercises.com/start-here-to-learn-r/">Start here to learn R! | R-Exercises</a></li>
+<li><a href="http://tryr.codeschool.com/">Try R | Code School</a></li>
+<li><a href="https://www.r-bloggers.com/how-to-learn-r-2/">Tutorials for learning R | R-bloggers</a></li>
+<li><a href="http://stat545.com/index.html">UBC STAT 545</a></li>
+<li><a href="http://mazamascience.com/WorkingWithData/?series=using-r">Using R | Working With Data Series</a></li>
+</ul>
+</div>
+<div id="r-discussion-forums" class="section level2">
+<h2>R Discussion Forums</h2>
+<ul>
+<li><a href="https://stats.stackexchange.com/questions/tagged/r">Cross Validated | Newest ‘r’ Questions</a></li>
+<li><a href="https://stackoverflow.com/questions/tagged/r">Stack Overflow | Newest ‘r’ Questions</a></li>
+<li><a href="http://r.789695.n4.nabble.com/">R Forum | nabble</a></li>
+<li><a href="http://r.stuzog.com/R_Learning_Resources.html">R Learning Resources</a></li>
+<li><a href="http://www.introductoryr.co.uk/R_Resources_for_Beginners.html">R Resources for Beginners</a></li>
+<li><a href="https://stat.ethz.ch/mailman/listinfo/r-help">R-help Info Page</a></li>
+<li><a href="http://r.789695.n4.nabble.com/mailing_list/MailingListOptions.jtp?forum=789696">R-Help Subscription Page</a></li>
+</ul>
+</div>
+<div id="r-mailing-lists" class="section level2">
+<h2>R Mailing Lists</h2>
+<ul>
+<li><a href="https://www.r-project.org/mail.html">R Project Mailing Lists</a></li>
+<li><a href="http://r.789695.n4.nabble.com/">R Mailing List Archive</a></li>
+<li><a href="http://r.789695.n4.nabble.com/template/NamlServlet.jtp?macro=start_registration_page&amp;nextUrl=http%3A%2F%2Fr.789695.n4.nabble.com%2F">R Mailing List Subscription</a></li>
+<li><a href="http://r.789695.n4.nabble.com/R-help-f789696.html">R-help | Mailing List Archive</a></li>
+<li><a href="https://stat.ethz.ch/mailman/listinfo/r-help">R-help | Mailing List Subscription</a></li>
+</ul>
+</div>
+<div id="r-podcasts" class="section level2">
+<h2>R Podcasts</h2>
+<p>If you’re into listening to podcasts, there are many great podcasts about R, Data Science, and Artificial Intelligence. Here are some:</p>
+<ul>
+<li><a href="http://nssdeviations.com/">Not So Standard Deviations</a></li>
+<li><a href="https://www.datacamp.com/community/podcast?tap_a=5644-dce66f&amp;tap_s=10907-287229">DataFramed</a></li>
+<li><a href="https://r-podcast.org/">The R Podcast</a></li>
+<li><a href="https://twimlai.com/">This Week in Machine Learning and AI</a></li>
+<li><a href="https://www.microsoft.com/en-us/research/blog/category/podcast/">The Microsoft Research Podcast</a></li>
+<li><a href="https://warontherocks.com/category/podcasts/bombshell/">Bombshell</a></li>
+<li><a href="https://www.marketplace.org/">Marketplace</a></li>
+<li><a href="http://www.revolutionspodcast.com/">Revolutions</a></li>
+</ul>
+<p>Collected from: <a href="https://www.r-bloggers.com/a-few-podcast-recommendations/">A few podcast recommendations | R-bloggers</a></p>
+<p class="bottom-navbar">
+<span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> <a href="Part2_R_Programming.html"><span class="bottom-navbar-link">Part 2 - Fundamentals of R</span></a>   |  <a href="index.html"><span class="bottom-navbar-link">Home</span></a>  <span class="glyphicon glyphicon-arrow-right"></span></span>
+</p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

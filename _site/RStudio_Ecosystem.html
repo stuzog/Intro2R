@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="by Stuart Hertzog" />
+
+
+<title>The RStudio Ecosystem</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="intro.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4,h5,h6",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Introduction To R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="Setup.html">Setup</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Part1
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Part1_R_Data_Science.html">R For Data Science</a>
+    </li>
+    <li>
+      <a href="RStudio.html">The RStudio IDE</a>
+    </li>
+    <li>
+      <a href="RStudio_Ecosystem.html">RStudio Ecosystem</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="Part2_R_Programming.html">Part2</a>
+</li>
+<li>
+  <a href="R_Learning_Resources.html">Learning Resources</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">The RStudio Ecosystem</h1>
+<h4 class="author"><em>by Stuart Hertzog</em></h4>
+<h4 class="date"><em>March–May 2018</em></h4>
+
+</div>
+
+
+<script>
+    $(document).ready(function() {
+      $items = $('div#TOC li');
+      $items.each(function(idx) {
+        num_ul = $(this).parentsUntil('#TOC').length;
+        $(this).css({'text-indent': num_ul * 10, 'padding-left': 0});
+      });
+
+    });
+</script>
+<p><img src="images/RStudio_full_logo.png" /></p>
+<p><strong>The RStudio IDE is the flagship of a comprehensive RStudio ecosystem.</strong></p>
+<div id="r-notebooks" class="section level2">
+<h2>R Notebooks</h2>
+<p><a href="https://rmarkdown.rstudio.com/r_notebooks.html">R Notebooks</a> are the most basic type of <a href="#rmarkdown">RMarkdown</a> document. They are the RStudio equivalent to <a href="https://jupyter.org/">Jupyter Notebooks</a>. As described by <a href="https://rmarkdown.rstudio.com/r_notebooks.html">RStudio</a>:</p>
+<blockquote>
+<p>An R Notebook is an R Markdown document with chunks that can be executed independently and interactively, with output visible immediately beneath the input.</p>
+</blockquote>
+<p><strong>Any R Markdown document can be used as a Notebook, and all R Notebooks can be rendered to other R Markdown document types</strong>.</p>
+<div id="creating-an-r-notebook-file" class="section level3">
+<h3>Creating An R Notebook File</h3>
+<p><strong>The RStudio menu item <em>File -&gt; New File -&gt; R Notebook</em></strong> creates a new <a href="https://rmarkdown.rstudio.com/r_notebooks.html">RStudio Notebook</a> containing instructions on how to use an R Notebook.</p>
+<pre><code>---
+title: &quot;R Notebook&quot;
+output:
+  html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```
+{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+</code></pre>
+<p>For more information see <a href="https://rmarkdown.rstudio.com/r_notebooks.html">RStudio Notebook</a>.</p>
+</div>
+<div id="r-notebook-html-files" class="section level3">
+<h3>R Notebook HTML files</h3>
+<p><strong>An <a href="https://rmarkdown.rstudio.com/r_notebook_format.html">R Notebook HTML file</a> is a special type of <a href="#r-notebook">R Notebook</a></strong>.</p>
+<p>It is an HTML file that uses the <code>.nb.html</code> extension and it enables:</p>
+<ul>
+<li><strong>the source .Rmd document</strong> and</li>
+<li><strong>chunk outputs</strong> to be recovered.</li>
+</ul>
+<p>The <code>html_notebook</code> output format is specified in the YAML metadata:</p>
+<pre><code>title: &quot;my_document_title&quot;
+output:
+    html_notebook</code></pre>
+<p>With the <code>_yaml</code> file written this way, the command <code>rmarkdown::render()</code> will create an <code>.nb.html</code> R Notebook HTML Format file.</p>
+<p>For more information, see <a href="https://rmarkdown.rstudio.com/r_notebook_format.html">Details of the R Notebook HTML Format</a>.</p>
+<p><strong>Note</strong>: The <a href="https://rmarkdown.rstudio.com/r_notebook_format.html#generating-r-notebooks-with-custom-output">RStudio instructions</a> show an incorrect <code>YAML</code> header. You must use the <code>_yaml</code> format shown above or RStudio will throw an error and not compile.</p>
+</div>
+</div>
+<div id="rmarkdown" class="section level2">
+<h2>RMarkdown</h2>
+<blockquote>
+<p>R Markdown documents are fully reproducible. They use a productive notebook interface to weave together narrative text and code to produce elegantly-formatted output from multiple languages including R, Python, and SQL.<br />— <a href="https://rmarkdown.rstudio.com/"><em>RStudio RMarkdown</em></a></p>
+</blockquote>
+<p><strong><a href="https://rmarkdown.rstudio.com/">RMarkdown documents</a> are the default RStudio document</strong>. They are plain-text files with the <code>.Rmd</code> extension and can be used to generate many different types of output. The main ones are:</p>
+<ul>
+<li><a href="https://rmarkdown.rstudio.com/html_document_format.html">HTML documents</a> – <code>.html</code></li>
+<li><a href="https://rmarkdown.rstudio.com/pdf_document_format.html">PDF Documents</a> – <code>.pdf</code></li>
+<li><a href="https://rmarkdown.rstudio.com/word_document_format.html">Word Documents</a> – <code>.docx</code></li>
+</ul>
+<p>In addition to the standard output formats (above), RMarkdown documents can generate output in many other formats, via the <a href="#pandoc">pandoc</a> conversion engine.</p>
+<p><a href="https://rmarkdown.rstudio.com/beamer_presentation_format.html">Beamer</a>, <a href="https://rmarkdown.rstudio.com/ioslides_presentation_format.html">HTML5 slides</a>, <a href="https://rmarkdown.rstudio.com/tufte_handout_format.html">Tufte-style handouts</a>, <a href="https://bookdown.org/yihui/bookdown/">books</a>, <a href="https://rmarkdown.rstudio.com/flexdashboard/">dashboards</a>, <a href="https://rmarkdown.rstudio.com/authoring_shiny.html">interactive documents</a>, <a href="https://github.com/rstudio/rticles">scientific articles</a>, and <a href="https://rmarkdown.rstudio.com/rmarkdown_websites.html">websites</a>.</p>
+<p><a href="https://rmarkdown.rstudio.com/gallery.html"><strong>RStudio maintains a gallery of examples</strong></a> of the many uses of RMarkdown.</p>
+<div id="knitr" class="section level3">
+<h3>knitr</h3>
+<p><image src="images/knitr.png" class="small-left-1em" /></p>
+<blockquote>
+<p>RMarkdown uses the <a href="https://yihui.name/knitr/">knitr</a> report generation package to output to the different file formats.</p>
+</blockquote>
+<p><strong>The <code>knitr</code> package enables integration of R code into <a href="https://en.wikipedia.org/wiki/LaTeX">LaTeX</a>, <a href="https://en.wikipedia.org/wiki/LyX">LyX</a>, <a href="https://en.wikipedia.org/wiki/HTML">HTML</a>, <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>, <a href="https://en.wikipedia.org/wiki/AsciiDoc">AsciiDoc</a>, and <a href="https://en.wikipedia.org/wiki/ReStructuredText">reStructuredText</a> documents</strong>. It can execute code chunks in a variety of languages via <a href="https://rmarkdown.rstudio.com/authoring_knitr_engines.html">knitr Language Engines</a>, including for:</p>
+<ul>
+<li>R</li>
+<li>Python</li>
+<li>SQL</li>
+<li>Bash</li>
+<li>Rcpp</li>
+<li>Stan</li>
+<li>JavaScript</li>
+<li>CSS</li>
+</ul>
+<p><strong>To process a code chunk using an alternate language engine</strong> simply use the name of the engine in place of <code>{r}</code> in the chunk declaration, for example:</p>
+<pre><code>
+```bash
+cat flights1.csv flights2.csv flights3.csv &gt; flights.csv
+```</code></pre>
+<div id="code-chunk-options" class="section level4">
+<h4>Code Chunk Options</h4>
+<p><strong>RMarkdown code chunk processing can be controlled</strong> by including <a href="https://rmarkdown.rstudio.com/lesson-3.html"><em>Chunk Options</em></a> in the <em>Chunk Declaration</em>, for example:</p>
+<p><code>{r, include = FALSE</code>} prevents code and results from appearing.<br />
+R Markdown still runs the code and the results can be used by other chunks.<br />
+<code>{r, eval = FALSE</code>} prevents to code from running but it still appears. <code>{r, echo = FALSE</code>} prevents code but not the results from appearing.<br />
+This is a useful way to embed figures.<br />
+<code>{r, message = FALSE</code>} prevents messages generated by code from appearing.<br />
+<code>{r, warning = FALSE</code>} prevents warnings generated by code from appearing.<br />
+<code>{r, fig.cap = &quot;...&quot;</code>} adds a caption to graphical results.</p>
+<p>The <a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">R Markdown Reference Guide (.pdf)</a> has a list of useful options. <a href="https://yihui.name/knitr/options/">Yihui’s <code>knitr</code> options</a> has full documentation of all <code>knitr</code> code processing controls.</p>
+</div>
+</div>
+<div id="pandoc" class="section level3">
+<h3>pandoc</h3>
+<p>The RStudio installation includes <a href="http://pandoc.org/">pandoc</a>, which is used for conversion between RMarkdown and <a href="https://rmarkdown.rstudio.com/formats.html">the various output formats</a>. You may have to <a href="http://pandoc.org/installing.html">install pandoc on your system</a> for conversion to take place, especially for <code>.pdf</code> output, which goes through an intermediate <code>LaTeX</code> stage.</p>
+<p><code>pandoc</code> can also be run from the commond line if it is installed separately. This is explained in detail in the <a href="http://pandoc.org/MANUAL.html">pandoc manual</a>.</p>
+</div>
+</div>
+<div id="shiny" class="section level2">
+<h2>Shiny</h2>
+<blockquote>
+<p><a href="http://shiny.rstudio.com/">Shiny</a> is an R package that makes it easy to build interactive web apps straight from R. You can host standalone apps on a webpage or embed them in <a href="http://rmarkdown.rstudio.com/">R Markdown</a> documents or build <a href="http://rstudio.github.io/shinydashboard/">dashboards</a>. You can also extend your Shiny apps with <a href="http://rstudio.github.io/shinythemes/">CSS themes</a>, <a href="http://www.htmlwidgets.org/">htmlwidgets</a>, and JavaScript <a href="https://github.com/daattali/shinyjs/blob/master/README.md">actions</a>.<br /> — <a href="http://shiny.rstudio.com/"><em>RStudio Shiny</em></a></p>
+</blockquote>
+<p><strong><a href="http://shiny.rstudio.com/">RStudio’s Shiny</a> is a Web application framework for R that takes static <a href="#rmarkdown">RMarkdown documents</a> and <a href="https://rmarkdown.rstudio.com/html_document_format.html">Web sites</a> to the next level</strong>.</p>
+<p>There is no limit to building online documentation, interactive tutorials, and statistical data interfaces with these powerful R packages:</p>
+<ul>
+<li><p><a href="http://www.htmlwidgets.org/"><code>htmlwidgets</code></a> enables JavaScript visualisations and interactive components to be incorporated into <a href="#rmarkdown">R Markdown documents</a> and Shiny web applications, as shown in this <a href="http://www.htmlwidgets.org/showcase_leaflet.html">showcase</a> and this <a href="http://www.htmlwidgets.org/">gallery</a></p></li>
+<li><p><a href="http://rstudio.github.io/crosstalk/"><code>crosstalk</code></a> wires widgets together, including linked brushing between widgets and client side filtering</p></li>
+<li><p><a href="http://rstudio.github.io/shinydashboard/"><code>shinydashboard</code></a> makes it easy to create all kinds of Web dashboards, as shown in <a href="http://rstudio.github.io/shinydashboard/examples.html">these examples</a></p></li>
+</ul>
+<p>and others:</p>
+<ul>
+<li><a href="https://github.com/psolymos/intrval"><code>intrval</code></a> can be used to build for example, a <a href="http://peter.solymos.org/code/2018/03/08/shiny-slider-examples-with-the-intrval-r-package.html">Web slider</a></li>
+</ul>
+<p>We will explore <a href="http://shiny.rstudio.com/">building Shiny apps</a> in a future Tutorial.</p>
+<div id="shiny-server" class="section level3">
+<h3>Shiny Server</h3>
+<p><a href="https://www.rstudio.com/products/shiny/shiny-server/">Shiny Server</a> makes your <a href="http://shiny.rstudio.com/">Shiny Web apps</a> accessible on a local network, an Enterprise server, or on the Internet. There are two flavours of server:</p>
+<ul>
+<li><a href="https://www.rstudio.com/products/shiny/download-server/">Shiny Server Open Source</a> and</li>
+<li><a href="https://www.rstudio.com/products/rstudio-server-pro/">Shiny Server Pro</a></li>
+</ul>
+<p>Documentation is available for:</p>
+<ul>
+<li><a href="https://www.rstudio.com/products/shiny/download-server/">Installing Shiny Server Open Source</a></li>
+<li><a href="http://docs.rstudio.com/shiny-server/">Shiny Server Pro Admin Guide</a></li>
+<li><a href="http://docs.rstudio.com/shinyapps.io/index.html">shinyapps.io User Guide</a></li>
+</ul>
+<p>Shiny Apps can be available to an Intranet or to the Internet via:</p>
+<ul>
+<li><a href="https://www.rstudio.com/products/rstudio-server-pro/">An Enterprise Server</a></li>
+<li><a href="https://www.rstudio.com/products/connect/">RStudio Connect</a></li>
+<li><a href="https://www.rstudio.com/products/shinyapps/">shinyapps.io</a></li>
+</ul>
+<p>The difference between the latter two is <a href="https://support.rstudio.com/hc/en-us/articles/217240558-What-is-the-difference-between-shinyapps-io-and-Shiny-Server-Pro-">explained here</a>.</p>
+</div>
+</div>
+<div id="bookdown" class="section level2">
+<h2>bookdown</h2>
+<p><img src="images/bookdown_logo.png" class="small-left" /></p>
+<blockquote>
+<p><a href="https://github.com/rstudio/bookdown"><code>bookdown</code></a> is an open-source R package that makes it really easy to creates online books and technical documents using <a href="#rmarkdown">RMarkdown</a>.</p>
+</blockquote>
+<p><strong><code>bookdown</code> books open a new avenue for Web-enabled book publishing</strong>.</p>
+<p>They are essentially <strong>responsive RMarkdown Web sites</strong>, complete with content navigation, plus the ability to display and process computer code using a wide range of programming languages, including interactive <a href="http://rstudio.github.io/shinydashboard/examples.html">Shiny dashboards</a> and <a href="http://shiny.rstudio.com/gallery/">Web apps</a>.</p>
+<p><strong><code>bookdown</code> has added a few important missing features</strong> related to writing books, such as figure and table caption numbering and cross-references, and the ability to embed <a href="https://www.rstudio.com/products/shinyapps/">HTML widgets</a> or <a href="http://shiny.rstudio.com/gallery/">Shiny apps</a>.</p>
+<p><strong>Developed and maintained by RStudio software engineer <a href="http://yihui.name">Yihui Xie</a></strong>, <code>bookdown</code> books can be published on <a href="https://bookdown.org/">bookdown.org</a>, a free service provided by <a href="https://www.rstudio.com/about/">RStudio Inc</a>. Books are available for download, and the author holds full copyright.</p>
+<p><a href="https://bookdown.org/"><img src="https://bookdown.org/yihui/bookdown/images/cover.jpg" class="small-left" /></a></p>
+<p><strong>Fully-documented</strong> in — of course! — a <a href="https://bookdown.org/yihui/bookdown/"><code>bookdown</code> book called <em>bookdown</em></a>, the <code>bookdown</code> package uses many of the same conventions as <a href="#rmarkdown">other RMarkdown document types</a>, so conversion of any RStudio project to an online book is relatively straightforward.</p>
+<p><a href="https://github.com/rstudio/bookdown-demo">A Minimal Book Example</a> can be cloned from GitHub. It can also be downloaded as a <a href="https://github.com/rstudio/bookdown-demo/archive/master.zip"><code>.zip</code> file</a> if you are <a href="http://rogerdudler.github.io/git-guide/">not familiar with GitHub</a>.</p>
+<div id="bookdown-installation" class="section level3">
+<h3><code>bookdown</code> Installation</h3>
+<p><a href="https://bookdown.org/home/getting-started.html">Installation</a> requires the <a href="https://www.rstudio.com/products/rpackages/devtools/">devtools</a> R package to be first installed, after which <code>bookdown</code> can be installed from <a href="https://github.com/rstudio/bookdown">its GitHub repository</a>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;rstudio/bookdown&quot;</span>)</a></code></pre></div>
+</div>
+<div id="tinytex" class="section level3">
+<h3><code>tinytex</code></h3>
+<p><strong>PDF output requires some version of the <a href="https://www.latex-project.org/">LaTeX</a> typesetting system</strong> to be installed. LaTeX is not a stand-alone typesetting program in itself, but document preparation software that runs on top of Donald E. Knuth’s <a href="https://en.wikipedia.org/wiki/TeX">TeX typesetting system</a>.</p>
+<p><strong><a href="https://www.latex-project.org/get/#tex-distributions">TeX distributions</a> usually bundle together all the parts needed</strong> for a working TeX system. <a href="https://www.latex-project.org/">LaTeX</a> and many of the packages built on it form an important component of any modern TeX distribution.</p>
+<p><strong>As this is a large package consisting of many gigabytes of files</strong> that users may not wish to install, <a href="https://yihui.name/tinytex/">Yihui Xie wrote <code>tinytex</code></a>, a lightweight, cross-platform, portable, and easy-to-maintain LaTeX distribution based on <a href="https://en.wikipedia.org/wiki/TeX_Live">TeX Live</a>.</p>
+<div id="tinytex-installation" class="section level4">
+<h4><code>tinytex</code> Installation</h4>
+<p>Installation of <code>tinytex</code> is accomplished with:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&#39;tinytex&#39;</span>, <span class="st">&#39;rmarkdown&#39;</span>))</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">tinytex<span class="op">::</span><span class="kw">install_tinytex</span>()</a></code></pre></div>
+<p><span class="glyphicon glyphicon-hand-right"></span> <strong><a href="https://rmarkdown.rstudio.com/pdf_document_format.html">PDF output</a> (including <a href="https://rmarkdown.rstudio.com/beamer_presentation_format.html">Beamer slides</a>) requires a full TeX installation.</strong></p>
+</div>
+</div>
+</div>
+<div id="blogdown" class="section level2">
+<h2>blogdown</h2>
+<p><img src="images/blogdown.png" class="small-left-1em" /></p>
+<blockquote>
+<p>Just as <a href="https://wordpress.com/">WordPress</a> changed the Web by bringing blogging to the masses, <a href="https://bookdown.org/yihui/blogdown/">blogdown</a> has opened a path for the more computer-savvy to create quick-loading, static blog sites using <a href="#rmarkdown">RMarkdown</a>.</p>
+</blockquote>
+<p>Not content with authoring <a href="#bookdown"><code>bookdown</code></a>, RStudio developer <a href="http://yihui.name">Yihui Xie</a> took the next logical step by writing the <a href="https://bookdown.org/yihui/blogdown/"><code>blogdown</code> R package</a>.</p>
+<p><strong>Based on the <a href="https://gohugo.io/">Hugo website framework</a>, <code>blogdown</code> lets you write posts in RStudio as RMarkdown.Rmd files These are automatically converted to blog posts for uploading to a hosting service, including <a href="https://pages.github.com/">GitHub pages</a></strong>.</p>
+<div id="learning-blogdown" class="section level3">
+<h3>Learning <code>blogdown</code></h3>
+<p>It is advisable to first read Yihui Xie and Alison Presmanes Hill’s <code>bookdown</code> book <a href="https://bookdown.org/yihui/blogdown/">Creating Websites with R Markdown</a> to become familiar with <code>bookdown</code> concepts and the <a href="https://gohugo.io/">Hugo framework</a> before you embark on creating your first blog site.</p>
+<p><strong>These links offer practical Setup hints and guidance:</strong></p>
+<div id="blogdown-setup" class="section level4">
+<h4>blogdown Setup</h4>
+<ul>
+<li><a href="https://alison.rbind.io/post/up-and-running-with-blogdown/">Up and running with blogdown | Alison Presmanes Hill</a></li>
+<li><a href="https://www.znmeb.mobi/2017/05/12/getting-started-with-blogdown/">Getting Started With Blogdown | Borasky Research Journal</a></li>
+<li><a href="https://aurora-mareviv.github.io/talesofr/2018/02/r-blogdown-setup-in-github-2/">R Blogdown Setup in GitHub (2) | Tales of R</a></li>
+<li><a href="https://support.rbind.io/2017/04/25/yihui-website/#fnref:For-two-reasons">A Technical Introduction to Yihui’s personal website</a></li>
+<li><a href="https://support.rbind.io/2017/04/28/daijiang-website/#fnref:frankly-I-cloned">A not-so-technical introduction to Daijiang’s personal website</a></li>
+</ul>
+</div>
+<div id="blogdown-links" class="section level4">
+<h4>blogdown Links</h4>
+<ul>
+<li><a href="https://bookdown.org/yihui/blogdown/">blogdown: Creating Websites with R Markdown</a></li>
+<li><a href="https://blog.rstudio.com/2017/09/11/announcing-blogdown/">Announcing blogdown - Yihui Xie, RStudio 2017-09-11</a></li>
+<li><a href="https://github.com/rstudio/blogdown">GitHub - rstudio/blogdown: Create Blogs and Websites with R Markdown</a></li>
+<li><a href="https://github.com/rbind/blogdown-demo">GitHub - rbind/blogdown-demo: A minimal website example using blogdown</a></li>
+<li><a href="https://twitter.com/hashtag/blogdown">Twitter hashtag #blogdown</a></li>
+</ul>
+</div>
+</div>
+<div id="hugo-themes" class="section level3">
+<h3>Hugo Themes</h3>
+<p><strong><code>blogdown</code> uses <a href="https://gohugo.io/themes/">Hugo themes</a> to style the look and feel of its blogs</strong>. The default theme for <code>blogdown</code> is <a href="https://github.com/yihui/hugo-lithium"><em>hugo-lithium</em></a>, a minimal theme that offers several options, detailed in <a href="https://bookdown.org/yihui/blogdown/themes.html#the-default-theme">Section 2.4.1</a> of the <code>blogdown</code> book. The base theme can be modified to suit your taste, or it can be replaced by another theme.</p>
+<p><strong>The <a href="https://gohugo.io/">Hugo web site</a> showcases many <a href="https://themes.gohugo.io">user-contributed themes</a></strong>. These can be examined online and downloaded for use as-is or as a starting point for themeing.</p>
+<div id="hugo-links" class="section level4">
+<h4>Hugo Links</h4>
+<ul>
+<li><a href="https://gohugo.io/">Hugo</a> — world’s fastest (?) framework for building websites</li>
+<li><a href="https://gohugo.io/getting-started/installing/">Hugo Setup Guide</a> — applies to <code>blogdown</code> blog sites</li>
+<li><a href="https://gohugo.io/themes/">Hugo Themeing</a> — how to choose and fine-tune a blog</li>
+<li><a href="https://themes.gohugo.io">Contributed Hugo Themes</a> – hundreds of excellent Hugo themes</li>
+<li><a href="https://riinu.netlify.com/2018/02/converting-old-wordpress-posts-to-hugo/">Converting Old Wordpress Posts To Hugo</a> — goodbye WordPress!</li>
+</ul>
+</div>
+</div>
+<div id="blogdown-blogs" class="section level3">
+<h3><code>blogdown</code> Blogs</h3>
+<p>A list of R-related <code>blogdown</code> blogs is kept at <a href="https://github.com/rbind">rbind on Github</a>. R-blogs made with <code>blogdown</code> can be viewed <a href="https://github.com/search?q=org%3Arbind+blogdown">here</a>.</p>
+<p>An interesting and uncluttered example is <a href="https://simplystatistics.org/">Simply Statistics</a>, a statistics blog by Rafa Irizarry, Roger Peng, and Jeff Leek.</p>
+</div>
+</div>
+<div id="rstudio-products" class="section level2">
+<h2>RStudio Products</h2>
+<p><img src="images/RStudio_full_logo.png" /></p>
+<p><strong>Some RStudio products are open-source and free for student and personal use</strong>. Others are priced for professional or Enterprise deployment.</p>
+<div id="software" class="section level3">
+<h3>Software</h3>
+<ul>
+<li><a href="https://rmarkdown.rstudio.com/r_notebooks.html">R Notebooks</a> — equivalent to <a href="https://jupyter.org/">Jupyter Notebooks</a></li>
+<li><a href="https://rmarkdown.rstudio.com/">RMarkdown</a> — creates <code>.Rmd</code> files using <a href="https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html">Pandoc Markdown</a></li>
+<li><a href="https://www.rstudio.com/products/rpackages/">R Packages</a> — available on <a href="https://cran.r-project.org/">CRAN</a> and <a href="https://github.com/rstudio">GitHub</a></li>
+<li><a href="https://www.rstudio.com/products/rstudio/#Desktop">RStudio Desktop</a> — the RStudio IDE, also on <a href="https://github.com/rstudio">GitHub</a></li>
+<li><a href="https://www.rstudio.com/products/rstudio/#Server">RStudio Server</a> — free for personal and local Network use</li>
+<li><a href="https://www.rstudio.com/products/shiny/">Shiny</a> — build interactive Web pages and <a href="https://www.javascript.com">JavaScript</a> apps</li>
+<li><a href="https://www.rstudio.com/products/shiny/shiny-server2/">Shiny Server</a> — free for local network and Web access behind a firewall</li>
+</ul>
+</div>
+<div id="cloud-services" class="section level3">
+<h3>Cloud Services</h3>
+<ul>
+<li><a href="https://www.rstudio.com/products/rstudio-server-pro/">RStudio Server Pro</a> – enhanced admin, Enterprise security and pricing</li>
+<li><a href="https://www.rstudio.com/products/connect/">RStudio Connect</a> – team management, Enterprise security and pricing</li>
+<li><a href="https://rstudio.cloud/">RStudio Cloud (in alpha)</a> — Do, Share, Teach, and Learn Data Science</li>
+<li><a href="https://www.rstudio.com/products/shiny-server-pro/">Shiny Server Pro</a> – share Shiny apps, Enterprise security and pricing</li>
+<li><a href="https://www.rstudio.com/products/shinyapps/">shinyapps.io</a> – deploy Shiny apps, enhanced security, scalable</li>
+<li><a href="https://bookdown.org/">Bookdown Book Publishing</a> — free for <code>bookdown</code> static page books</li>
+</ul>
+</div>
+<div id="resources" class="section level3">
+<h3>Resources</h3>
+<ul>
+<li><a href="https://www.rstudio.com/resources/cheatsheets/">RStudio Cheat Sheets</a> — PDF format</li>
+<li><a href="https://community.rstudio.com/">RStudio Community</a> — register for full Forum access</li>
+<li><a href="https://support.rstudio.com/hc/en-us/categories/200035113-Documentation">RStudio Documentation</a> — Help articles for all RStudio products</li>
+<li><a href="https://support.rstudio.com/hc/en-us/articles/234653607-Getting-Started-with-RStudio-Server">RStudio Server&gt; Getting Started</a> — lists many links for setup and use</li>
+<li><a href="http://docs.rstudio.com/ide/server-pro/">RStudio Server Pro Admin. Guide</a> — web-accessible User Manual</li>
+</ul>
+<p class="bottom-navbar">
+<span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> <a href="RStudio.html"><span class="bottom-navbar-link">Part 1 - RStudio IDE</span></a>   |  <a href="Part2_R_Programming.html"><span class="bottom-navbar-link">Part 2 - Fundamentals of R</span></a>  <span class="glyphicon glyphicon-arrow-right"></span></span>
+</p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

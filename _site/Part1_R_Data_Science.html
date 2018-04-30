@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="by Stuart Hertzog" />
+
+
+<title>R For Data Science</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="intro.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4,h5,h6",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Introduction To R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="Setup.html">Setup</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Part1
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Part1_R_Data_Science.html">R For Data Science</a>
+    </li>
+    <li>
+      <a href="RStudio.html">The RStudio IDE</a>
+    </li>
+    <li>
+      <a href="RStudio_Ecosystem.html">RStudio Ecosystem</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="Part2_R_Programming.html">Part2</a>
+</li>
+<li>
+  <a href="R_Learning_Resources.html">Learning Resources</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">R For Data Science</h1>
+<h4 class="author"><em>by Stuart Hertzog</em></h4>
+<h4 class="date"><em>March–May 2018</em></h4>
+
+</div>
+
+
+<script>
+    $(document).ready(function() {
+      $items = $('div#TOC li');
+      $items.each(function(idx) {
+        num_ul = $(this).parentsUntil('#TOC').length;
+        $(this).css({'text-indent': num_ul * 10, 'padding-left': 0});
+      });
+
+    });
+</script>
+<blockquote>
+<p>“In Data Science there’s always a human in the loop: someone is understanding the insight, seeing the figure, or benefitting from the conclusion.”<br /> — <a href="http://varianceexplained.org/r/ds-ml-ai/"><em>David Robinson, Variance Explained Blog</em></a></p>
+</blockquote>
+<p>That person can be called a <strong>Data Scientist</strong>.</p>
+<div id="what-is-data-science" class="section level2">
+<h2>What Is Data Science?</h2>
+<ul>
+<li><p><a href="https://en.wikipedia.org/wiki/Data_science">Data Science</a> is a discipline that uses <em>statistics, data analysis, machine learning</em> and their <em>related methods</em> to <strong>understand and analyze actual phenomena</strong>.</p></li>
+<li><p>It employs techniques and theories of <strong>mathematics, statistics, information science</strong>, and <strong>computer science</strong>, in particular the subdomains of <em>machine learning, classification, cluster analysis, uncertainty quantification, computational science, data mining, databases,</em> and <em>visualization</em>.</p></li>
+</ul>
+<p>According to Wikipedia:</p>
+<ul>
+<li><p><a href="https://en.wikipedia.org/wiki/Data_analysis">Data Analysis</a> is a <strong>descriptive process</strong> of inspecting, cleansing, transforming, and modeling data with the goal of <strong>discovering useful information, suggesting conclusions</strong>, and <strong>supporting decision-making</strong>.</p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Data_mining">Data Mining</a> is a particular data analysis technique for <strong>discovering patterns in large data sets</strong>. It focuses on modeling and knowledge discovery for <strong>predictive</strong> rather than purely <strong>descriptive</strong> purposes.</p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Data_modeling">Data Modeling</a> is a process used to define and analyze the <strong>data requirements needed to support business processes</strong> within <strong>information systems in organizations</strong>.</p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Business_intelligence">Business Intelligence</a> comprises the strategies and technologies used by enterprises for the <strong>data analysis of business information</strong> to provide historical, current and predictive views of <strong>business operations</strong>.</p></li>
+</ul>
+<p><strong>R is used in two associated disciplines</strong>, which are often confused as also being Data Science:</p>
+<ul>
+<li><p><a href="https://en.wikipedia.org/wiki/Machine_learning">Machine Learning</a> (ML) gives computer systems the ability to <strong>progressively improve performance of a specific task</strong> with data, without being explicitly programmed, and</p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Artificial_intelligence">Artificial Intelligence</a> (AI), in contrast to the natural intelligence displayed by humans and other animals, is intelligence demonstrated by machines through <strong>Intelligent Agents</strong> that <strong>perceive their environment</strong> and <strong>take actions</strong> to maximize the chance of successfully achieving their designers’ intended goals.</p></li>
+</ul>
+<p><strong>Although they overlap</strong>, Data Science, Machine Learning, and Artificial Intelligence produce different outcomes:</p>
+<ul>
+<li><strong>Data Science</strong> produces <em><strong>insights</strong></em></li>
+<li><strong>Machine Learning</strong> produces <em><strong>prediction</strong>s</em></li>
+<li><strong>Artificial Intelligence</strong> produces <em><strong>actions</strong></em></li>
+</ul>
+</div>
+<div id="what-is-r" class="section level2">
+<h2>What Is R?</h2>
+<blockquote>
+<p>R is a functional programming language designed to manipulate, display, and analyse statistical data.</p>
+</blockquote>
+<p>R is a <strong>free, case-sensitive, interpreted</strong> language that uses statistical techniques <strong>to perform</strong> <a href="https://en.wikipedia.org/wiki/Data_analysis">Data Analysis</a>, <a href="https://en.wikipedia.org/wiki/Data_mining">Data Mining</a>, <a href="https://en.wikipedia.org/wiki/Data_modeling">Data Modeling</a>, and <a href="https://en.wikipedia.org/wiki/Machine_learning">Machine Learning</a>, <strong>and to create</strong> <a href="https://www.innoarchitech.com/python-vs-or-r-artificial-intelligence-ai-machine-learning-data-science-which-use/">Artifical Intelligence</a> and <a href="https://en.wikipedia.org/wiki/Business_intelligence">Business Intelligence</a>.</p>
+<ul>
+<li>R is a <strong>functional programming language</strong>, not <strong>procedural</strong>.</li>
+<li>It is <strong>vector-based</strong> and <strong>highly-optimised</strong> to speedily and efficiently manipulate and display all types of <strong>numeric</strong> and <strong>graphical</strong> data.</li>
+<li>R <strong>holds data in memory</strong> for speedy access, so it runs
+<ul>
+<li><strong>better on fast processors</strong> with lots of memory for <strong>large datasets</strong></li>
+<li>but can be run on an <strong>distributed cluster</strong> running <a href="https://hadoop.apache.org/">Apache Hadoop</a>, either</li>
+<li>on a <strong>local network</strong> or on a <strong><a href="https://www.technavio.com/blog/top-16-companies-in-the-hadoop-as-a-service-hdaas-market">Hadoop cloud service</a></strong>.</li>
+</ul></li>
+<li>R was <strong>developed from <a href="https://en.wikipedia.org/wiki/S_(programming_language)">S</a></strong>, which was <strong>created in 1976</strong> by <strong><a href="https://en.wikipedia.org/wiki/John_Chambers_(statistician)">John Chambers</a></strong> of <strong><a href="https://en.wikipedia.org/wiki/Bell_Labs">Bell Labs</a></strong>.</li>
+<li>It was <strong>written by <a href="https://en.wikipedia.org/wiki/Ross_Ihaka">Ross Ihaka</a> and <a href="https://en.wikipedia.org/wiki/Robert_Gentleman_(statistician)">Robert Gentleman</a></strong> at the <strong><a href="https://en.wikipedia.org/wiki/University_of_Auckland">University of Auckland</a></strong>, New Zealand.</li>
+<li>The name R comes partly from the names of the two authors, and partly as a play on S.</li>
+<li>R was <strong>conceived in 1992</strong> with an initial version released in <strong>1995</strong>, and a stable beta version in <strong>2000</strong>.</li>
+<li>While there are some important differences, most <strong>S code can run unaltered in R</strong>.</li>
+<li>R is currently being actively developed by the <strong><a href="https://www.r-project.org/contributors.html">R Development Core Team</a></strong>, which includes John Chambers.</li>
+<li>Development of R is supported by the <strong><a href="https://www.r-project.org/">R Project for Statistical Computing</a></strong>.</li>
+<li>R is freely available under the <strong><a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a></strong>. Pre-compiled binary versions are provided for various operating systems. These are available on <strong>local <a href="https://cran.r-project.org/mirrors.html">CRAN mirrors</a></strong>.</li>
+</ul>
+<blockquote>
+<p>The source code for the R software environment is written primarily in <strong>C, Fortran, and R</strong>, highly-optimised for fast computation of large collections of statistical data.</p>
+</blockquote>
+<p>The <strong>popularity of R has increased substantially</strong> in recent years. As of March 2018, R is <strong>in the top 20 of the <a href="https://www.tiobe.com/tiobe-index/">TIOBE index</a></strong>, (Python was ranked #4 at that time).</p>
+</div>
+<div id="installing-r" class="section level2">
+<h2>Installing R</h2>
+<p><strong>R must be installed</strong> on a computer as currently it is <strong>not included</strong> in any operating system. Precompiled versions are available for major systems including <strong>Windows</strong>, <strong>MacOS</strong>, and <strong>Linux</strong>. It may <strong>require compiling</strong> on some Linux distributions.</p>
+<p>R is available from the <a href="https://cran.r-project.org/">Comprehensive R Archive Network (CRAN)</a>, via a multinational network of <a href="https://cran.r-project.org/mirrors.html">CRAN Mirrors</a>. <strong>Canadian CRAN mirrors</strong> are hosted at:</p>
+<ul>
+<li><a href="http://cran.stat.sfu.ca/">Simon Fraser University</a></li>
+<li><a href="http://muug.ca/mirror/cran/">Manitoba Unix User Group</a></li>
+<li><a href="http://cran.utstat.utoronto.ca/">University of Toronto</a></li>
+<li><a href="http://mirror.its.dal.ca/cran/">Dalhousie University</a></li>
+</ul>
+<p><strong>Precompiled versions</strong> are available for:</p>
+<ul>
+<li><a href="http://cran.stat.sfu.ca/bin/linux/">Download for Linux</a> (SFU)</li>
+<li><a href="http://cran.stat.sfu.ca/bin/macosx/">Download for OS X</a> (SFU)</li>
+<li><a href="http://cran.stat.sfu.ca/bin/windows/">Download for Windows</a> (SFU)</li>
+</ul>
+</div>
+<div id="command-line-r" class="section level2">
+<h2>Command Line R</h2>
+<p>R can be run from the command line in a Terminal window:</p>
+<ul>
+<li><code>which R</code> – find the location of the R executable</li>
+<li><code>R --version</code> – show the currently installed version of R</li>
+<li><code>R</code> – start an interactive R session</li>
+</ul>
+<p>Version information is shown (as above) and the R command prompt <code>&gt;</code> is available.</p>
+<ul>
+<li><code>quit()</code> – quit an R session**</li>
+</ul>
+<div id="help-and-manuals" class="section level3">
+<h3>Help and Manuals</h3>
+<ul>
+<li><p>Help is available in the usual way with <code>R --help</code></p></li>
+<li><p><a href="https://cran.r-project.org/manuals.html">Downloadable manuals for R</a> are available in <strong>HTML</strong>, <strong>PDF</strong>, and <strong>EPUB</strong> formats.</p></li>
+<li><p>The <strong>LaTeX or Texinfo sources</strong> of the latest version of these documents are contained in every R source distribution, in the subdirectory <code>doc/manual</code> of the extracted archive.</p></li>
+<li><p>The <strong>HTML versions of the manuals</strong> are also part of most R installations, accessible by entering the function <code>help.start()</code> at the R prompt to launch a page in your default Web browser with links to local R documentation.</p></li>
+<li><p><strong>Manuals for older R versions</strong> are available in the <a href="https://cran.r-project.org/src/base/">archives of the R sources</a>.</p></li>
+</ul>
+</div>
+</div>
+<div id="the-r-console-interface" class="section level2">
+<h2>The R Console Interface</h2>
+<p>While R has a command line interface, a graphical interface is installed as an executable application <code>R.app</code> or <code>R.exe</code> for <strong>Windows</strong>, <strong>MacOS</strong>, and <strong>Linux</strong>. With minor platform differences, they are similar to this startup screen on <strong>OS X</strong>:</p>
+<div class="figure">
+<img src="images/R_Console.png" alt="Above: The R Console startup screen in OS X 10.11.6 El Capitan" />
+<p class="caption"><em><strong>Above:</strong> The R Console startup screen in OS X 10.11.6 El Capitan</em></p>
+</div>
+<p>R commands can be <strong>run from the command prompt</strong> in R Console, similar to using the <strong>command line interface</strong> in a terminal program.</p>
+<div id="access-to-r-help" class="section level3">
+<h3>Access To R Help</h3>
+<p><strong>Tooltip help</strong> appears on hovering the cursor over the <strong>icons in the Toolbar</strong> along the top of the Console window. <strong>Access to R Help files</strong> is invoked by entering <code>help.start()</code> at the command prompt. This will launch the <strong>R Help server</strong> on your computer and open a <strong>comprehensive Help page</strong> in your Web browser.</p>
+<pre><code>&gt; help.start()
+starting httpd help server ... done
+If the browser launched by &#39;/usr/bin/open&#39; is already running, it is
+    *not* restarted, and you must switch to its window.
+Otherwise, be patient ...
+&gt; </code></pre>
+<div class="figure">
+<img src="images/R_Help.png" alt="Above: The R Language Help page opens in your default Web browser" />
+<p class="caption"><em><strong>Above:</strong> The R Language Help page opens in your default Web browser</em></p>
+</div>
+</div>
+<div id="data-file-management" class="section level3">
+<h3>Data File Management</h3>
+<p>An R installation includes a treasure-trove of <strong>statistical data files</strong>. These can be seen using the <strong>Data Manager</strong>, available under the <em>Packages &amp; Data</em> menu. Clicking on a dataset will display its <strong>documentation in the lower pane</strong> of the R Data Manager.</p>
+<div class="figure">
+<img src="images/R_Data_Manager.png" alt="Above: The Data Manager lists the extensive statistical datasets included with R." />
+<p class="caption"><em><strong>Above:</strong> The Data Manager lists the extensive statistical datasets included with R.</em></p>
+</div>
+</div>
+<div id="package-management" class="section level3">
+<h3>Package Management</h3>
+<p><strong>R Console has a built-in Package Management system</strong> that can be invoked from the <strong>Packages &amp; Data</strong> menu. The top pane of the <strong>R Package Manager</strong> window lists all installed packages. Clicking on a package brings up its <strong>Documentation</strong> in the lower window.</p>
+<div class="figure">
+<img src="images/R_Package_Manager.png" alt="Above: The Package Manager window lists installed R packages and documentation." />
+<p class="caption"><em><strong>Above:</strong> The Package Manager window lists installed R packages and documentation.</em></p>
+</div>
+</div>
+</div>
+<div id="r-packages" class="section level2">
+<h2>R Packages</h2>
+<div id="cran-package-repository" class="section level3">
+<h3><a href="https://cran.r-project.org/">CRAN Package Repository</a></h3>
+<p><strong>The Comprehensive R Archive Network</strong> (CRAN) is a network of <code>ftp</code> and Web servers around the world that store identical, up-to-date versions of code and documentation for R. Using the nearest <a href="https://cran.r-project.org/">CRAN Mirror</a> minimises network load.</p>
+<p><strong>Official releases of R source code</strong> (Unix and Windows) are available on CRAN. The 2018-03-15 release is <a href="https://cran.r-project.org/src/base/R-3/R-3.4.4.tar.gz">R-3.4.4 <em>Someone to Lean On</em></a>. Older releases are <a href="https://cran.r-project.org/src/base/">available</a>.</p>
+<p><strong>R documentation is available on CRAN</strong> in <a href="https://cran.r-project.org/manuals.html#R-admin">HTML, PDF, and EPUB</a> formats. These were created on <a href="https://debian.org">Debian Linux</a> and may differ for Mac or Windows, but most parts will be identical. The applicable manual is included in the R installation for each OS.</p>
+<p><strong>CRAN maintains tables of <a href="https://cran.r-project.org/">available R packages</a></strong> sorted by <a href="https://cran.r-project.org/web/packages/available_packages_by_date.html">date of publication</a> and <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">name</a>. To assist <a href="https://cran.r-project.org/">searching for appropriate packages</a>, CRAN offers discipline-based <a href="https://cran.r-project.org/web/views/">Task Views</a>. On April 6 2018, the CRAN package repository contained 12,411 packages.</p>
+<p><strong>All submitted packages are tested regularly</strong> on Debian GNU/Linux, Fedora, OS X, Solaris and Windows. The results are summarized in the <a href="https://cran.r-project.org/web/checks/check_summary.html">check summary</a>.</p>
+</div>
+<div id="installing-cran-r-packages" class="section level3">
+<h3>Installing CRAN R Packages</h3>
+<p>The R command <code>help(&quot;INSTALL&quot;)</code> or <code>help(&quot;install.packages&quot;)</code> displays information on how to install packages from CRAN. The general package installation command is:</p>
+<p><strong>To download and install a package</strong> – <code>install.packages(&quot;PackageName&quot;)</code><br />
+<strong>To make its library available</strong> – <code>library(PackageName)</code></p>
+</div>
+<div id="installing-packages-from-github" class="section level3">
+<h3>Installing Packages From GitHub</h3>
+<p>However, not all packages are available on CRAN, but must be downloaded from <a href="https://github.com/">GitHub</a>. To enable this the <code>devtools</code> package must be downloaded and made available:</p>
+<blockquote>
+<p><code>install.packages(&quot;devtools&quot;)</code><br />
+<code>library(devtools)</code></p>
+</blockquote>
+<ul>
+<li><p><strong>devtools’ <code>install_github(&quot;DeveloperName/PackageName&quot;)</code></strong> installs R packages from GitHub, but it requires the developers <a href="https://help.github.com/articles/setting-your-username-in-git/">GitHub name</a>.</p></li>
+<li><p><strong>githubinstall’s <code>githubinstall(&quot;PackageName&quot;)</code></strong> does not require the developers GitHub name. It also provides some helpful information on gitHub-hosted R packages hosted. This package can be installed from CRAN.</p></li>
+</ul>
+<p><strong>If a repository package requires compiling the appropriate compilers</strong>, usually for <em>C++</em> or <em>FORTRAN</em>, <strong>must be already installed on your system</strong>.</p>
+<p><strong>A more detailed discussion for installing from GitHub</strong> is <a href="https://cran.r-project.org/web/packages/githubinstall/vignettes/githubinstall.html">available here</a>.</p>
+</div>
+<div id="the-tidyverse" class="section level3">
+<h3><a href="https://www.tidyverse.org/">The tidyverse</a></h3>
+<p><img src="images/tidyverse.png" class="small-left"><strong>The <a href="https://www.tidyverse.org/">tidyverse</a> is a collection of R packages designed to clean up datasets for analysis</strong>. The <em>tidyverse philosophy</em> has become an important tool of Data Science. <a href="https://www.tidyverse.org/">tidyverse</a> packages share the same design philosophy, grammar, and structure. Ease of adoption and use are fundamental principles for all packages of the <a href="https://www.tidyverse.org/">tidyverse</a>.</p>
+<p><strong>Core <code>tidyverse</code> packages:</strong></p>
+<ul>
+<li><a href="http://ggplot2.tidyverse.org/">ggplot2</a> for data visualisation</li>
+<li><a href="http://dplyr.tidyverse.org/">dplyr</a> for data manipulation</li>
+<li><a href="http://tidyr.tidyverse.org/">tidyr</a> for data tidying</li>
+<li><a href="http://readr.tidyverse.org/">readr</a> for data import</li>
+<li><a href="http://purrr.tidyverse.org/">purrr</a> for functional programming</li>
+<li><a href="http://tibble.tidyverse.org/">tibble</a> for tibbles, a modern re-imagining of data frames</li>
+</ul>
+<p><strong>Two other packages</strong> are considered part of <code>tidyverse core</code>:</p>
+<ul>
+<li><a href="http://stringr.tidyverse.org/">stringr</a> for working with strings</li>
+<li><a href="http://forcats.tidyverse.org/">forecats</a> for resolving factors</li>
+</ul>
+<p><strong>tidyverse packages sometimes conflict with other packages</strong>. You’ll see this displayed on installing a <a href="https://www.tidyverse.org/">tidyverse</a> package. You can:</p>
+<ul>
+<li><p><strong>list conflicts with other installed R packages at any time</strong><br />
+with <code>tidyverse_conflicts()</code>, and</p></li>
+<li><p><strong>Check that all <a href="https://www.tidyverse.org/">tidyverse</a> packages are up-to-date</strong><br />
+with <code>tidyverse_update()</code>.</p></li>
+</ul>
+<p><strong><a href="http://r4ds.had.co.nz/tidy-data.html">Chapter 12</a> of the seminal book <a href="http://r4ds.had.co.nz/">R For Data Science</a></strong> explains in detail how to use <a href="https://www.tidyverse.org/">tidyverse</a> packages to clean up data prior to analysis. Learning how to use the <a href="http://tidyverse.org/">tidyverse</a> is the recommended first step to mastering R programming for Data Science.</p>
+<div id="ggplot2" class="section level4">
+<h4><img src="images/ggplot2.png" class="small-left"><a href="http://ggplot2.tidyverse.org/">ggplot2</a></h4>
+<p><strong>A system for declaratively creating graphics</strong> based on <a href="vita.had.co.nz/papers/layered-grammar.pdf">The Grammar of Graphics</a>, <code>ggplot2</code> was created by <a href="http://hadley.nz/">Hadley Wickham</a>. You provide the data; tell <code>ggplot2</code> how to map variables to aesthetics and what graphical primitives to use; it takes care of the details.</p>
+</div>
+<div id="dplyr" class="section level4">
+<h4><img src="images/dplyr.png" class="small-left"><a href="http://dplyr.tidyverse.org/">dplyr</a></h4>
+<p><strong>A grammar of data manipulation</strong>, <code>deplyr</code> provides a consistent set of verbs to solve most common data manipulation challenges. It abstracts how the data is stored, so it works as well with remote databases as with local data frames, using exactly the same R code.</p>
+</div>
+<div id="tidyr" class="section level4">
+<h4><img src="images/tidyr.png" class="small-left"><a href="http://tidyr.tidyverse.org/">tidyr</a></h4>
+<p><strong>The goal of tidyr is to create tidy data</strong>. Tidy data describes a standard way of storing data so it can be used anywhere in the <a href="https://www.tidyverse.org/">tidyverse</a>. If you ensure that your data is tidy, youll spend less timing fighting with the tools and more time working on analysis.</p>
+</div>
+<div id="readr" class="section level4">
+<h4><img src="images/readr.png" class="small-left"><a href="http://readr.tidyverse.org/">readr</a></h4>
+<p><strong>Provides a fast and friendly way to read rectangular data</strong> — comma-separated, tab-separated, fixed-width, and general-delimited files, as well as tables separated by white space, and web log files. <a href="http://readr.tidyverse.org/">readr</a> flexibly parses data while failing cleanly if the data changes.</p>
+</div>
+<div id="purrr" class="section level4">
+<h4><img src="images/purrr.png" class="small-left"><a href="http://purrr.tidyverse.org/">purrr</a></h4>
+<p><strong>A complete toolset for working with functions and vectors</strong>, <code>purrr</code> functions offer many advantages over the equivalents in base R. For example, the <code>purrr</code> family of <code>map()</code> functions replace many <code>for</code> loops with code that is both more succinct and easier to read.</p>
+</div>
+<div id="tibble" class="section level4">
+<h4><img src="images/tibble.png" class="small-left"><a href="http://tibble.tidyverse.org/">tibble</a></h4>
+<p><strong>A modern reimagining of the data.frame</strong>, <em>tibbles</em> keep what has proven to be effective. <em>tibbles</em> are both lazy and surly: they do less (they dont change variable names or types, or do partial matching), and they complain more (for example when a variable does not exist).</p>
+</div>
+<div id="stringr" class="section level4">
+<h4><img src="images/stringr.png" class="small-left"><a href="http://stringr.tidyverse.org/">stringr</a></h4>
+<p><strong>Designed to make working with strings as easy as possible</strong>. <a href="http://stringr.tidyverse.org/">stringr</a> focusses on the most important and commonly-used string manipulation functions. It is built on top of <a href="https://github.com/gagolews/stringi">stringi</a>, which provides a comprehensive set covering almost anything you can imagine.</p>
+</div>
+<div id="forcats" class="section level4">
+<h4><img src="images/forcats.png" class="small-left"><a href="http://forcats.tidyverse.org/">forcats</a></h4>
+<p><strong>A suite of tools to solve problems with factors</strong>. R uses factors to handle categorical variables that have a fixed and known set of possible values. Many base R functions convert character vectors to factors, but <a href="http://tidyverse.org/">tidyverse</a> packages don’t create them automatically.</p>
+<p class="bottom-navbar">
+<span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> <a href="Setup.html"><span class="bottom-navbar-link">How To Set Up This Series</span></a>   |  <a href="RStudio.html"><span class="bottom-navbar-link">Part 1 - RStudio IDE</span></a>  <span class="glyphicon glyphicon-arrow-right"></span></span>
+</p>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
