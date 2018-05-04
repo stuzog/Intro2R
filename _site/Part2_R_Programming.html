@@ -447,10 +447,7 @@ div.tocify {
 <h2>Variables</h2>
 <p>Unlike statically-typed languages such a C++, R does not require variable types to be declared. An R variable can represent any data type or R object, such as a function, result, or graphical plot. R variables can be redeclared.</p>
 <ul>
-<li>Variable names can <strong>contain alphanumeric characters</strong>
-<ul>
-<li>but not <strong>periods <code>.</code> or underscores <code>_</code></strong></li>
-</ul></li>
+<li>Variable names can <strong>contain alphanumeric characters</strong> but not <strong>periods <code>.</code> or underscores <code>_</code></strong></li>
 <li><strong>They cannot <em>start</em> with a number or underscore</strong></li>
 <li>Variable names are <strong>case sensitive</strong></li>
 </ul>
@@ -1207,11 +1204,94 @@ div.tocify {
 ## 
 ## $AddedElement
 ## [1] 12 13 14 15 16</code></pre>
+</div>
+</div>
+</div>
+<div id="introducing-functions" class="section level2">
+<h2>Introducing Functions</h2>
+<blockquote>
+<p>R is a functional language, so almost every operation in R involves either creating new functions or accessing functions in package libraries.</p>
+</blockquote>
+<p><strong>An <code>R</code> programmer must choose and load a suitable package, select an appropriate function, and supply the arguments needed to make it work</strong>.</p>
+<p>This can be as simple as calling a function against an element:</p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" data-line-number="1"><span class="kw">mean</span> (x)</a></code></pre></div>
+<pre><code>## [1] 4.5</code></pre>
+<p>More complicated functions require supplying their arguments either in the correct order, or specifying their name with an equals sign.</p>
+<p>Either way means knowing the capabilities and requirements of any function.</p>
+<div id="function-help" class="section level3">
+<h3>Function Help</h3>
+<p><strong>If you know the name of a function</strong>, entering a question mark followed by the function name in the <em>Console</em> pane will display its documentation in the <em>Viewer</em> pane:</p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" data-line-number="1">?mean</a></code></pre></div>
+<p>For help on binary operator (e.g. <code>+</code>, <code>*</code>, <code>==</code>), surround it with backticks:</p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" data-line-number="1">?<span class="st">`</span><span class="dt">==</span><span class="st">`</span></a></code></pre></div>
+<p><strong>If you are not sure which function to use</strong>, you can search using only part of the name with <code>apropos()</code>:</p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" data-line-number="1"><span class="kw">apropos</span>(<span class="st">&quot;mea&quot;</span>)</a></code></pre></div>
+<pre><code>##  [1] &quot;.colMeans&quot;          &quot;.rowMeans&quot;          &quot;colMeans&quot;          
+##  [4] &quot;influence.measures&quot; &quot;kmeans&quot;             &quot;mean&quot;              
+##  [7] &quot;mean.Date&quot;          &quot;mean.default&quot;       &quot;mean.difftime&quot;     
+## [10] &quot;mean.POSIXct&quot;       &quot;mean.POSIXlt&quot;       &quot;rowMeans&quot;          
+## [13] &quot;weighted.mean&quot;</code></pre>
+<p>Construction and use of functions will be detailed later in this Tutorial series.</p>
+</div>
+</div>
+<div id="nothing-there" class="section level2">
+<h2>Nothing There?</h2>
+<p>It’s rare that a data set is complete in every detail. Some observations will be missing, while others may be accurately reported as being not available. Missing values can be represented in many ways: by a dash <code>-</code>, a period <code>.</code>, or even the number <code>99</code>.</p>
+<p><strong><code>R</code> has two types of missing data: <code>NA</code> and <code>NULL</code>.</strong></p>
+<div id="na" class="section level3">
+<h3>NA</h3>
+<p><strong><code>R</code> recognises NA as an element of a Vector</strong>.</p>
+<p><code>is.na()</code> tests each element of a Vector:</p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" data-line-number="1">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="ot">NA</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb265-2" data-line-number="2">z</a></code></pre></div>
+<pre><code>## [1]  3  4 NA  5  6 NA</code></pre>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" data-line-number="1"><span class="kw">is.na</span>(z)</a></code></pre></div>
+<pre><code>## [1] FALSE FALSE  TRUE FALSE FALSE  TRUE</code></pre>
+<p>This works with any type of Vector.</p>
+<div id="removing-nas" class="section level4">
+<h4>Removing NAs</h4>
+<p>Some <code>Base R</code> functions return NA even if a single element is NA, for example <code>mean()</code>:</p>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" data-line-number="1"><span class="kw">mean</span>(z)</a></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<p><code>na.rm=TRUE</code> removes any NAs, allowing these functions to proceed:</p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" data-line-number="1"><span class="kw">mean</span>(z, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## [1] 4.5</code></pre>
+</div>
+</div>
+<div id="null" class="section level3">
+<h3>NULL</h3>
+<p><code>NULL</code> is very Zen: it is nothingness, which means that there isn’t even anything missing. <code>NULL</code> is atomical and can’t exist in a Vector. If used in a Vector, it simply disappears:</p>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" data-line-number="1">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="ot">NULL</span>, <span class="dv">5</span>, <span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb273-2" data-line-number="2">z</a></code></pre></div>
+<pre><code>## [1] 3 4 5 6</code></pre>
+<p>The test for <code>NULL</code> is `is.null():</p>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb275-1" data-line-number="1">no &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
+<a class="sourceLine" id="cb275-2" data-line-number="2"><span class="kw">is.null</span>(no)</a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb277-1" data-line-number="1"><span class="kw">is.null</span>(z)</a></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p><code>is.null(z)</code> returns <code>FALSE</code> because the <code>NULL</code> within it is not recognised.</p>
+</div>
+</div>
+<div id="pipes" class="section level2">
+<h2>Pipes</h2>
+<p><strong>Functions can be chained together using the <code>magrittr</code> package</strong>, which introduces <strong>the <code>%&gt;%</code> operator</strong>, which for simplicity can be read as <strong>then…</strong></p>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;magrittr&quot;</span>)</a>
+<a class="sourceLine" id="cb279-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">12</span></a>
+<a class="sourceLine" id="cb279-3" data-line-number="3"><span class="kw">mean</span>(x)</a></code></pre></div>
+<pre><code>## [1] 6.5</code></pre>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb281-1" data-line-number="1">x <span class="op">%&gt;%</span><span class="st"> </span>mean</a></code></pre></div>
+<pre><code>## [1] 6.5</code></pre>
+<p><strong>Using pipes means that code can be read left-to-right</strong>, which is more natural than thetraditional right-to-left R <code>&lt;-</code> operator. <strong>Additional arguments</strong> can be named and included <strong>inside parentheses</strong> after the function call</p>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb283-1" data-line-number="1">z <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mean</span>(<span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## [1] 4.5</code></pre>
+</div>
+<div id="cheat-sheet" class="section level2">
+<h2>Cheat Sheet</h2>
+<p>A guide to what we have covered so far (and more) can be found in this PDF: <a href="http://datasciencefree.com/basicR.pdf">Data Science Free - basicR</a></p>
 <p class="bottom-navbar">
 <span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> <a href="RStudio_Ecosystem.html"><span class="bottom-navbar-link">Part 1 - RStudio Ecosystem</span></a>   |  <a href="R_Learning_Resources.html"><span class="bottom-navbar-link">Learning Resources</span></a>  <span class="glyphicon glyphicon-arrow-right"></span></span>
 </p>
-</div>
-</div>
 </div>
 
 
