@@ -705,6 +705,120 @@ length(list3)
 list3
 ```
 
+## Introducing Functions
+
+> R is a functional language, so almost every operation in R involves either creating new functions or accessing functions in package libraries.
+
+**An `R` programmer must choose and load a suitable package, select an appropriate function, and supply the arguments needed to make it work**.
+
+This can be as simple as calling a function against an element:
+
+```{r}
+mean (x)
+```
+
+More complicated functions require supplying their arguments either in the correct order, or specifying their name with an equals sign.
+
+Either way means knowing the capabilities and requirements of any function.
+
+### Function Help
+
+**If you know the name of a function**, entering a question mark followed by the function
+name in the _Console_ pane will display its documentation in the _Viewer_ pane:
+
+```{r}
+?mean
+```
+
+For help on  binary operator (e.g. `+`, `*`, `==`), surround it with backticks:
+
+```{r}
+?`==`
+```
+
+**If you are not sure which function to use**, you can search using only part of the name
+with `apropos()`:
+
+```{r}
+apropos("mea")
+```
+
+Construction and use of functions will be detailed later in this Tutorial series.
+
+## Nothing There?
+
+It's rare that a data set is complete in every detail. Some observations will be missing, while others may be accurately reported as being not available. Missing values can be represented in many ways: by a dash `-`, a period `.`, or even the number `99`.
+
+**`R` has two types of missing data: `NA` and `NULL`.**
++### NA
+
+**`R` recognises NA as an element of a Vector**.
+
+`is.na()` tests each element of a Vector:
+
+```{r}
+z <- c(3, 4, NA, 5, 6, NA)
+z
+is.na(z)
+
+```
+
+This works with any type of Vector.
+
+#### Removing NAs
+
+Some `Base R` functions return NA even if a single element is NA, for example `mean()`:
+
+```{r}
+mean(z)
+```
+
+`na.rm=TRUE` removes any NAs, allowing these functions to proceed:
+
+```{r}
+mean(z, na.rm=TRUE)
+```
+
+### NULL
+
+`NULL` is very Zen: it is nothingness, which means that there isn't even anything missing. `NULL` is atomical and can't exist in a Vector. If used in a Vector, it simply disappears:
+
+```{r}
+z <- c(3, 4, NULL, 5, 6)
+z
+```
+
+The test for `NULL` is `is.null():
+
+```{r}
+no <- NULL
+is.null(no)
+is.null(z)
+```
+
+`is.null(z)` returns `FALSE` because the `NULL` within it is not recognised.
+
+## Pipes
+
+**Functions can be chained together using the `magrittr` package**, which introduces **the `%>%` operator**, which for simplicity can be read as **then...**
+
+```{r}
+library("magrittr")
+x <- 1:12
+mean(x)
+x %>% mean
+```
+
+**Using pipes means that code can be read left-to-right**, which is more natural than thetraditional right-to-left R `<-` operator. **Additional arguments** can be named and included **inside parentheses** after the function call
+
+```{r}
+z %>% mean(na.rm=TRUE)
+```
+
+## Cheat Sheet
+
+A guide to what we have covered so far (and more) can be found in this PDF:
+[Data Science Free - basicR](http://datasciencefree.com/basicR.pdf)
 
 
 <p class="bottom-navbar"><span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> [<span class="bottom-navbar-link">Part 1 - RStudio Ecosystem</span>](RStudio_Ecosystem.html)&nbsp;&nbsp; | &nbsp;[<span class="bottom-navbar-link">Learning Resources</span>](R_Learning_Resources.html)&nbsp; <span class="glyphicon glyphicon-arrow-right"></span></span></p>
