@@ -2,4 +2,9 @@ packrat/lib*/
 .RData
 .Rhistory
 .Rproj.user
+<<<<<<< Updated upstream
 
+=======
+_site
+.DS_Store
+>>>>>>> Stashed changes
