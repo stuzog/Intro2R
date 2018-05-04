@@ -97,8 +97,7 @@ The use of white space between operators is recommended.
 
 Unlike statically-typed languages such a C++, R does not require variable types to be declared. An R variable can represent any data type or R object, such as a function, result, or graphical plot. R variables can be redeclared.
 
-* Variable names can **contain alphanumeric characters**
-  + but not **periods `.` or underscores `_`**
+* Variable names can **contain alphanumeric characters** but not **periods `.` or underscores `_`**
 * **They cannot _start_ with a number or underscore**
 * Variable names are **case sensitive**
 
@@ -750,7 +749,8 @@ Construction and use of functions will be detailed later in this Tutorial series
 It's rare that a data set is complete in every detail. Some observations will be missing, while others may be accurately reported as being not available. Missing values can be represented in many ways: by a dash `-`, a period `.`, or even the number `99`.
 
 **`R` has two types of missing data: `NA` and `NULL`.**
-+### NA
+
+### NA
 
 **`R` recognises NA as an element of a Vector**.
 
