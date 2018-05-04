@@ -4,3 +4,4 @@ packrat/lib*/
 .Rhistory
 .Rproj.user
 .DS_Store
+.dat.nosync*
