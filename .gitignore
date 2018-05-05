@@ -2,7 +2,10 @@ packrat/src*/
 packrat/lib*/
 .RData
 .Rhistory
-.Rproj.user
+.Rproj.user/
+/*_cache/
+/cache/
+*.utf8.md
+*.knit.md
 .DS_Store
 .dat.nosync*
-_site/site_libs*/
