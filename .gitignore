@@ -3,6 +3,7 @@ packrat/lib*/
 .RData
 .Rhistory
 .Rproj
+.Rproj.user
 .Rproj.user/
 /*_cache/
 /cache/
