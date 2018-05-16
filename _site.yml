@@ -17,7 +17,7 @@ navbar:
     - text: R Fundamentals
       href: R_Programming.html
     - text: Data Acquisition
-      href: Data_Acquisition.html
+      href: R_Data_Acquisition.html
   - text: Learning Resources
     href: R_Learning_Resources.html
 output:
