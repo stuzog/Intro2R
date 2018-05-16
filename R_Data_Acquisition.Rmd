@@ -5,7 +5,7 @@ date: "May 16, 2018"
 output: html_document
 ---
 
-**The means to acquire data are built into `R`**, which makes it extremely easy to access large pools of publicly-available statistical data pools that have been assembled by governments, research centres, corporations, business associations, and non-profit organisations.
+**The means to acquire data are built into `R`**, which makes it extremely easy to access large pools of publicly-available statistical data pools that have been assembled by governments, research centres, corporations, business associations, non-profit organisations, and individuals.
 
 Data can be harvested from:
 
