@@ -321,5 +321,5 @@ An interesting and uncluttered example is [Simply Statistics](https://simplystat
 * [RStudio Server> Getting Started](https://support.rstudio.com/hc/en-us/articles/234653607-Getting-Started-with-RStudio-Server) --- lists many links for setup and use
 * [RStudio Server Pro Admin. Guide](http://docs.rstudio.com/ide/server-pro/) --- web-accessible User Manual
 
-<p class="bottom-navbar"><span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> [<span class="bottom-navbar-link">Part 1 - RStudio IDE</span>](RStudio.html)&nbsp;&nbsp; | &nbsp;[<span class="bottom-navbar-link">Part 2 - Fundamentals of R</span>](Part2_R_Programming.html)&nbsp; <span class="glyphicon glyphicon-arrow-right"></span></span></p>
+<p class="bottom-navbar"><span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> [<span class="bottom-navbar-link">Part 1 - RStudio IDE</span>](RStudio.html)&nbsp;&nbsp; | &nbsp;[<span class="bottom-navbar-link">Part 2 - Fundamentals of R</span>](R_Programming.html)&nbsp; <span class="glyphicon glyphicon-arrow-right"></span></span></p>
 

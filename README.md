@@ -16,12 +16,12 @@ Good luck with your R learning!
 
 **Part 1**
 
-* [R For Data Science](https://r.stuzog.com/Part1_R_Data_Science.html)
+* [R For Data Science](https://r.stuzog.com/R_Data_Science.html)
 * [The RStudio IDE](https://r.stuzog.com/RStudio.html)
 * [The RStudio Ecosystem](https://r.stuzog.com/RStudio_Ecosystem.html)
 
 **Part2**
 
-* [Fundamentals of R](https://r.stuzog.com/Part2_R_Programming.html)
+* [Fundamentals of R](https://r.stuzog.com/R_Programming.html)
 
 [Learning Resources](https://r.stuzog.com/R_Learning_Resources.html)

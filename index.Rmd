@@ -36,7 +36,7 @@ Good luck with your R learning!
 
 **Part 1**
 
-* [R For Data Science](Part1_R_Data_Science.html)
+* [R For Data Science](R_Data_Science.html)
 * [The RStudio IDE](RStudio.html)
 * [RStudio Ecosystem](RStudio_Ecosystem.html)
 

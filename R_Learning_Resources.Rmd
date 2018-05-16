@@ -125,4 +125,4 @@ If you're into listening to podcasts, there are many great podcasts about R, Dat
 Collected from: [A few podcast recommendations | R-bloggers](https://www.r-bloggers.com/a-few-podcast-recommendations/)
 
 
-<p class="bottom-navbar"><span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> [<span class="bottom-navbar-link">Part 2 - Fundamentals of R</span>](Part2_R_Programming.html)&nbsp;&nbsp; | &nbsp;[<span class="bottom-navbar-link">Home</span>](index.html)&nbsp; <span class="glyphicon glyphicon-arrow-right"></span></span></p>
+<p class="bottom-navbar"><span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> [<span class="bottom-navbar-link">Part 2 - Fundamentals of R</span>](R_Programming.html)&nbsp;&nbsp; | &nbsp;[<span class="bottom-navbar-link">Home</span>](index.html)&nbsp; <span class="glyphicon glyphicon-arrow-right"></span></span></p>

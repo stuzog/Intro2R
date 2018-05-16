@@ -49,7 +49,7 @@ Once these are properly set up, you can proceed to Installation:
 1. Create a new repository in your GitHub account
 1. Add it to RStudio as a _Github destination_
 1. Push the files in your Project Directory to GitHub
-1. Continue to [Part1](Part1_R_Data_Science.html) of your introduction to R
+1. Continue to [Part1](R_Data_Science.html) of your introduction to R
 
 It may look intimidating, but it's fairly easy to work through.
 
@@ -81,8 +81,8 @@ drwxr-xr-x   12 (username)  staff    408 18 Apr 09:10 .git
 -rw-r--r--    1 (username)  staff     26 18 Apr 09:10 .gitignore
 -rw-r--r--    1 (username)  staff    536 18 Apr 09:10 How.Rmd
 -rw-r--r--    1 (username)  staff    225 18 Apr 09:10 Intro2R.Rproj
--rw-r--r--    1 (username)  staff  18366 18 Apr 09:10 Part1_R_Data Science.Rmd
--rw-r--r--    1 (username)  staff  13654 18 Apr 09:10 Part2_R_Programming.Rmd
+-rw-r--r--    1 (username)  staff  18366 18 Apr 09:10 R_Data Science.Rmd
+-rw-r--r--    1 (username)  staff  13654 18 Apr 09:10 R_Programming.Rmd
 -rw-r--r--    1 (username)  staff   1360 18 Apr 09:10 README.md
 -rw-r--r--    1 (username)  staff  12253 18 Apr 09:10 RStudio.Rmd
 -rw-r--r--    1 (username)  staff   8000 18 Apr 09:10 RStudio_Ecosystem.Rmd
@@ -334,5 +334,5 @@ A smaller _Progress window_ will open over the _Review window_. It is actually a
 
 ![_**Above:** After a successful Push, a second Push shows everything up-to-date._](images/RStudio-push-changes.png)
 
-<p class="bottom-navbar"><span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> [<span class="bottom-navbar-link">Home</span>](index.html)&nbsp;&nbsp; | &nbsp;[<span class="bottom-navbar-link">Part 1 - R For Data Science</span>](Part1_R_Data_Science.html)&nbsp; <span class="glyphicon glyphicon-arrow-right"></span></span></p>
+<p class="bottom-navbar"><span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> [<span class="bottom-navbar-link">Home</span>](index.html)&nbsp;&nbsp; | &nbsp;[<span class="bottom-navbar-link">Part 1 - R For Data Science</span>](R_Data_Science.html)&nbsp; <span class="glyphicon glyphicon-arrow-right"></span></span></p>
 
