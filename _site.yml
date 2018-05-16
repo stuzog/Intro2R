@@ -7,13 +7,17 @@ navbar:
   - text: Part1
     menu:
     - text: R For Data Science
-      href: Part1_R_Data_Science.html
+      href: R_Data_Science.html
     - text: The RStudio IDE
       href: RStudio.html
     - text: RStudio Ecosystem
       href: RStudio_Ecosystem.html
   - text: Part2
-    href: Part2_R_Programming.html
+    menu:
+    - text: R Fundamentals
+      href: R_Programming.html
+    - text: Data Acquisition
+      href: Data_Acquisition.html
   - text: Learning Resources
     href: R_Learning_Resources.html
 output:

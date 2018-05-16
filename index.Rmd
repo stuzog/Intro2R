@@ -43,6 +43,7 @@ Good luck with your R learning!
 **Part2**
 
 * [R Fundamentals](Part2_R_Programming.html)
+* [Data Acquisition](Data_Acquisition.Rmd)
 
 [Learning Resources](R_Learning_Resources.html)
 

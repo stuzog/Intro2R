@@ -1,0 +1,39 @@
+---
+title: "Data Acquisition"
+author: "Stuart Hertzog"
+date: "May 16, 2018"
+output: html_document
+---
+
+**The means to acquire data are built into `R`**, which makes it extremely easy to access large pools of publicly-available statistical data pools that have been assembled by governments, research centres, corporations, business associations, and non-profit organisations.
+
+Data can be harvested from:
+
+* **Plain text and delimited files** (`.txt`, `.csv`, `.tsv`)
+* **Microsoft Word and Excel files** (`.doc`, `.docx`, `.xls`, `.xlsx`)
+* **Data contained within databases** (SQLite, MySQL, Microsoft Access)
+* **Data in statistical software** (SAS, SPSS, NCSS, Octave)
+
+The data sources can be located:
+
+  * **on your computer storage**
+  * **on a local or linked network**, or
+  * **anywhere on the global Internet**
+
+## Built-In `R` Datasets
+
+An `R` installation includes many built-in datasets. These can be listed with the command:
+
+```{r, eval = FALSE}
+data()
+```
+
+Many packages also contain their own datasets. You can see a comprehensive listing of these with the command:
+
+```{r, eval = FALSE}
+data(package = .packages(all.available = TRUE)
+```
+
+A packge must be installed and loaded before its dataset is available.
+
+
