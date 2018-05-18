@@ -46,19 +46,19 @@ Warning messages:
   datasets have been moved from package 'stats' to package 'datasets'
 ```
 
-## Datasets In R Binary Files
-
 ## Importing CSV Data
 
 ## Importing Excel Data
+
+## Importing JSON Data
+
+## Data In R Binary Files
 
 ## Data From Databases
 
 ## Data from Web Sites
 
-## Importing JSON Data
-
-## From Statistical Software
+## From Other Software
 
 
 <p class="bottom-navbar"><span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> [<span class="bottom-navbar-link">Part 2 - Fundamentals of R</span>](R_Programming.html)&nbsp;&nbsp; | &nbsp;[<span class="bottom-navbar-link">Learning Resources</span>](R_Learning_Resources.html)&nbsp; <span class="glyphicon glyphicon-arrow-right"></span></span></p>
