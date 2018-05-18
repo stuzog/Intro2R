@@ -13,7 +13,6 @@ Data can be harvested from:
 * **Microsoft Word and Excel files** (`.doc`, `.docx`, `.xls`, `.xlsx`)
 * **Data contained within databases** (SQLite, MySQL, Microsoft Access)
 * **Data in statistical software** (SAS, SPSS, NCSS, Octave)
-
 The data sources can be located:
 
   * **in `R` and `R packages`**

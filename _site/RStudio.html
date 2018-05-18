@@ -408,7 +408,10 @@ div.tocify {
 <div id="package-management-in-rstudio" class="section level2">
 <h2>Package Management In RStudio</h2>
 <p><strong>Package management is an integral part of the RStudio interface</strong>. The <em>Packages</em> tab in the Files/Viewer pane shows all locally-installed and system packages.</p>
-<p><img src="images/RStudio_packages.png" /></p>
+<div class="figure">
+<img src="images/RStudio_packages.png" />
+
+</div>
 <p><strong>Clicking the checkbox to the left of each package listing</strong> will load a package’s library into memory and make its functions available. The corresponding installation command will appear immediately in the Console plus any warning messages.</p>
 <p><strong>Packages with checkmarks have already been loaded</strong>. Unclicking a loaded package will unload it unless it is required by RMarkdown, in which case a warning message will inform you of that restriction and the package will remain loaded.</p>
 <p><strong>There are two ways of installing packages</strong> in the RStudio interface:</p>
@@ -426,7 +429,9 @@ div.tocify {
 <p><strong>The location of the R installation on your system</strong> can be found by entering <code>R.home(component = &quot;home&quot;)</code> in the Console. Other component values for the paths to specific directories of the current R installation are <code>&quot;bin&quot;</code>, <code>&quot;doc&quot;</code>, <code>&quot;etc&quot;</code>, <code>&quot;include&quot;</code>, <code>library</code>, <code>&quot;modules&quot;</code> and <code>&quot;share&quot;</code>.</p>
 <p><strong>Clicking the <em>Install dependencies</em> checkbox</strong> will also download and install any other packages required for the requested package(s). This is recommended.</p>
 <p><strong>NOTE: This option will not work when installing from a local archive</strong>. In this case the dependencies must be installed first, or the installation will fail.</p>
-<p>###Installing From The Console</p>
+</div>
+<div id="installing-from-the-console" class="section level3">
+<h3>Installing From The Console</h3>
 <p><strong>Packages can be installed and loaded from the Console</strong>. The command sequence is:</p>
 <p><code>install.packages(&quot;PackageName&quot;)</code><br />
 <code>library(PackageName)</code></p>
