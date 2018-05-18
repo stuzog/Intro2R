@@ -401,6 +401,7 @@ div.tocify {
 </ul>
 <p>The data sources can be located:</p>
 <ul>
+<li><strong>in <code>R</code> and <code>R packages</code></strong></li>
 <li><strong>on your computer storage</strong></li>
 <li><strong>on a local or linked network</strong>, or</li>
 <li><strong>anywhere on the global Internet</strong></li>
@@ -409,20 +410,50 @@ div.tocify {
 <h2>Built-In <code>R</code> Datasets</h2>
 <p><strong>An <code>R</code> installation includes many built-in datasets</strong>. These are contained in the package <code>datasets</code> and are available at all times. They can be listed with the command:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">data</span>()</a></code></pre></div>
+<p>Specific datasets can be loaded using the same <code>data()</code> function and its structure inspected using <code>head()</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">data</span>(<span class="st">&quot;USArrests&quot;</span>)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">head</span>(USArrests)</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Murder"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Assault"],"name":[2],"type":["int"],"align":["right"]},{"label":["UrbanPop"],"name":[3],"type":["int"],"align":["right"]},{"label":["Rape"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"13.2","2":"236","3":"58","4":"21.2","_rn_":"Alabama"},{"1":"10.0","2":"263","3":"48","4":"44.5","_rn_":"Alaska"},{"1":"8.1","2":"294","3":"80","4":"31.0","_rn_":"Arizona"},{"1":"8.8","2":"190","3":"50","4":"19.5","_rn_":"Arkansas"},{"1":"9.0","2":"276","3":"91","4":"40.6","_rn_":"California"},{"1":"7.9","2":"204","3":"78","4":"38.7","_rn_":"Colorado"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <div id="datasets-in-packages" class="section level2">
 <h2>Datasets In Packages</h2>
 <p><strong>Many packages also contain their own datasets</strong>. A package must be installed and loaded before its dataset is available. You can see a comprehensive listing of the datasets included in all installed packages with the command:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">data</span>(<span class="dt">package =</span> <span class="kw">.packages</span>(<span class="dt">all.available =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
-<p>Packages will be listed in alphabetical order followed by the datasets they contain. You will be surprised to see how many datasets are available for your use! Due to changes in dataset organisation in recent <code>R</code> versions, you will likely see in Console:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">data</span>(<span class="dt">package =</span> <span class="kw">.packages</span>(<span class="dt">all.available =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<p><strong>Packages will be listed in alphabetical order</strong> followed by the datasets they contain. You will be surprised to see how many datasets are available for your use! Due to changes in dataset organisation in recent <code>R</code> versions, you may see in Console:</p>
 <pre><code>Warning messages:
 1: In data(package = .packages(all.available = TRUE)) :
   datasets have been moved from package &#39;base&#39; to package &#39;datasets&#39;
 2: In data(package = .packages(all.available = TRUE)) :
   datasets have been moved from package &#39;stats&#39; to package &#39;datasets&#39;</code></pre>
+<p><strong>To import and inspect a dataset contained in a package</strong>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">data</span>(diamonds, <span class="dt">package=</span><span class="st">&#39;ggplot2&#39;</span>)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">head</span>(diamonds)</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["carat"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["cut"],"name":[2],"type":["ord"],"align":["right"]},{"label":["color"],"name":[3],"type":["ord"],"align":["right"]},{"label":["clarity"],"name":[4],"type":["ord"],"align":["right"]},{"label":["depth"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["table"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["price"],"name":[7],"type":["int"],"align":["right"]},{"label":["x"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["y"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["z"],"name":[10],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.23","2":"Ideal","3":"E","4":"SI2","5":"61.5","6":"55","7":"326","8":"3.95","9":"3.98","10":"2.43","_rn_":"1"},{"1":"0.21","2":"Premium","3":"E","4":"SI1","5":"59.8","6":"61","7":"326","8":"3.89","9":"3.84","10":"2.31","_rn_":"2"},{"1":"0.23","2":"Good","3":"E","4":"VS1","5":"56.9","6":"65","7":"327","8":"4.05","9":"4.07","10":"2.31","_rn_":"3"},{"1":"0.29","2":"Premium","3":"I","4":"VS2","5":"62.4","6":"58","7":"334","8":"4.20","9":"4.23","10":"2.63","_rn_":"4"},{"1":"0.31","2":"Good","3":"J","4":"SI2","5":"63.3","6":"58","7":"335","8":"4.34","9":"4.35","10":"2.75","_rn_":"5"},{"1":"0.24","2":"Very Good","3":"J","4":"VVS2","5":"62.8","6":"57","7":"336","8":"3.94","9":"3.96","10":"2.48","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
-<div id="importing-csv-data" class="section level2">
-<h2>Importing CSV Data</h2>
+</div>
+<div id="importing-delimited-data" class="section level2">
+<h2>Importing Delimited Data</h2>
+<p><strong><a href="https://en.wikipedia.org/wiki/Delimiter-separated_values">Delimiter-separated</a> data files are plain text files</strong> in which the data is arranged in <strong>rows</strong>, each row <strong>containing data items separated by a delimiter</strong> and the row <strong>ended by a <code>&lt;NEWLINE&gt;</code></strong>. The first row of data is usually the column headings.</p>
+<p><strong>These are the most basic type of dataset</strong> as being plain text, they are cross-platform and can be opened by any text editor. Most database and spreadsheet programs are able to read or save data in a delimited format.</p>
+<p><strong>The most common data delimiters are</strong>:</p>
+<ul>
+<li><strong>Comma-Separated Values</strong> (CSV – <code>.csv</code> file extension)</li>
+<li><strong>Tab-Separated Values</strong> (TSV – <code>.tsv</code> file extension)</li>
+<li><strong>Any other ASCII character</strong> (colon <code>:</code>, pipe <code>|</code>, etc.)</li>
+<li><strong>Designated ASCII <a href="https://en.wikipedia.org/wiki/Control_character#Data_structuring">Control characters</a></strong>.</li>
+</ul>
+<p>If the data items consist of multiple words or characters separated by punctuation or spaces, each data item must be contained within pairs of single <code>'&lt;ITEM&gt;'</code> or double <code>&quot;&lt;ITEM&gt;&quot;</code> quotes.</p>
+<div id="using-read.table" class="section level3">
+<h3>Using <code>read.table</code></h3>
+<p><code>read.table</code> is part of <code>R</code>’s built-in <code>utils</code> package. It’s the esiest way to import delimited data files, and results in a <code>data.frame</code>. Here’s a <code>.csv</code> file containing data from my <a href="https://www.fitbit.com">Fitbit tracker</a>:</p>
+</div>
 </div>
 <div id="importing-excel-data" class="section level2">
 <h2>Importing Excel Data</h2>

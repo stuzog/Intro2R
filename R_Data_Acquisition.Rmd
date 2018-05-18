@@ -16,6 +16,7 @@ Data can be harvested from:
 
 The data sources can be located:
 
+  * **in `R` and `R packages`**
   * **on your computer storage**
   * **on a local or linked network**, or
   * **anywhere on the global Internet**
@@ -28,6 +29,13 @@ The data sources can be located:
 data()
 ```
 
+Specific datasets can be loaded using the same `data()` function and its structure inspected using `head()`:
+
+```{r}
+data("USArrests")
+head(USArrests)
+```
+
 ## Datasets In Packages
 
 **Many packages also contain their own datasets**. A package must be installed and loaded before its dataset is available. You can see a comprehensive listing of the datasets included in all installed packages with the command:
@@ -36,7 +44,7 @@ data()
 data(package = .packages(all.available = TRUE))
 ```
 
-Packages will be listed in alphabetical order followed by the datasets they contain. You will be surprised to see how many datasets are available for your use! Due to changes in dataset organisation in recent `R` versions, you will likely see in Console:
+**Packages will be listed in alphabetical order** followed by the datasets they contain. You will be surprised to see how many datasets are available for your use! Due to changes in dataset organisation in recent `R` versions, you may see in Console:
 
 ```
 Warning messages:
@@ -46,7 +54,38 @@ Warning messages:
   datasets have been moved from package 'stats' to package 'datasets'
 ```
 
-## Importing CSV Data
+**To import and inspect a dataset contained in a package**:
+
+```{r}
+data(diamonds, package='ggplot2')
+head(diamonds)
+```
+
+## Importing Delimited Data
+
+**[Delimiter-separated](https://en.wikipedia.org/wiki/Delimiter-separated_values) data files are plain text files** in which the data is arranged in **rows**, each row **containing data items separated by a delimiter** and the row **ended by a `<NEWLINE>`**. The first row of data is usually the column headings.
+
+**These are the most basic type of dataset** as being plain text, they are cross-platform and can be opened by any text editor. Most database and spreadsheet programs are able to read or save data in a delimited format.
+
+**The most common data delimiters are**:
+
+* **Comma-Separated Values** (CSV -- `.csv` file extension)
+* **Tab-Separated Values** (TSV -- `.tsv` file extension)
+* **Any other ASCII character** (colon `:`, pipe `|`, etc.)
+* **Designated ASCII [Control characters](https://en.wikipedia.org/wiki/Control_character#Data_structuring)**.
+
+If the data items consist of multiple words or characters separated by punctuation or spaces, each data item must be contained within pairs of single `'<ITEM>'` or double `"<ITEM>"` quotes.
+
+### Using `read.table`
+
+`read.table` is part of `R`'s built-in `utils` package. It's the esiest way to import delimited data files, and results in a `data.frame`. Here's a `.csv` file containing data from my [Fitbit tracker](https://www.fitbit.com):
+
+```{r}
+theUrl <- "https//r.stuzog.com/docs/fitbit.csv"
+fitbit <- read.table(file=theUrl, header=TRUE, sep=",")
+head(fitbit)
+```
+
 
 ## Importing Excel Data
 
