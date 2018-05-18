@@ -22,21 +22,43 @@ The data sources can be located:
 
 ## Built-In `R` Datasets
 
-An `R` installation includes many built-in datasets. These can be listed with the command:
+**An `R` installation includes many built-in datasets**. These are contained in the package `datasets` and are available at all times. They can be listed with the command:
 
 ```{r, eval = FALSE}
 data()
 ```
 
-Many packages also contain their own datasets. You can see a comprehensive listing of these with the command:
+## Datasets In Packages
+
+**Many packages also contain their own datasets**. A package must be installed and loaded before its dataset is available. You can see a comprehensive listing of the datasets included in all installed packages with the command:
 
 ```{r, eval = FALSE}
-data(package = .packages(all.available = TRUE)
+data(package = .packages(all.available = TRUE))
 ```
 
-A packge must be installed and loaded before its dataset is available.
+Packages will be listed in alphabetical order followed by the datasets they contain. You will be surprised to see how many datasets are available for your use! Due to changes in dataset organisation in recent `R` versions, you will likely see in Console:
 
+```
+Warning messages:
+1: In data(package = .packages(all.available = TRUE)) :
+  datasets have been moved from package 'base' to package 'datasets'
+2: In data(package = .packages(all.available = TRUE)) :
+  datasets have been moved from package 'stats' to package 'datasets'
+```
 
+## Datasets In R Binary Files
+
+## Importing CSV Data
+
+## Importing Excel Data
+
+## Data From Databases
+
+## Data from Web Sites
+
+## Importing JSON Data
+
+## From Statistical Software
 
 
 <p class="bottom-navbar"><span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> [<span class="bottom-navbar-link">Part 2 - Fundamentals of R</span>](R_Programming.html)&nbsp;&nbsp; | &nbsp;[<span class="bottom-navbar-link">Learning Resources</span>](R_Learning_Resources.html)&nbsp; <span class="glyphicon glyphicon-arrow-right"></span></span></p>

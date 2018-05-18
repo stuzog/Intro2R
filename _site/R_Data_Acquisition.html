@@ -407,11 +407,40 @@ div.tocify {
 </ul>
 <div id="built-in-r-datasets" class="section level2">
 <h2>Built-In <code>R</code> Datasets</h2>
-<p>An <code>R</code> installation includes many built-in datasets. These can be listed with the command:</p>
+<p><strong>An <code>R</code> installation includes many built-in datasets</strong>. These are contained in the package <code>datasets</code> and are available at all times. They can be listed with the command:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">data</span>()</a></code></pre></div>
-<p>Many packages also contain their own datasets. You can see a comprehensive listing of these with the command:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">data</span>(<span class="dt">package =</span> <span class="kw">.packages</span>(<span class="dt">all.available =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<p>A packge must be installed and loaded before its dataset is available.</p>
+</div>
+<div id="datasets-in-packages" class="section level2">
+<h2>Datasets In Packages</h2>
+<p><strong>Many packages also contain their own datasets</strong>. A package must be installed and loaded before its dataset is available. You can see a comprehensive listing of the datasets included in all installed packages with the command:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">data</span>(<span class="dt">package =</span> <span class="kw">.packages</span>(<span class="dt">all.available =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<p>Packages will be listed in alphabetical order followed by the datasets they contain. You will be surprised to see how many datasets are available for your use! Due to changes in dataset organisation in recent <code>R</code> versions, you will likely see in Console:</p>
+<pre><code>Warning messages:
+1: In data(package = .packages(all.available = TRUE)) :
+  datasets have been moved from package &#39;base&#39; to package &#39;datasets&#39;
+2: In data(package = .packages(all.available = TRUE)) :
+  datasets have been moved from package &#39;stats&#39; to package &#39;datasets&#39;</code></pre>
+</div>
+<div id="datasets-in-r-binary-files" class="section level2">
+<h2>Datasets In R Binary Files</h2>
+</div>
+<div id="importing-csv-data" class="section level2">
+<h2>Importing CSV Data</h2>
+</div>
+<div id="importing-excel-data" class="section level2">
+<h2>Importing Excel Data</h2>
+</div>
+<div id="data-from-databases" class="section level2">
+<h2>Data From Databases</h2>
+</div>
+<div id="data-from-web-sites" class="section level2">
+<h2>Data from Web Sites</h2>
+</div>
+<div id="importing-json-data" class="section level2">
+<h2>Importing JSON Data</h2>
+</div>
+<div id="from-statistical-software" class="section level2">
+<h2>From Statistical Software</h2>
 <p class="bottom-navbar">
 <span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> <a href="R_Programming.html"><span class="bottom-navbar-link">Part 2 - Fundamentals of R</span></a>   |  <a href="R_Learning_Resources.html"><span class="bottom-navbar-link">Learning Resources</span></a>  <span class="glyphicon glyphicon-arrow-right"></span></span>
 </p>
