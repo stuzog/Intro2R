@@ -78,10 +78,10 @@ If the data items consist of multiple words or characters separated by punctuati
 
 ### Using `read.table`
 
-`read.table` is part of `R`'s built-in `utils` package. It's the esiest way to import delimited data files, and results in a `data.frame`. Here's a `.csv` file containing data from my [Fitbit tracker](https://www.fitbit.com):
+`read.table` is part of `R`'s built-in `utils` package. It's the esiest way to import delimited data files, and results in a `data.frame`. Here are the first six lines of a `.csv` file containing data from a [Fitbit tracker](https://www.fitbit.com). It is called `fitbit.csv` in the `docs` directory of this project:
 
 ```{r}
-theUrl <- "https//r.stuzog.com/docs/fitbit.csv"
+theUrl <- "docs/fitbit.csv"
 fitbit <- read.table(file=theUrl, header=TRUE, sep=",")
 head(fitbit)
 ```
