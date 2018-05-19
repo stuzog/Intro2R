@@ -86,6 +86,7 @@ head(fitbit)
 ```
 
 
+<<<<<<< Updated upstream
 ## Importing Excel Data
 
 ## Importing JSON Data
@@ -97,6 +98,22 @@ head(fitbit)
 ## Data from Web Sites
 
 ## From Other Software
+=======
+## Importing from CSVs
 
+## Importing Excel Data
+>>>>>>> Stashed changes
+
+## Reading from Databases
+
+## From Other Statistical Tools
+
+## R Binary Files
+
+## Data Included with R
+
+## Data from Web Sites
+
+## Importing JSON Data
 
 <p class="bottom-navbar"><span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> [<span class="bottom-navbar-link">Part 2 - Fundamentals of R</span>](R_Programming.html)&nbsp;&nbsp; |&nbsp; [<span class="bottom-navbar-link">Learning Resources</span>](R_Learning_Resources.html)&nbsp; <span class="glyphicon glyphicon-arrow-right"></span></span></p>
