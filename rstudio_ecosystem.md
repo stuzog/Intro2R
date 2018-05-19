@@ -1,7 +1,7 @@
 ---
-title: "The RStudio Ecosystem"
-author: "by Stuart Hertzog"
-date: "March&ndash;May 2018"
+title: The RStudio Ecosystem
+author: by Stuart Hertzog
+date: March&ndash;May 2018
 output:
   html_document:
     df_print: paged
@@ -9,24 +9,26 @@ output:
   word_document: default
 ---
 
-<script>
-    $(document).ready(function() {
-      $items = $('div#TOC li');
-      $items.each(function(idx) {
-        num_ul = $(this).parentsUntil('#TOC').length;
-        $(this).css({'text-indent': num_ul * 10, 'padding-left': 0});
-      });
+# RStudio\_Ecosystem
 
-    });
-</script>
+  
+    $\(document\).ready\(function\(\) {  
+      $items = $\('div\#TOC li'\);  
+      $items.each\(function\(idx\) {  
+        num\_ul = $\(this\).parentsUntil\('\#TOC'\).length;  
+        $\(this\).css\({'text-indent': num\_ul \* 10, 'padding-left': 0}\);  
+      }\);  
+  
+    }\);  
 
-![](images/RStudio_full_logo.png)
+
+![](.gitbook/assets/rstudio_full_logo.png)
 
 **The RStudio IDE is the flagship of a comprehensive RStudio ecosystem.**
 
 ## R Notebooks
 
-[R Notebooks](https://rmarkdown.rstudio.com/r_notebooks.html) are the most basic type of [RMarkdown](#rmarkdown) document. They are the RStudio equivalent to [Jupyter Notebooks](https://jupyter.org/). As described by [RStudio](https://rmarkdown.rstudio.com/r_notebooks.html):
+[R Notebooks](https://rmarkdown.rstudio.com/r_notebooks.html) are the most basic type of [RMarkdown](rstudio_ecosystem.md#rmarkdown) document. They are the RStudio equivalent to [Jupyter Notebooks](https://jupyter.org/). As described by [RStudio](https://rmarkdown.rstudio.com/r_notebooks.html):
 
 > An R Notebook is an R Markdown document with chunks that can be executed independently and interactively, with output visible immediately beneath the input.
 
@@ -34,9 +36,9 @@ output:
 
 ### Creating An R Notebook File
 
-**The RStudio menu item _File -> New File -> R Notebook_** creates a new [RStudio Notebook](https://rmarkdown.rstudio.com/r_notebooks.html) containing instructions on how to use an R Notebook.
+**The RStudio menu item** _**File -&gt; New File -&gt; R Notebook**_ creates a new [RStudio Notebook](https://rmarkdown.rstudio.com/r_notebooks.html) containing instructions on how to use an R Notebook.
 
-````
+```text
 ---
 title: "R Notebook"
 output:
@@ -57,14 +59,13 @@ Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by press
 When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
 
 The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
-
-````
+```
 
 For more information see [RStudio Notebook](https://rmarkdown.rstudio.com/r_notebooks.html).
 
 ### R Notebook HTML files
 
-**An [R Notebook HTML file](https://rmarkdown.rstudio.com/r_notebook_format.html) is a special type of [R Notebook](#r-notebook)**.
+**An** [**R Notebook HTML file**](https://rmarkdown.rstudio.com/r_notebook_format.html) **is a special type of** [**R Notebook**](rstudio_ecosystem.md#r-notebook).
 
 It is an HTML file that uses the `.nb.html` extension and it enables:
 
@@ -73,7 +74,7 @@ It is an HTML file that uses the `.nb.html` extension and it enables:
 
 The `html_notebook` output format is specified in the YAML metadata:
 
-```
+```text
 title: "my_document_title"
 output:
     html_notebook
@@ -87,15 +88,16 @@ For more information, see [Details of the R Notebook HTML Format](https://rmarkd
 
 ## RMarkdown
 
-> R Markdown documents are fully reproducible. They use a productive notebook interface to weave together narrative text and code to produce elegantly-formatted output from multiple languages including R, Python, and SQL.<br />--- [_RStudio RMarkdown_](https://rmarkdown.rstudio.com/)
+> R Markdown documents are fully reproducible. They use a productive notebook interface to weave together narrative text and code to produce elegantly-formatted output from multiple languages including R, Python, and SQL.  
+> --- [_RStudio RMarkdown_](https://rmarkdown.rstudio.com/)
 
-**[RMarkdown documents](https://rmarkdown.rstudio.com/) are the default RStudio document**. They are plain-text files with the `.Rmd` extension and can be used to generate many different types of output. The main ones are:
+[**RMarkdown documents**](https://rmarkdown.rstudio.com/) **are the default RStudio document**. They are plain-text files with the `.Rmd` extension and can be used to generate many different types of output. The main ones are:
 
 * [HTML documents](https://rmarkdown.rstudio.com/html_document_format.html) -- `.html`
 * [PDF Documents](https://rmarkdown.rstudio.com/pdf_document_format.html) -- `.pdf`
 * [Word Documents](https://rmarkdown.rstudio.com/word_document_format.html) -- `.docx`
 
-In addition to the standard output formats (above), RMarkdown documents can generate output in many other formats, via the [pandoc](#pandoc) conversion engine.
+In addition to the standard output formats \(above\), RMarkdown documents can generate output in many other formats, via the [pandoc](rstudio_ecosystem.md#pandoc) conversion engine.
 
 [Beamer](https://rmarkdown.rstudio.com/beamer_presentation_format.html), [HTML5 slides](https://rmarkdown.rstudio.com/ioslides_presentation_format.html), [Tufte-style handouts](https://rmarkdown.rstudio.com/tufte_handout_format.html), [books](https://bookdown.org/yihui/bookdown/), [dashboards](https://rmarkdown.rstudio.com/flexdashboard/), [interactive documents](https://rmarkdown.rstudio.com/authoring_shiny.html), [scientific articles](https://github.com/rstudio/rticles), and [websites](https://rmarkdown.rstudio.com/rmarkdown_websites.html).
 
@@ -103,11 +105,9 @@ In addition to the standard output formats (above), RMarkdown documents can gene
 
 ### knitr
 
-<image src="images/knitr.png" class="small-left-1em" />
-
 > RMarkdown uses the [knitr](https://yihui.name/knitr/) report generation package to output to the different file formats.
 
-**The `knitr` package enables integration of R code into [LaTeX](https://en.wikipedia.org/wiki/LaTeX), [LyX](https://en.wikipedia.org/wiki/LyX), [HTML](https://en.wikipedia.org/wiki/HTML), [Markdown](https://en.wikipedia.org/wiki/Markdown), [AsciiDoc](https://en.wikipedia.org/wiki/AsciiDoc), and [reStructuredText](https://en.wikipedia.org/wiki/ReStructuredText) documents**. It can execute code chunks in a variety of languages via [knitr Language Engines](https://rmarkdown.rstudio.com/authoring_knitr_engines.html), including for:
+**The** `knitr` **package enables integration of R code into** [**LaTeX**](https://en.wikipedia.org/wiki/LaTeX)**,** [**LyX**](https://en.wikipedia.org/wiki/LyX)**,** [**HTML**](https://en.wikipedia.org/wiki/HTML)**,** [**Markdown**](https://en.wikipedia.org/wiki/Markdown)**,** [**AsciiDoc**](https://en.wikipedia.org/wiki/AsciiDoc)**, and** [**reStructuredText**](https://en.wikipedia.org/wiki/ReStructuredText) **documents**. It can execute code chunks in a variety of languages via [knitr Language Engines](https://rmarkdown.rstudio.com/authoring_knitr_engines.html), including for:
 
 * R
 * Python
@@ -120,11 +120,11 @@ In addition to the standard output formats (above), RMarkdown documents can gene
 
 **To process a code chunk using an alternate language engine** simply use the name of the engine in place of `{r}` in the chunk declaration, for example:
 
-````
+```text
 ```{bash, eval = FALSE}
 cat flights1.csv flights2.csv flights3.csv > flights.csv
 ```
-````
+```
 
 #### Code Chunk Options
 
@@ -132,14 +132,13 @@ cat flights1.csv flights2.csv flights3.csv > flights.csv
 
 `{r, include = FALSE`} prevents code and results from appearing.  
 R Markdown still runs the code and the results can be used by other chunks.  
-`{r, eval = FALSE`} prevents to code from running but it still appears.
-`{r, echo = FALSE`} prevents code but not the results from appearing.  
+`{r, eval = FALSE`} prevents to code from running but it still appears. `{r, echo = FALSE`} prevents code but not the results from appearing.  
 This is a useful way to embed figures.  
 `{r, message = FALSE`} prevents messages generated by code from appearing.  
 `{r, warning = FALSE`} prevents warnings generated by code from appearing.  
 `{r, fig.cap = "..."`} adds a caption to graphical results.
 
-The [R Markdown Reference Guide (.pdf)](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf) has a list of useful options. [Yihui's `knitr` options](https://yihui.name/knitr/options/) has full documentation of all `knitr` code processing controls.
+The [R Markdown Reference Guide \(.pdf\)](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf) has a list of useful options. [Yihui's `knitr` options](https://yihui.name/knitr/options/) has full documentation of all `knitr` code processing controls.
 
 ### pandoc
 
@@ -149,16 +148,15 @@ The RStudio installation includes [pandoc](http://pandoc.org/), which is used fo
 
 ## Shiny
 
-> [Shiny](http://shiny.rstudio.com/) is an R package that makes it easy to build interactive web apps straight from R. You can host standalone apps on a webpage or embed them in [R Markdown](http://rmarkdown.rstudio.com/) documents or build [dashboards](http://rstudio.github.io/shinydashboard/). You can also extend your Shiny apps with [CSS themes](http://rstudio.github.io/shinythemes/), [htmlwidgets](http://www.htmlwidgets.org/), and JavaScript [actions](https://github.com/daattali/shinyjs/blob/master/README.md).<br /> --- [_RStudio Shiny_](http://shiny.rstudio.com/)
+> [Shiny](http://shiny.rstudio.com/) is an R package that makes it easy to build interactive web apps straight from R. You can host standalone apps on a webpage or embed them in [R Markdown](http://rmarkdown.rstudio.com/) documents or build [dashboards](http://rstudio.github.io/shinydashboard/). You can also extend your Shiny apps with [CSS themes](http://rstudio.github.io/shinythemes/), [htmlwidgets](http://www.htmlwidgets.org/), and JavaScript [actions](https://github.com/daattali/shinyjs/blob/master/README.md).  
+>  --- [_RStudio Shiny_](http://shiny.rstudio.com/)
 
-**[RStudio's Shiny](http://shiny.rstudio.com/) is a Web application framework for R that takes static [RMarkdown documents](#rmarkdown) and [Web sites](https://rmarkdown.rstudio.com/html_document_format.html) to the next level**.
+[**RStudio's Shiny**](http://shiny.rstudio.com/) **is a Web application framework for R that takes static** [**RMarkdown documents**](rstudio_ecosystem.md#rmarkdown) **and** [**Web sites**](https://rmarkdown.rstudio.com/html_document_format.html) **to the next level**.
 
 There is no limit to building online documentation, interactive tutorials, and statistical data interfaces with these powerful R packages:
 
-* [`htmlwidgets`](http://www.htmlwidgets.org/) enables JavaScript visualisations and interactive components to be incorporated into [R Markdown documents](#rmarkdown) and Shiny web applications, as shown in this [showcase](http://www.htmlwidgets.org/showcase_leaflet.html) and this [gallery](http://www.htmlwidgets.org/)
-
+* [`htmlwidgets`](http://www.htmlwidgets.org/) enables JavaScript visualisations and interactive components to be incorporated into [R Markdown documents](rstudio_ecosystem.md#rmarkdown) and Shiny web applications, as shown in this [showcase](http://www.htmlwidgets.org/showcase_leaflet.html) and this [gallery](http://www.htmlwidgets.org/)
 * [`crosstalk`](http://rstudio.github.io/crosstalk/) wires widgets together, including linked brushing between widgets and client side filtering
-
 * [`shinydashboard`](http://rstudio.github.io/shinydashboard/) makes it easy to create all kinds of Web dashboards, as shown in [these examples](http://rstudio.github.io/shinydashboard/examples.html)
 
 and others:
@@ -190,21 +188,21 @@ The difference between the latter two is [explained here](https://support.rstudi
 
 ## bookdown
 
-<img src="images/bookdown_logo.png" class="small-left" />
+![](.gitbook/assets/bookdown_logo.png)
 
-> [`bookdown`](https://github.com/rstudio/bookdown) is an open-source R package that makes it really easy to creates online books and technical documents using [RMarkdown](#rmarkdown).
+> [`bookdown`](https://github.com/rstudio/bookdown) is an open-source R package that makes it really easy to creates online books and technical documents using [RMarkdown](rstudio_ecosystem.md#rmarkdown).
 
-**`bookdown` books open a new avenue for Web-enabled book publishing**.
+`bookdown` **books open a new avenue for Web-enabled book publishing**.
 
 They are essentially **responsive RMarkdown Web sites**, complete with content navigation, plus the ability to display and process computer code using a wide range of programming languages, including interactive [Shiny dashboards](http://rstudio.github.io/shinydashboard/examples.html) and [Web apps](http://shiny.rstudio.com/gallery/).
 
-**`bookdown` has added a few important missing features** related to writing books, such as figure and table caption numbering and cross-references, and the ability to embed [HTML widgets](https://www.rstudio.com/products/shinyapps/) or [Shiny apps](http://shiny.rstudio.com/gallery/).
+`bookdown` **has added a few important missing features** related to writing books, such as figure and table caption numbering and cross-references, and the ability to embed [HTML widgets](https://www.rstudio.com/products/shinyapps/) or [Shiny apps](http://shiny.rstudio.com/gallery/).
 
-**Developed and maintained by RStudio software engineer [Yihui Xie](http://yihui.name)**, `bookdown` books can be published on [bookdown.org](https://bookdown.org/), a free service provided by [RStudio Inc](https://www.rstudio.com/about/). Books are available for download, and the author holds full copyright.
+**Developed and maintained by RStudio software engineer** [**Yihui Xie**](http://yihui.name), `bookdown` books can be published on [bookdown.org](https://bookdown.org/), a free service provided by [RStudio Inc](https://www.rstudio.com/about/). Books are available for download, and the author holds full copyright.
 
-[<img src="https://bookdown.org/yihui/bookdown/images/cover.jpg" class="small-left" />](https://bookdown.org/)
+[![](https://bookdown.org/yihui/bookdown/images/cover.jpg)](https://bookdown.org/)
 
-**Fully-documented** in --- of course! --- a [`bookdown` book called _bookdown_](https://bookdown.org/yihui/bookdown/), the `bookdown` package uses many of the same conventions as [other RMarkdown document types](#rmarkdown), so conversion of any RStudio project to an online book is relatively straightforward.
+**Fully-documented** in --- of course! --- a [`bookdown` book called _bookdown_](https://bookdown.org/yihui/bookdown/), the `bookdown` package uses many of the same conventions as [other RMarkdown document types](rstudio_ecosystem.md#rmarkdown), so conversion of any RStudio project to an online book is relatively straightforward.
 
 [A Minimal Book Example](https://github.com/rstudio/bookdown-demo) can be cloned from GitHub. It can also be downloaded as a [`.zip` file](https://github.com/rstudio/bookdown-demo/archive/master.zip) if you are [not familiar with GitHub](http://rogerdudler.github.io/git-guide/).
 
@@ -212,11 +210,9 @@ They are essentially **responsive RMarkdown Web sites**, complete with content n
 
 [Installation](https://bookdown.org/home/getting-started.html) requires the [devtools](https://www.rstudio.com/products/rpackages/devtools/) R package to be first installed, after which `bookdown` can be installed from [its GitHub repository](https://github.com/rstudio/bookdown):
 
-```{r eval = FALSE}
-install.packages("devtools")
-devtools::install_github("rstudio/bookdown")
-```
+\`\`\`{r eval = FALSE} install.packages\("devtools"\) devtools::install\_github\("rstudio/bookdown"\)
 
+```text
 ### `tinytex`
 
 **PDF output requires some version of the [LaTeX](https://www.latex-project.org/) typesetting system** to be installed. LaTeX is not a stand-alone typesetting program in itself, but document preparation software that runs on top of Donald E. Knuth's [TeX typesetting system](https://en.wikipedia.org/wiki/TeX).
@@ -234,17 +230,17 @@ install.packages(c('tinytex', 'rmarkdown'))
 tinytex::install_tinytex()
 ```
 
-<span class="glyphicon glyphicon-hand-right"></span> **[PDF output](https://rmarkdown.rstudio.com/pdf_document_format.html) (including [Beamer slides](https://rmarkdown.rstudio.com/beamer_presentation_format.html)) requires a full TeX installation.**
+ [**PDF output**](https://rmarkdown.rstudio.com/pdf_document_format.html) **\(including** [**Beamer slides**](https://rmarkdown.rstudio.com/beamer_presentation_format.html)**\) requires a full TeX installation.**
 
 ## blogdown
 
-<img src="images/blogdown.png" class="small-left-1em" />
+![](.gitbook/assets/blogdown.png)
 
-> Just as [WordPress](https://wordpress.com/) changed the Web by bringing blogging to the masses, [blogdown](https://bookdown.org/yihui/blogdown/) has opened a path for the more computer-savvy to create quick-loading, static blog sites using [RMarkdown](#rmarkdown).
+> Just as [WordPress](https://wordpress.com/) changed the Web by bringing blogging to the masses, [blogdown](https://bookdown.org/yihui/blogdown/) has opened a path for the more computer-savvy to create quick-loading, static blog sites using [RMarkdown](rstudio_ecosystem.md#rmarkdown).
 
-Not content with authoring [`bookdown`](#bookdown), RStudio developer [Yihui Xie](http://yihui.name) took the next logical step by writing the [`blogdown` R package](https://bookdown.org/yihui/blogdown/).
+Not content with authoring [`bookdown`](rstudio_ecosystem.md#bookdown), RStudio developer [Yihui Xie](http://yihui.name) took the next logical step by writing the [`blogdown` R package](https://bookdown.org/yihui/blogdown/).
 
-**Based on the [Hugo website framework](https://gohugo.io/), `blogdown` lets you write posts in RStudio as RMarkdown.Rmd files These are automatically converted to blog posts for uploading to a hosting service, including [GitHub pages](https://pages.github.com/)**.
+**Based on the** [**Hugo website framework**](https://gohugo.io/)**,** `blogdown` **lets you write posts in RStudio as RMarkdown.Rmd files These are automatically converted to blog posts for uploading to a hosting service, including** [**GitHub pages**](https://pages.github.com/).
 
 ### Learning `blogdown`
 
@@ -254,9 +250,9 @@ It is advisable to first read Yihui Xie and Alison Presmanes Hill's `bookdown` b
 
 #### blogdown Setup
 
-* [Up and running with blogdown | Alison Presmanes Hill](https://alison.rbind.io/post/up-and-running-with-blogdown/)
-* [Getting Started With Blogdown | Borasky Research Journal](https://www.znmeb.mobi/2017/05/12/getting-started-with-blogdown/)
-* [R Blogdown Setup in GitHub (2) | Tales of R](https://aurora-mareviv.github.io/talesofr/2018/02/r-blogdown-setup-in-github-2/)
+* [Up and running with blogdown \| Alison Presmanes Hill](https://alison.rbind.io/post/up-and-running-with-blogdown/)
+* [Getting Started With Blogdown \| Borasky Research Journal](https://www.znmeb.mobi/2017/05/12/getting-started-with-blogdown/)
+* [R Blogdown Setup in GitHub \(2\) \| Tales of R](https://aurora-mareviv.github.io/talesofr/2018/02/r-blogdown-setup-in-github-2/)
 * [A Technical Introduction to Yihui's personal website ](https://support.rbind.io/2017/04/25/yihui-website/#fnref:For-two-reasons)
 * [A not-so-technical introduction to Daijiang's personal website](https://support.rbind.io/2017/04/28/daijiang-website/#fnref:frankly-I-cloned)
 
@@ -266,17 +262,17 @@ It is advisable to first read Yihui Xie and Alison Presmanes Hill's `bookdown` b
 * [Announcing blogdown - Yihui Xie, RStudio 2017-09-11](https://blog.rstudio.com/2017/09/11/announcing-blogdown/)
 * [GitHub - rstudio/blogdown: Create Blogs and Websites with R Markdown](https://github.com/rstudio/blogdown)
 * [GitHub - rbind/blogdown-demo: A minimal website example using blogdown](https://github.com/rbind/blogdown-demo)
-* [Twitter hashtag #blogdown](https://twitter.com/hashtag/blogdown)
+* [Twitter hashtag \#blogdown](https://twitter.com/hashtag/blogdown)
 
 ### Hugo Themes
 
-**`blogdown` uses [Hugo themes](https://gohugo.io/themes/) to style the look and feel of its blogs**. The default theme for `blogdown` is [_hugo-lithium_](https://github.com/yihui/hugo-lithium), a minimal theme that offers several options, detailed in [Section 2.4.1](https://bookdown.org/yihui/blogdown/themes.html#the-default-theme) of the `blogdown` book. The base theme can be modified to suit your taste, or it can be replaced by another theme.
+`blogdown` **uses** [**Hugo themes**](https://gohugo.io/themes/) **to style the look and feel of its blogs**. The default theme for `blogdown` is [_hugo-lithium_](https://github.com/yihui/hugo-lithium), a minimal theme that offers several options, detailed in [Section 2.4.1](https://bookdown.org/yihui/blogdown/themes.html#the-default-theme) of the `blogdown` book. The base theme can be modified to suit your taste, or it can be replaced by another theme.
 
-**The [Hugo web site](https://gohugo.io/) showcases many [user-contributed themes](https://themes.gohugo.io)**. These can be examined online and downloaded for use as-is or as a starting point for themeing.
+**The** [**Hugo web site**](https://gohugo.io/) **showcases many** [**user-contributed themes**](https://themes.gohugo.io). These can be examined online and downloaded for use as-is or as a starting point for themeing.
 
 #### Hugo Links
 
-* [Hugo](https://gohugo.io/) --- world's fastest (?) framework for building websites
+* [Hugo](https://gohugo.io/) --- world's fastest \(?\) framework for building websites
 * [Hugo Setup Guide](https://gohugo.io/getting-started/installing/) --- applies to `blogdown` blog sites
 * [Hugo Themeing](https://gohugo.io/themes/) --- how to choose and fine-tune a blog
 * [Contributed Hugo Themes](https://themes.gohugo.io) -- hundreds of excellent Hugo themes
@@ -290,7 +286,7 @@ An interesting and uncluttered example is [Simply Statistics](https://simplystat
 
 ## RStudio Products
 
-![](images/RStudio_full_logo.png)
+![](.gitbook/assets/rstudio_full_logo%20%281%29.png)
 
 **Some RStudio products are open-source and free for student and personal use**. Others are priced for professional or Enterprise deployment.
 
@@ -308,7 +304,7 @@ An interesting and uncluttered example is [Simply Statistics](https://simplystat
 
 * [RStudio Server Pro](https://www.rstudio.com/products/rstudio-server-pro/) -- enhanced admin, Enterprise security and pricing
 * [RStudio Connect](https://www.rstudio.com/products/connect/) -- team management, Enterprise security and pricing
-* [RStudio Cloud (in alpha)](https://rstudio.cloud/) --- Do, Share, Teach, and Learn Data Science
+* [RStudio Cloud \(in alpha\)](https://rstudio.cloud/) --- Do, Share, Teach, and Learn Data Science
 * [Shiny Server Pro](https://www.rstudio.com/products/shiny-server-pro/) -- share Shiny apps, Enterprise security and pricing
 * [shinyapps.io](https://www.rstudio.com/products/shinyapps/) -- deploy Shiny apps, enhanced security, scalable
 * [Bookdown Book Publishing](https://bookdown.org/) --- free for `bookdown` static page books
@@ -318,8 +314,8 @@ An interesting and uncluttered example is [Simply Statistics](https://simplystat
 * [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/) --- PDF format
 * [RStudio Community](https://community.rstudio.com/) --- register for full Forum access
 * [RStudio Documentation](https://support.rstudio.com/hc/en-us/categories/200035113-Documentation) --- Help articles for all RStudio products
-* [RStudio Server> Getting Started](https://support.rstudio.com/hc/en-us/articles/234653607-Getting-Started-with-RStudio-Server) --- lists many links for setup and use
+* [RStudio Server&gt; Getting Started](https://support.rstudio.com/hc/en-us/articles/234653607-Getting-Started-with-RStudio-Server) --- lists many links for setup and use
 * [RStudio Server Pro Admin. Guide](http://docs.rstudio.com/ide/server-pro/) --- web-accessible User Manual
 
-<p class="bottom-navbar"><span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> [<span class="bottom-navbar-link">Part 1 - RStudio IDE</span>](RStudio.html)&nbsp;&nbsp; | &nbsp;[<span class="bottom-navbar-link">Part 2 - Fundamentals of R</span>](R_Programming.html)&nbsp; <span class="glyphicon glyphicon-arrow-right"></span></span></p>
+ \[Part 1 - RStudio IDE\]\(RStudio.html\)   \|  \[Part 2 - Fundamentals of R\]\(R\_Programming.html\) 
 

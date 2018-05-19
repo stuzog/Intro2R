@@ -1,47 +1,49 @@
 ---
-title: "Fundamentals of R"
-author: "by Stuart Hertzog"
-date: "March&ndash;May 2018"
+title: Fundamentals of R
+author: by Stuart Hertzog
+date: March&ndash;May 2018
 ---
 
-<script>
-    $(document).ready(function() {
-      $items = $('div#TOC li');
-      $items.each(function(idx) {
-        num_ul = $(this).parentsUntil('#TOC').length;
-        $(this).css({'text-indent': num_ul * 10, 'padding-left': 0});
-      });
+# R\_Programming
 
-    });
-</script>
+  
+    $\(document\).ready\(function\(\) {  
+      $items = $\('div\#TOC li'\);  
+      $items.each\(function\(idx\) {  
+        num\_ul = $\(this\).parentsUntil\('\#TOC'\).length;  
+        $\(this\).css\({'text-indent': num\_ul \* 10, 'padding-left': 0}\);  
+      }\);  
+  
+    }\);  
+
 
 ## Four Fundamentals
 
 The essence of R:
 
-```{r}
+```text
 R <- c(1:4)
 R
 ```
 
-(See [Vectors](#vectors) later).
+\(See [Vectors](r_programming.md#vectors) later\).
 
-**[One]** important difference about R:
+**\[One\]** important difference about R:
 
 * **Vector-based**: R is not a procedural language
 
-**[Two]** reasons to use R for Data Science:
+**\[Two\]** reasons to use R for Data Science:
 
 * **Designed for data**: R can manipulate big data sets
 * **Graphics Are Graspable**: people understand graphical data
 
-**[Three]**  fundamental principles of R per [John Chambers](https://en.wikipedia.org/wiki/John_Chambers_(statistician)):
+**\[Three\]** fundamental principles of R per \[John Chambers\]\([https://en.wikipedia.org/wiki/John\_Chambers\_\(statistician](https://en.wikipedia.org/wiki/John_Chambers_%28statistician)\)\):
 
 * **Objects**: Everything that exists in R is an object
 * **Functions**: Everything that happens in R is a function call
 * **Interfaces**: to other softwares are an integral part of R
 
-**[Four]** ways of programming R:
+**\[Four\]** ways of programming R:
 
 * **Command line**: entering R commands in a terminal
 * **Source file**: running a set of commands from a saved file
@@ -52,43 +54,33 @@ R
 
 R has all the basic mathematical functions:
 
-```{r}
-
+```text
 1 + 1
-
 ```
 
-```{r}
-
+```text
 1 + 2 + 3
-
 ```
 
-```{r}
-
+```text
 3 * 7 * 2
-
 ```
 
-```{r}
-
+```text
 4 / 3
-
 ```
 
-R obeys the standard order of mathematical operations (**PEMDAS**):
+R obeys the standard order of mathematical operations \(**PEMDAS**\):
 
-1. **P**arentheses ( )
+1. **P**arentheses \( \)
 2. **E**xponents ^
 3. **M**ultiplication x
 4. **D**ivision \
 5. **A**ddition +
 6. **S**ubtraction -
 
-```{r}
-
+```text
 (2 ^ 5) + (2 * 5)
-
 ```
 
 The use of white space between operators is recommended.
@@ -97,34 +89,34 @@ The use of white space between operators is recommended.
 
 Unlike statically-typed languages such a C++, R does not require variable types to be declared. An R variable can represent any data type or R object, such as a function, result, or graphical plot. R variables can be redeclared.
 
-* Variable names can **contain alphanumeric characters** but not **periods `.` or underscores `_`**
-* **They cannot _start_ with a number or underscore**
+* Variable names can **contain alphanumeric characters** but not **periods** `.` **or underscores** `_`
+* **They cannot** _**start**_ **with a number or underscore**
 * Variable names are **case sensitive**
 
 ### Assigning variables
 
-R variable assignment operators are `<-` (default) and `=` (acceptable).
+R variable assignment operators are `<-` \(default\) and `=` \(acceptable\).
 
-```{r}
+```text
 x <- 2
 x
 ```
 
-```{r}
+```text
 y = 5
 y
 ```
 
 You can also assign left-to-right with `->`, but variables are not often assigned that way.
 
-```{r}
+```text
 7 -> z
 z
 ```
 
 Assignment operations can be used successively to assign a value to multiple variables
 
-```{r}
+```text
 a <- b <- 42
 a
 b
@@ -132,7 +124,7 @@ b
 
 You can also use the built-in `assign` function:
 
-```{r}
+```text
 assign("q", 4)
 q
 ```
@@ -141,7 +133,7 @@ q
 
 `rm(variablename)` removes a variable.
 
-```{r}
+```text
 rm(q)
 ```
 
@@ -150,19 +142,19 @@ rm(q)
 R has four main data types:
 
 * Numeric
-* Character (a.k.a Nominal)
+* Character \(a.k.a Nominal\)
 * Date
 * Logical
 
-You can check the type of variable with `class(variablename`)
+You can check the type of variable with `class(variablename`\)
 
-```{r}
+```text
 x <- "eh?"
 x
 class(x)
 ```
 
-```{r}
+```text
 y <- 99
 y
 class(y)
@@ -170,23 +162,23 @@ class(y)
 
 ### `Numeric` data types
 
-Numeric data includes both integers and decimals ---  positive, negative, and zero --- similar to `float` or `double` in other languages. A numeric value stored in a variable is automatically assumed to be numeric in R.
+Numeric data includes both integers and decimals --- positive, negative, and zero --- similar to `float` or `double` in other languages. A numeric value stored in a variable is automatically assumed to be numeric in R.
 
 You can test whether data is numeric with `is.numeric()`:
 
-```{r}
+```text
 is.numeric(y)
 ```
 
-And if it's an integer with ``is.integer()`:
+And if it's an integer with ```is.integer()``:
 
-```{r}
+```text
 is.integer(y)
 ```
 
 The response of `FALSE` is because to set an integer as a variable you must append the value with `L`:
 
-```{r}
+```text
 y <- 99L
 is.integer(y)
 ```
@@ -197,7 +189,7 @@ R promotes `integers` to `numeric` when needed.
 
 R handles Character data in two primary ways: as `character` and as `factor`. They are treated differently:
 
-```{r}
+```text
 x <- "data"
 x
 class(x)
@@ -205,16 +197,16 @@ class(x)
 
 and
 
-```{r}
+```text
 y <- factor("data")
 y
 ```
 
 The `levels` are attributes of that factor.
 
-To find the length of a `character` (or `numeric`):
+To find the length of a `character` \(or `numeric`\):
 
-```{r}
+```text
 nchar(x)
 ```
 
@@ -224,7 +216,7 @@ This does not work for `factor` data.
 
 R has numerous types of dates. `Date` and `POSIXct` are the most useful.
 
-```{r}
+```text
 date1 <- as.Date("2018-03-28")
 date1
 class(date1)
@@ -233,7 +225,7 @@ as.numeric(date1)
 
 and
 
-```{r}
+```text
 date2 <- as.POSIXct("2018-03-28 10:45")
 date2
 class(date2)
@@ -242,18 +234,18 @@ as.numeric(date2)
 
 Using `as.numeric` also changes the underlying type:
 
-```{r}
+```text
 class(date1)
 class(as.numeric(date1))
 ```
 
 ### `Logical` data types
 
-`Logical`s can be either `TRUE` (`T` or `1`) or `FALSE` (`F`or 0). `T` and `F` are not recommended as they are simply shortcuts to `TRUE` and `FALSE` and can be overwritten, causing woe, anguish, mayhem, and rioting. (`TRUE` or `F`?)
+`Logical`s can be either `TRUE` \(`T` or `1`\) or `FALSE` \(`F`or 0\). `T` and `F` are not recommended as they are simply shortcuts to `TRUE` and `FALSE` and can be overwritten, causing woe, anguish, mayhem, and rioting. \(`TRUE` or `F`?\)
 
 Logical data types have a similar test function `is.logical()`:
 
-```{r}
+```text
 k <- TRUE
 class(k)
 is.logical(k)
@@ -263,11 +255,11 @@ is.logical(k)
 
 R data structures are containers for data elements:
 
-* **Vectors** -- collections of only **_same-type elements_**
-* **Matrices** -- rectangular containers of only **_same-type elements_**
-* **Data Frames** -- contain **_many types of vectors_** , all of the same length
-* **Arrays** -- Vectors with **_dimensions_** for each **_same-type element_**
-* **Lists** -- containers for elements of **_multi-type data types_**
+* **Vectors** -- collections of only _**same-type elements**_
+* **Matrices** -- rectangular containers of only _**same-type elements**_
+* **Data Frames** -- contain _**many types of vectors**_ , all of the same length
+* **Arrays** -- Vectors with _**dimensions**_ for each _**same-type element**_
+* **Lists** -- containers for elements of _**multi-type data types**_
 
 ### Vectors
 
@@ -283,14 +275,14 @@ Vectors are the heart of R; it is a **vectorised language**. An R `Vector` is:
 
 Vectors are created with `c`, meaning "combine":
 
-```{r}
+```text
 x <- c(1, 2, 3, 4, 5, 6, 7, 8)
 x
 ```
 
 Operations are applied to all elements at once:
 
-```{r}
+```text
 x + 2
 x -3
 x * 2
@@ -301,7 +293,7 @@ sqrt(x)
 
 #### Vector creation shortcuts
 
-```{r}
+```text
 1:8
 8:1
 -3:4
@@ -310,9 +302,9 @@ sqrt(x)
 
 #### Accessing vector elements
 
-Any element of a `Vector` can be directly access using [square brackets] to point to it:
+Any element of a `Vector` can be directly access using \[square brackets\] to point to it:
 
-```{r}
+```text
 x
 x[4]
 x[8]
@@ -322,7 +314,7 @@ x[8]
 
 You can check the length of a vector:
 
-```{r}
+```text
 x
 length(x)
 y
@@ -332,7 +324,7 @@ length(x + y)
 
 and count the number of charactors in a vector:
 
-```{r}
+```text
 q <- c("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight")
 q
 nchar(q)
@@ -342,9 +334,9 @@ nchar(q)
 
 Two vectors of the same or different length can be combined:
 
-##### Vectors of the same length
+**Vectors of the same length**
 
-```{r}
+```text
 x <- 1:8
 x
 y <- -3:4
@@ -356,19 +348,18 @@ x / y
 x^y
 ```
 
-##### Vectors of different lengths
+**Vectors of different lengths**
 
-**For two `vectors` of different lengths, the shorter vector is recycled**, and R may issue a warning:
+**For two** `vectors` **of different lengths, the shorter vector is recycled**, and R may issue a warning:
 
-```{r}
+```text
 x + c(1, 2)
 x + c(1, 2, 3)
-
 ```
 
 #### Comparison of two Vectors
 
-```{r}
+```text
 x <- c(1:8)
 x
 x > 5
@@ -379,26 +370,27 @@ x > y
 
 The `all()` function tests whether all elements are `TRUE`
 
-```{r}
+```text
 x <-  10:1
 y <-  -4:5
 x
 y
 all(x < y)
 ```
-The `any()` function tests is any element is 'TRUE`:
- 
-```{r}
+
+The `any()` function tests is any element is 'TRUE\`:
+
+```text
 any(x < y)
 ```
- 
-including vectors, matrices, data frames (similar to datasets), and lists (collections of objects).
+
+including vectors, matrices, data frames \(similar to datasets\), and lists \(collections of objects\).
 
 #### Factor Vectors
 
-`Factors` are an important concept in R. **`Factors` contain `levels`**, which are the unique values of that `factor` variable.
+`Factors` are an important concept in R. `Factors` **contain** `levels`, which are the unique values of that `factor` variable.
 
-```{r}
+```text
 q
 qFactor <- as.factor(q)
 qFactor
@@ -406,7 +398,7 @@ qFactor
 
 Note that the order of `levels`does not matter unless the `ordered` argument is set `TRUE`:
 
-```{r}
+```text
 factor(x=c("High School", "Doctorate", "Masters", "College"),
          levels=c("High School", "College", "Masters", "Doctorate"),
          ordered=TRUE)
@@ -416,27 +408,27 @@ factor(x=c("High School", "Doctorate", "Masters", "College"),
 
 A familiar mathematical structure, `matrices` are essential to statistics.
 
-> A `Matrix` is a rectangular structure of rows and columns in which every element is of the same type, often all [numerics](#numeric-data-types).
+> A `Matrix` is a rectangular structure of rows and columns in which every element is of the same type, often all [numerics](r_programming.md#numeric-data-types).
 
 `Matrics` can be acted upon similarly to `Vectors`, with **PEDMAS**-style element-by-element addition, subtraction, division, and equality.
 
 #### Creating a Matrix
 
-```{r}
+```text
 A <- matrix(1:12, nrow=3)
 A
 ```
 
-Any element of a `matrix`can be directly accessed using [square bracket] co-ordinates:
+Any element of a `matrix`can be directly accessed using \[square bracket\] co-ordinates:
 
-```{r}
+```text
 A[2,3]
 A[3,4]
 ```
 
 #### Dimensions of a Matrix
 
-```{r}
+```text
 nrow(A)
 ncol(A)
 dim(A)
@@ -444,34 +436,34 @@ dim(A)
 
 #### Adding Matrices
 
-```{r}
+```text
 A
 ```
 
-```{r}
+```text
 B <-  matrix(13:24, nrow=3)
 B
 ```
 
-```{r}
+```text
 A + B
 ```
 
 #### Multiplying Matrices
 
-```{r}
+```text
 A * B
 ```
 
 #### Logical querying
 
-```{r}
+```text
 A == B
 ```
 
 #### Naming rows and columns
 
-```{r}
+```text
 colnames(A) <- c("A1", "A2", "A3", "A4")
 rownames(A) <- c("First", "Second", "Third")
 A
@@ -481,7 +473,7 @@ A[1,2]
 
 Two special `vectors` -- `letters` and `LETTERS` -- create lowercase and UPPERCASE letter named matrix columns or rows:
 
-```{r}
+```text
 C <- matrix(21:40, nrow=2)
 colnames(C) <- LETTERS[1:10]
 rownames(C) <- c(letters[1:2])
@@ -492,15 +484,15 @@ C
 
 The `data.frame` is perhaps the primary reason for R's growing popularity as a powerful, focussed, and flexible language for use in all aspects of Data Science.
 
-> A `data.frame` is a rectangular collection of [vectors](#vectors), all of which are of the same length but [differing data types](#data-types).
+> A `data.frame` is a rectangular collection of [vectors](r_programming.md#vectors), all of which are of the same length but [differing data types](r_programming.md#data-types).
 
-A `Data Frame` looks like an **Excel spreadsheet** in that the data is organised into __columns__ and __rows__. In statistical terms, each column is a _variable_ while each row contains specific _observations_. Similar to a [Matrix](#matrices) only in that it is also rectangular, a `data.frame` is a much more flexible and comprehensive data structure.
+A `Data Frame` looks like an **Excel spreadsheet** in that the data is organised into **columns** and **rows**. In statistical terms, each column is a _variable_ while each row contains specific _observations_. Similar to a [Matrix](r_programming.md#matrices) only in that it is also rectangular, a `data.frame` is a much more flexible and comprehensive data structure.
 
 #### Creating a Dataframe
 
 Using the existing functions:
 
-```{r}
+```text
 (x <- 8:1)
 (y <- -3:4)
 (q <- c("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"))
@@ -508,23 +500,23 @@ Using the existing functions:
 
 The simplest way of creating a `Dataframe` is with the `data.frame()` function:
 
-```{r}
+```text
 theDF <- data.frame(x, y, q)
 theDF
 ```
 
-This creates an 8x3 `data.frame` consisting of three `vectors`. Notice that the [data types](#data-types) are included below the column headings.
+This creates an 8x3 `data.frame` consisting of three `vectors`. Notice that the [data types](r_programming.md#data-types) are included below the column headings.
 
 To assign names to the `vectors`:
 
-```{r}
+```text
 theDF <- data.frame(First=x, Second=y, Third=q)
 theDF
 ```
 
 To assign names to the rows:
 
-```{r}
+```text
 rownames(theDF) <- c("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight")
 theDF
 ```
@@ -533,7 +525,7 @@ theDF
 
 The `nrow()`, `ncol()`, `dim()`, `rownames()`, and `names()` functions are available to investigate its properties:
 
-```{r}
+```text
 (nrow(theDF))
 (ncol(theDF))
 (dim(theDF))
@@ -543,39 +535,39 @@ The `nrow()`, `ncol()`, `dim()`, `rownames()`, and `names()` functions are avail
 
 Elements of any `vector` of a `data.frame` can be directly accessed using the `$` or `[row, col]` operators:
 
-```{r}
+```text
 (theDF$Second)
 (theDF[7, 3])
 ```
 
 To specify an entire row, leave out the column specification, _vice versa_ for specifying an entire column:
 
-```{r}
+```text
 (theDF[2, ])
 (theDF[, 2])
 ```
 
 To specify more than one row or column, use a `vector` of indices:
 
-```{r}
+```text
 (theDF[3:5, 2:3])
 ```
 
 To specify multiple columns by name, use a `character vector` of the column names:
 
-```{r}
+```text
 (theDF[, c("First", "Third")])
 ```
 
 To find the `class` of the entire `data.frame`:
 
-```{r}
+```text
 (class(theDF))
 ```
 
 or the `class` of any `vector`:
 
-```{r}
+```text
 (class(theDF$Third))
 ```
 
@@ -583,22 +575,21 @@ or the `class` of any `vector`:
 
 `data.frames` can be small, large, big, huge, or ginormous, depending on their size. The `head()` and `tail()` functions functions print only the first or last few rows, or the number of rows you set:
 
-```{r}
+```text
 (head(theDF))
 (head(theDF, n=5))
 (tail(theDF, n=5))
 ```
 
-
 ### Arrays
 
-> An `Array` is a multidimensional [Vector](#vectors) whose elements are all the same type, but which also have attributes having dimensions (`dim`) that can also be named (`dimnames`).
+> An `Array` is a multidimensional [Vector](r_programming.md#vectors) whose elements are all the same type, but which also have attributes having dimensions \(`dim`\) that can also be named \(`dimnames`\).
 
 #### Creating `Arrays`
 
 To create an `Array`, the first element is the row index, the second the column index, and the remaining elements are for the outer dimensions `row`, `column`, `number of arrays`:
 
-```{r}
+```text
 theArray <- array(1:12, dim = c(2, 3, 2))
 theArray
 ```
@@ -607,7 +598,7 @@ theArray
 
 Individual elements of an `Array` are accesssed using square brackets similar to a `Vector` but in this case by `[row, column, array #]`.
 
-```{r}
+```text
 theArray[1, , ]
 theArray[2, , ]
 theArray[1, , 1]
@@ -624,26 +615,26 @@ theArray[, , 2]
 
 `Lists` are created with the `list()` function. Each argument to the function becomes an element of the list:
 
-```{r}
+```text
 list(1, 2, 3)
 ```
 
 Single-element lists can contain multi-element vectors:
 
-```{r}
+```text
 list(c(1, 2, 3))
 ```
 
 Here's a two-element list with the second element a five-element `vector`:
 
-```{r}
+```text
 list1 <- list(c(1, 2, 3), 3:7)
 list1
 ```
 
 A two-element `list` with the first element an `array`, the second element a ten-element `vector`:
 
-```{r}
+```text
 list2 <- list(theArray, 1:10)
 list2
 ```
@@ -652,7 +643,7 @@ list2
 
 Empty `lists` of a determined length are created using a `vector`:
 
-```{r}
+```text
 (emptyList <- vector(mode = "list", length = 4))
 ```
 
@@ -662,21 +653,20 @@ Empty `lists` of a determined length are created using a `vector`:
 
 `Lists` can have names, and each element of a `list` can have a unique name
 
-```{r}
+```text
 names(list2)
 ```
 
-```{r}
+```text
 (names(list2) <- c("The Array", "The Vector"))
 list2
-
 ```
 
 #### Naming List Elements
 
 Names can also be assigned to `list` elements during creation using name-value pairs. This can also include naming the `list` itself:
 
-```{r}
+```text
 (list3 <- list(theARR=theArray, theVECT=1:10, List3=list2))
 ```
 
@@ -684,13 +674,13 @@ Names can also be assigned to `list` elements during creation using name-value p
 
 New elements can be added to a `list` by appending a `numeric` or `named` index that does not yet exist:
 
-```{r}
+```text
 length(list3)
 ```
 
 Adding a `numeric` index:
 
-```{r}
+```text
 list3[[4]] <- 11
 length(list3)
 list3
@@ -698,7 +688,7 @@ list3
 
 Adding a `named` index:
 
-```{r}
+```text
 list3[["AddedElement"]] <- 12:16
 length(list3)
 list3
@@ -708,11 +698,11 @@ list3
 
 > R is a functional language, so almost every operation in R involves either creating new functions or accessing functions in package libraries.
 
-**An `R` programmer must choose and load a suitable package, select an appropriate function, and supply the arguments needed to make it work**.
+**An** `R` **programmer must choose and load a suitable package, select an appropriate function, and supply the arguments needed to make it work**.
 
 This can be as simple as calling a function against an element:
 
-```{r}
+```text
 mean (x)
 ```
 
@@ -722,23 +712,21 @@ Either way means knowing the capabilities and requirements of any function.
 
 ### Function Help
 
-**If you know the name of a function**, entering a question mark followed by the function
-name in the _Console_ pane will display its documentation in the _Viewer_ pane:
+**If you know the name of a function**, entering a question mark followed by the function name in the _Console_ pane will display its documentation in the _Viewer_ pane:
 
-```{r}
+```text
 ?mean
 ```
 
-For help on  binary operator (e.g. `+`, `*`, `==`), surround it with backticks:
+For help on binary operator \(e.g. `+`, `*`, `==`\), surround it with backticks:
 
-```{r}
+```text
 ?`==`
 ```
 
-**If you are not sure which function to use**, you can search using only part of the name
-with `apropos()`:
+**If you are not sure which function to use**, you can search using only part of the name with `apropos()`:
 
-```{r}
+```text
 apropos("mea")
 ```
 
@@ -748,19 +736,18 @@ Construction and use of functions will be detailed later in this Tutorial series
 
 It's rare that a data set is complete in every detail. Some observations will be missing, while others may be accurately reported as being not available. Missing values can be represented in many ways: by a dash `-`, a period `.`, or even the number `99`.
 
-**`R` has two types of missing data: `NA` and `NULL`.**
+`R` **has two types of missing data:** `NA` **and** `NULL`**.**
 
 ### NA
 
-**`R` recognises NA as an element of a Vector**.
+`R` **recognises NA as an element of a Vector**.
 
 `is.na()` tests each element of a Vector:
 
-```{r}
+```text
 z <- c(3, 4, NA, 5, 6, NA)
 z
 is.na(z)
-
 ```
 
 This works with any type of Vector.
@@ -769,13 +756,13 @@ This works with any type of Vector.
 
 Some `Base R` functions return NA even if a single element is NA, for example `mean()`:
 
-```{r}
+```text
 mean(z)
 ```
 
 `na.rm=TRUE` removes any NAs, allowing these functions to proceed:
 
-```{r}
+```text
 mean(z, na.rm=TRUE)
 ```
 
@@ -783,14 +770,14 @@ mean(z, na.rm=TRUE)
 
 `NULL` is very Zen: it is nothingness, which means that there isn't even anything missing. `NULL` is atomical and can't exist in a Vector. If used in a Vector, it simply disappears:
 
-```{r}
+```text
 z <- c(3, 4, NULL, 5, 6)
 z
 ```
 
-The test for `NULL` is `is.null():
+The test for `NULL` is \`is.null\(\):
 
-```{r}
+```text
 no <- NULL
 is.null(no)
 is.null(z)
@@ -800,9 +787,9 @@ is.null(z)
 
 ## Pipes
 
-**Functions can be chained together using the `magrittr` package**, which introduces **the `%>%` operator**, which for simplicity can be read as **then...**
+**Functions can be chained together using the** `magrittr` **package**, which introduces **the** `%>%` **operator**, which for simplicity can be read as **then...**
 
-```{r}
+```text
 library("magrittr")
 x <- 1:12
 mean(x)
@@ -811,14 +798,13 @@ x %>% mean
 
 **Using pipes means that code can be read left-to-right**, which is more natural than thetraditional right-to-left R `<-` operator. **Additional arguments** can be named and included **inside parentheses** after the function call
 
-```{r}
+```text
 z %>% mean(na.rm=TRUE)
 ```
 
 ## Cheat Sheet
 
-A guide to what we have covered so far (and more) can be found in this PDF:
-[Data Science Free - basicR](http://datasciencefree.com/basicR.pdf)
+A guide to what we have covered so far \(and more\) can be found in this PDF: [Data Science Free - basicR](http://datasciencefree.com/basicR.pdf)
 
+ \[Part 1 - RStudio Ecosystem\]\(RStudio\_Ecosystem.html\)   \|  \[Part 2 - Data Acquisition\]\(R\_Data\_Acquisition.html\) 
 
-<p class="bottom-navbar"><span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> [<span class="bottom-navbar-link">Part 1 - RStudio Ecosystem</span>](RStudio_Ecosystem.html)&nbsp;&nbsp; | &nbsp;[<span class="bottom-navbar-link">Part 2 - Data Acquisition</span>](R_Data_Acquisition.html)&nbsp; <span class="glyphicon glyphicon-arrow-right"></span></span></p>

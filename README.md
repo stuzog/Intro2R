@@ -1,6 +1,6 @@
 # An Introduction To R
- 
-<img src="images/Rlogo.png" width="150" />
+
+![](.gitbook/assets/rlogo.png)
 
 **This material is my own process of learning the R programming language. It can be yours, too.**
 
@@ -10,18 +10,3 @@
 
 Good luck with your R learning!
 
-## Contents
-
-[Setup](https://r.stuzog.com/Setup.html)
-
-**Part 1**
-
-* [R For Data Science](https://r.stuzog.com/R_Data_Science.html)
-* [The RStudio IDE](https://r.stuzog.com/RStudio.html)
-* [The RStudio Ecosystem](https://r.stuzog.com/RStudio_Ecosystem.html)
-
-**Part2**
-
-* [Fundamentals of R](https://r.stuzog.com/R_Programming.html)
-
-[Learning Resources](https://r.stuzog.com/R_Learning_Resources.html)
