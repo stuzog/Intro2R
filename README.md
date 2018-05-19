@@ -23,5 +23,6 @@ Good luck with your R learning!
 **Part2**
 
 * [Fundamentals of R](https://r.stuzog.com/R_Programming.html)
+* [Data Acquisition](R_Data_Acquisition.html)
 
 [Learning Resources](https://r.stuzog.com/R_Learning_Resources.html)
