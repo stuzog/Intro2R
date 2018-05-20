@@ -123,7 +123,7 @@ If you know the delimiter, using one of these is the easiest way to import those
 
 #### Faster Alternatives
 
-**`read.table` is slow to read large files into memory**. Two other packages provide function that are faster and better in that they do not automatically convert _character data_ to _factors_:
+**`read.table` is slow to read large files into memory**. Two other packages provide function that are faster and better in that they do not automatically convert [_character data_](R_Programming.html#character-data-types) to _factors_:
 
 * [`read.delim`](https://www.rdocumentation.org/packages/readr/versions/1.1.1/topics/read_delim) from the [`reader`](https://www.rdocumentation.org/packages/readr/versions/1.1.1) package by [Hadley Wickham](http://hadley.nz/), and
 * [`fread`](https://www.rdocumentation.org/packages/data.table/versions/1.11.2/topics/fread) from the [`data.table`](https://www.rdocumentation.org/packages/data.table/versions/1.11.2) package by [Matt Dowle](https://www.linkedin.com/in/mattdowle).
