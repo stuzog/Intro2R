@@ -77,17 +77,60 @@ If the data items consist of multiple words or characters separated by punctuati
 
 ### Using `read.table`
 
-`read.table` is part of `R`'s built-in `utils` package. It's the esiest way to import delimited data files, and results in a `data.frame`. Here are the first six lines of a `.csv` file containing data from a [Fitbit tracker](https://www.fitbit.com). It is called `fitbit.csv` in the `docs` directory of this project:
+**`read.table` is part of `R`'s built-in `utils` package**. It's the easiest way to import delimited data files, and **results in a [_data.frame_](R_Programming.html#dataframes)**.
+
+Here are the first six lines of a `.csv` file containing **data from a [Fitbit tracker](https://www.fitbit.com/en-ca/charge2)**. It is called `fitbit.csv` and is **located in the `docs` directory of this project**:
 
 ```{r}
-theUrl <- "docs/fitbit.csv"
-fitbit <- read.table(file=theUrl, header=TRUE, sep=",")
+theFile <- "docs/fitbit.csv"
+fitbit <- read.table(file=theFile, header=TRUE, sep=",")
 head(fitbit)
 ```
 
+**`read.table` has three arguments**:
+
+* **The path and filename or URL** of the data file;
+  * Path can be _absolute_ or _relative_ to the current _working directory_;
+* **Whether the first line contains the column header labels**;
+  * set to TRUE if _and only if_ the first row contains one fewer fields than the number of columns; and
+* **The separator between data items**.
+  * If not set, the default is `""` white space, meaning one or more spaces, tabs, newlines or carriage returns. This can be set to `\t` (_<TAB>_) or `;` (semicolon) as appropriate.
+
+**Documentation of `read.table` can be viewed with**:
+
+```{r}
+?read.table
+```
+
+**Two important arguments are**:
+
+* **`as.is`** -- the default behavior of `read.table`, **converts _character_ variables to _factors_**, while
+* **`stringsAsFactors`** -- `TRUE` or `FALSE` **can be used to prevent this**, although `as.is` and `colClasses`, which sets the [_data type_](R_Programming.html#data-types) for each column, will override it (see the documentation).
+
+#### Pre-set Wrappers
+
+`read.table` has wrappers pre-set for different file delimiters:
+
+Function | separator | decimal
+---- | ---- | ----
+read.table | empty| period 
+read.csv | comma | period 
+read.csv2 | / | comma 
+read.delim | &bsol;t | period 
+read.delim2 | &bsol;t | tab 
+
+If you know the delimiter, using one of these is the easiest way to import those files.
+
+#### Faster Alternatives
+
+**`read.table` is slow to read large files into memory**. Two other pckages provide function that are faster and better in that they do not automatically convert _character data_ to _factors_:
+
+* [`read.delim`](https://www.rdocumentation.org/packages/readr/versions/1.1.1/topics/read_delim) from the [`reader`](https://www.rdocumentation.org/packages/readr/versions/1.1.1) package by [Hadley Wickham](http://hadley.nz/), and
+* [`fread`](https://www.rdocumentation.org/packages/data.table/versions/1.11.2/topics/fread) from the [`data.table`](https://www.rdocumentation.org/packages/data.table/versions/1.11.2) package by [Matt Dowle](https://www.linkedin.com/in/mattdowle).
+
 ## Importing Excel Data
 
-## Importing JSON Data
+## Importing JSON
 
 ## Data In R Binary Files
 
