@@ -8,6 +8,10 @@
   max-width: 600px;
   }
 
+.tocify-subheader .tocify-subheader {
+  text-indent: 40px !important;
+  }
+
 .section h2 {
   padding-top: 64px !important;
   padding-bottom: 4px !important;
@@ -19,7 +23,7 @@
   padding-bottom: 4px !important;
   border-bottom: none !important;
   }
-  
+
 .author, .date {
   margin-top: 0.5em;
   margin-bottom: 0.25em;
