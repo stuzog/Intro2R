@@ -163,18 +163,32 @@ head(fitbit)
 * `read_csv2()` -- semicolons (`;`)
 * `read_tsv()` -- tabs (`\t`)
 
-**More information on `readr` can be found in the package's documentation**:
+**More information on `read.delim()` can be found in the `readr` documentation**:
 
 ```{r}
-?readr
+?readr::read_delim
 ```
-
 
 ### Using [`fread`](https://www.rdocumentation.org/packages/data.table/versions/1.11.2/topics/fread)
 
+**The `fread()` function from the `data.table` package** also will also read large data files faster than `read.table`, with the `stringsAsFactors` argument set to `FALSE` by default.
 
+(**You may have to install this package** by entering `install.packages("data.table")` in the _Console pane_).
+
+```{r}
+library(data.table)
+theFile <- "docs/fitbit.csv"
+fitbit <- fread(theFile, sep = ",", header = TRUE)
+fitbit
+```
+
+**`fread` produces a `data.table`, an extension of [`data.frame`](R_Programming.html#dataframes)**. You can see the documentation for this [_data structure_](R-Programming.html#data-structures) by entering `?data.frame` in the _Console_. 
 
 ## Importing Excel Data
+
+Prior to the more widespread use of [`R` for Data Science](R_Data_Science.html), data was compiled in [spreadsheets](https://en.wikipedia.orgwiki/Spreadsheet), mostly in [Microsoft Excel](https://en/wikipedia.org/wiki/Microsoft_Excel), intiially released in 1987.
+
+
 
 ## Importing JSON
 
