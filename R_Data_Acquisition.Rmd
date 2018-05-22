@@ -75,7 +75,7 @@ head(diamonds)
 
 If the data items consist of multiple words or characters separated by punctuation or spaces, each data item must be contained within pairs of single `'<ITEM>'` or double `"<ITEM>"` quotes.
 
-### Using `read.table`
+### Using [`read.table`](https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/read.table)
 
 **`read.table` is part of `R`'s built-in `utils` package**. It's the easiest way to import delimited data files, and **results in a [_data.frame_](R_Programming.html#dataframes)**.
 
@@ -121,16 +121,14 @@ read.delim2 | &bsol;t | tab
 
 If you know the delimiter, using one of these is the easiest way to import those files.
 
-#### Faster Alternatives
-
 **`read.table` is slow to read large files into memory**. Two other packages provide function that are faster and better in that they do not automatically convert [_character data_ to _factors_](R_Programming.html#character-data-types):
 
-* [`read.delim`](https://www.rdocumentation.org/packages/readr/versions/1.1.1/topics/read_delim) from the [`reader`](https://www.rdocumentation.org/packages/readr/versions/1.1.1) package by [Hadley Wickham](http://hadley.nz/), and
+* [`read.delim`](https://www.rdocumentation.org/packages/readr/versions/1.1.1/topics/read_delim) from the [`readr`](https://www.rdocumentation.org/packages/readr/versions/1.1.1) package by [Hadley Wickham](http://hadley.nz/), and
 * [`fread`](https://www.rdocumentation.org/packages/data.table/versions/1.11.2/topics/fread) from the [`data.table`](https://www.rdocumentation.org/packages/data.table/versions/1.11.2) package by [Matt Dowle](https://www.linkedin.com/in/mattdowle).
 
-### Using `read.delim`
+### Using [`readr`](https://readr.tidyverse.org/)
 
-The [`reader`](https://readr.tidyverse.org/) package enables reading many kinds of text files:
+The [`readr`](https://readr.tidyverse.org/) package handles many kinds of delimited text files:
 
 * `read_csv()` -- comma separated (CSV) files
 * `read_tsv()` -- tab separated files
@@ -139,14 +137,43 @@ The [`reader`](https://readr.tidyverse.org/) package enables reading many kinds 
 * `read_table()` -- tabular files where colums are separated by white-space.
 * `read_log()` -- web log files
 
-This example loads a sample `.csv` file bundled with `readr`, which is returned as a [_tibble_](https://github.com/tidyverse/tibble), a modern re-imagining of the _data.frame_:
+**`readr` is much faster than `read.table`**, and it also removes the need to set `stringsAsFactors` to `FALSE` since that argument does not exist in `readr`, which leaves strings "as-is" by default. It also shows a helpful progress bar with very large files.
+
+Let's open the same `fitbit.csv` file with the `read.delim()` function:
 
 ```{r}
 library(readr)
-mtcars <- read_csv(readr_example("mtcars.csv"))
+theFile <- "docs/fitbit.csv"
+fitbit <- read_delim(theFile, delim = ",")
 ```
 
-`readr` is much faster than `read.table`
+**`readr` returns data as a [_tibble_](https://github.com/tidyverse/tibble), a modern re-imagining of the [_data.frame_](R_Programming.html#dataframes)**.
+
+**A _tibble_ displays the file's _metadata_ under each column head**, such as the number of rows and columns and the data types of each column. The _tibble_ is also intelligently adjusted to fit the screen.
+
+We can see this by examining the first few rows with `head()`:
+
+```{r}
+head(fitbit)
+```
+
+**`readr` also has special cases for different delimiters**:
+
+* `read_csv()` -- for commas (`,`)
+* `read_csv2()` -- semicolons (`;`)
+* `read_tsv()` -- tabs (`\t`)
+
+**More information on `readr` can be found in the package's documentation**:
+
+```{r}
+?readr
+```
+
+
+### Using [`fread`](https://www.rdocumentation.org/packages/data.table/versions/1.11.2/topics/fread)
+
+
+
 ## Importing Excel Data
 
 ## Importing JSON

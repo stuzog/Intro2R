@@ -474,7 +474,7 @@ div.tocify {
 </ul>
 <p>If the data items consist of multiple words or characters separated by punctuation or spaces, each data item must be contained within pairs of single <code>'&lt;ITEM&gt;'</code> or double <code>&quot;&lt;ITEM&gt;&quot;</code> quotes.</p>
 <div id="using-read.table" class="section level3">
-<h3>Using <code>read.table</code></h3>
+<h3>Using <a href="https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/read.table"><code>read.table</code></a></h3>
 <p><strong><code>read.table</code> is part of <code>R</code>’s built-in <code>utils</code> package</strong>. It’s the easiest way to import delimited data files, and <strong>results in a <a href="R_Programming.html#dataframes"><em>data.frame</em></a></strong>.</p>
 <p>Here are the first six lines of a <code>.csv</code> file containing <strong>data from a <a href="https://www.fitbit.com/en-ca/charge2">Fitbit tracker</a></strong>. It is called <code>fitbit.csv</code> and is <strong>located in the <code>docs</code> directory of this project</strong>:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">theFile &lt;-<span class="st"> &quot;docs/fitbit.csv&quot;</span></a>
@@ -547,19 +547,16 @@ div.tocify {
 </tbody>
 </table>
 <p>If you know the delimiter, using one of these is the easiest way to import those files.</p>
-</div>
-<div id="faster-alternatives" class="section level4">
-<h4>Faster Alternatives</h4>
 <p><strong><code>read.table</code> is slow to read large files into memory</strong>. Two other packages provide function that are faster and better in that they do not automatically convert <a href="R_Programming.html#character-data-types"><em>character data</em> to <em>factors</em></a>:</p>
 <ul>
-<li><a href="https://www.rdocumentation.org/packages/readr/versions/1.1.1/topics/read_delim"><code>read.delim</code></a> from the <a href="https://www.rdocumentation.org/packages/readr/versions/1.1.1"><code>reader</code></a> package by <a href="http://hadley.nz/">Hadley Wickham</a>, and</li>
+<li><a href="https://www.rdocumentation.org/packages/readr/versions/1.1.1/topics/read_delim"><code>read.delim</code></a> from the <a href="https://www.rdocumentation.org/packages/readr/versions/1.1.1"><code>readr</code></a> package by <a href="http://hadley.nz/">Hadley Wickham</a>, and</li>
 <li><a href="https://www.rdocumentation.org/packages/data.table/versions/1.11.2/topics/fread"><code>fread</code></a> from the <a href="https://www.rdocumentation.org/packages/data.table/versions/1.11.2"><code>data.table</code></a> package by <a href="https://www.linkedin.com/in/mattdowle">Matt Dowle</a>.</li>
 </ul>
 </div>
 </div>
-<div id="using-read.delim" class="section level3">
-<h3>Using <code>read.delim</code></h3>
-<p>The <a href="https://readr.tidyverse.org/"><code>reader</code></a> package enables reading many kinds of text files:</p>
+<div id="using-readr" class="section level3">
+<h3>Using <a href="https://readr.tidyverse.org/"><code>readr</code></a></h3>
+<p>The <a href="https://readr.tidyverse.org/"><code>readr</code></a> package handles many kinds of delimited text files:</p>
 <ul>
 <li><code>read_csv()</code> – comma separated (CSV) files</li>
 <li><code>read_tsv()</code> – tab separated files</li>
@@ -568,25 +565,50 @@ div.tocify {
 <li><code>read_table()</code> – tabular files where colums are separated by white-space.</li>
 <li><code>read_log()</code> – web log files</li>
 </ul>
-<p>This example loads a sample <code>.csv</code> file bundled with <code>readr</code>, which is returned as a <a href="https://github.com/tidyverse/tibble"><em>tibble</em></a>, a modern re-imagining of the <em>data.frame</em>:</p>
+<p><strong><code>readr</code> is much faster than <code>read.table</code></strong>, and it also removes the need to set <code>stringsAsFactors</code> to <code>FALSE</code> since that argument does not exist in <code>readr</code>, which leaves strings “as-is” by default. It also shows a helpful progress bar with very large files.</p>
+<p>Let’s open the same <code>fitbit.csv</code> file with the <code>read.delim()</code> function:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">library</span>(readr)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">mtcars &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">readr_example</span>(<span class="st">&quot;mtcars.csv&quot;</span>))</a></code></pre></div>
+<a class="sourceLine" id="cb8-2" data-line-number="2">theFile &lt;-<span class="st"> &quot;docs/fitbit.csv&quot;</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">fitbit &lt;-<span class="st"> </span><span class="kw">read_delim</span>(theFile, <span class="dt">delim =</span> <span class="st">&quot;,&quot;</span>)</a></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
-##   mpg = col_double(),
-##   cyl = col_integer(),
-##   disp = col_double(),
-##   hp = col_integer(),
-##   drat = col_double(),
-##   wt = col_double(),
-##   qsec = col_double(),
-##   vs = col_integer(),
-##   am = col_integer(),
-##   gear = col_integer(),
-##   carb = col_integer()
+##   Date = col_character(),
+##   TotalSteps = col_integer(),
+##   TotalFloorsClimbed = col_integer(),
+##   TotalCaloriesBurned = col_integer(),
+##   TotalElevationGained = col_double(),
+##   TotalElevationGainedUnit = col_character(),
+##   TotalDistanceCovered = col_double(),
+##   TotalDistanceCoveredUnit = col_character(),
+##   SedentaryMinutes = col_integer(),
+##   LightlyActiveMinutes = col_integer(),
+##   FairlyActiveMinutes = col_integer(),
+##   VeryActiveMinutes = col_integer()
 ## )</code></pre>
-<p><code>readr</code> is much faster than <code>read.table</code> ## Importing Excel Data</p>
+<p><strong><code>readr</code> returns data as a <a href="https://github.com/tidyverse/tibble"><em>tibble</em></a>, a modern re-imagining of the <a href="R_Programming.html#dataframes"><em>data.frame</em></a></strong>.</p>
+<p><strong>A <em>tibble</em> displays the file’s <em>metadata</em> under each column head</strong>, such as the number of rows and columns and the data types of each column. The <em>tibble</em> is also intelligently adjusted to fit the screen.</p>
+<p>We can see this by examining the first few rows with <code>head()</code>:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">head</span>(fitbit)</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Date"],"name":[1],"type":["chr"],"align":["left"]},{"label":["TotalSteps"],"name":[2],"type":["int"],"align":["right"]},{"label":["TotalFloorsClimbed"],"name":[3],"type":["int"],"align":["right"]},{"label":["TotalCaloriesBurned"],"name":[4],"type":["int"],"align":["right"]},{"label":["TotalElevationGained"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["TotalElevationGainedUnit"],"name":[6],"type":["chr"],"align":["left"]},{"label":["TotalDistanceCovered"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["TotalDistanceCoveredUnit"],"name":[8],"type":["chr"],"align":["left"]},{"label":["SedentaryMinutes"],"name":[9],"type":["int"],"align":["right"]},{"label":["LightlyActiveMinutes"],"name":[10],"type":["int"],"align":["right"]},{"label":["FairlyActiveMinutes"],"name":[11],"type":["int"],"align":["right"]},{"label":["VeryActiveMinutes"],"name":[12],"type":["int"],"align":["right"]}],"data":[{"1":"May 2, 2018","2":"11708","3":"5","4":"4164","5":"15.24","6":"meters","7":"8.45","8":"kilometers","9":"501","10":"173","11":"26","12":"86"},{"1":"May 3, 2018","2":"5542","3":"3","4":"3335","5":"9.14","6":"meters","7":"4.02","8":"kilometers","9":"813","10":"121","11":"20","12":"43"},{"1":"May 4, 2018","2":"3492","3":"7","4":"3100","5":"21.34","6":"meters","7":"2.54","8":"kilometers","9":"788","10":"89","11":"20","12":"31"},{"1":"May 5, 2018","2":"12275","3":"12","4":"4547","5":"36.58","6":"meters","7":"8.91","8":"kilometers","9":"623","10":"179","11":"60","12":"104"},{"1":"May 6, 2018","2":"6070","3":"12","4":"3562","5":"36.58","6":"meters","7":"4.41","8":"kilometers","9":"733","10":"140","11":"16","12":"55"},{"1":"May 8, 2018","2":"5758","3":"2","4":"3394","5":"6.10","6":"meters","7":"4.18","8":"kilometers","9":"821","10":"71","11":"22","12":"69"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
+<p><strong><code>readr</code> also has special cases for different delimiters</strong>:</p>
+<ul>
+<li><code>read_csv()</code> – for commas (<code>,</code>)</li>
+<li><code>read_csv2()</code> – semicolons (<code>;</code>)</li>
+<li><code>read_tsv()</code> – tabs (<code>\t</code>)</li>
+</ul>
+<p><strong>More information on <code>readr</code> can be found in the package’s documentation</strong>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">?readr</a></code></pre></div>
+</div>
+<div id="using-fread" class="section level3">
+<h3>Using <a href="https://www.rdocumentation.org/packages/data.table/versions/1.11.2/topics/fread"><code>fread</code></a></h3>
+</div>
+</div>
+<div id="importing-excel-data" class="section level2">
+<h2>Importing Excel Data</h2>
 </div>
 <div id="importing-json" class="section level2">
 <h2>Importing JSON</h2>
