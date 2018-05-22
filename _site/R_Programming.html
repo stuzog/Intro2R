@@ -295,9 +295,33 @@ div.tocify {
   line-height: 20px;
 }
 
-.tocify-subheader .tocify-item {
+.tocify-subheader[data-tag="2"] .tocify-item {
   font-size: 0.90em;
   padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify-subheader[data-tag="3"] .tocify-item {
+  font-size: 0.85em;
+  padding-left: 45px;
+  text-indent: 0;
+}
+
+.tocify-subheader[data-tag="4"] .tocify-item {
+  font-size: 0.80em;
+  padding-left: 65px;
+  text-indent: 0;
+}
+
+.tocify-subheader[data-tag="5"] .tocify-item {
+  font-size: 0.75em;
+  padding-left: 85px;
+  text-indent: 0;
+}
+
+.tocify-subheader[data-tag="6"] .tocify-item {
+  font-size: 0.70em;
+  padding-left: 105px;
   text-indent: 0;
 }
 
@@ -390,16 +414,6 @@ div.tocify {
 </div>
 
 
-<script>
-    $(document).ready(function() {
-      $items = $('div#TOC li');
-      $items.each(function(idx) {
-        num_ul = $(this).parentsUntil('#TOC').length;
-        $(this).css({'text-indent': num_ul * 10, 'padding-left': 0});
-      });
-
-    });
-</script>
 <div id="four-fundamentals" class="section level2">
 <h2>Four Fundamentals</h2>
 <p>The essence of R:</p>

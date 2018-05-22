@@ -296,9 +296,33 @@ div.tocify {
   line-height: 20px;
 }
 
-.tocify-subheader .tocify-item {
+.tocify-subheader[data-tag="2"] .tocify-item {
   font-size: 0.90em;
   padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify-subheader[data-tag="3"] .tocify-item {
+  font-size: 0.85em;
+  padding-left: 45px;
+  text-indent: 0;
+}
+
+.tocify-subheader[data-tag="4"] .tocify-item {
+  font-size: 0.80em;
+  padding-left: 65px;
+  text-indent: 0;
+}
+
+.tocify-subheader[data-tag="5"] .tocify-item {
+  font-size: 0.75em;
+  padding-left: 85px;
+  text-indent: 0;
+}
+
+.tocify-subheader[data-tag="6"] .tocify-item {
+  font-size: 0.70em;
+  padding-left: 105px;
   text-indent: 0;
 }
 
@@ -526,16 +550,43 @@ div.tocify {
 </div>
 <div id="faster-alternatives" class="section level4">
 <h4>Faster Alternatives</h4>
-<p><strong><code>read.table</code> is slow to read large files into memory</strong>. Two other pckages provide function that are faster and better in that they do not automatically convert <em>character data</em> to <em>factors</em>:</p>
+<p><strong><code>read.table</code> is slow to read large files into memory</strong>. Two other packages provide function that are faster and better in that they do not automatically convert <a href="R_Programming.html#character-data-types"><em>character data</em> to <em>factors</em></a>:</p>
 <ul>
 <li><a href="https://www.rdocumentation.org/packages/readr/versions/1.1.1/topics/read_delim"><code>read.delim</code></a> from the <a href="https://www.rdocumentation.org/packages/readr/versions/1.1.1"><code>reader</code></a> package by <a href="http://hadley.nz/">Hadley Wickham</a>, and</li>
 <li><a href="https://www.rdocumentation.org/packages/data.table/versions/1.11.2/topics/fread"><code>fread</code></a> from the <a href="https://www.rdocumentation.org/packages/data.table/versions/1.11.2"><code>data.table</code></a> package by <a href="https://www.linkedin.com/in/mattdowle">Matt Dowle</a>.</li>
 </ul>
 </div>
 </div>
+<div id="using-read.delim" class="section level3">
+<h3>Using <code>read.delim</code></h3>
+<p>The <a href="https://readr.tidyverse.org/"><code>reader</code></a> package enables reading many kinds of text files:</p>
+<ul>
+<li><code>read_csv()</code> – comma separated (CSV) files</li>
+<li><code>read_tsv()</code> – tab separated files</li>
+<li><code>read_delim()</code> – general delimited files</li>
+<li><code>read_fwf()</code> – fixed width files</li>
+<li><code>read_table()</code> – tabular files where colums are separated by white-space.</li>
+<li><code>read_log()</code> – web log files</li>
+</ul>
+<p>This example loads a sample <code>.csv</code> file bundled with <code>readr</code>, which is returned as a <a href="https://github.com/tidyverse/tibble"><em>tibble</em></a>, a modern re-imagining of the <em>data.frame</em>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">mtcars &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">readr_example</span>(<span class="st">&quot;mtcars.csv&quot;</span>))</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   mpg = col_double(),
+##   cyl = col_integer(),
+##   disp = col_double(),
+##   hp = col_integer(),
+##   drat = col_double(),
+##   wt = col_double(),
+##   qsec = col_double(),
+##   vs = col_integer(),
+##   am = col_integer(),
+##   gear = col_integer(),
+##   carb = col_integer()
+## )</code></pre>
+<p><code>readr</code> is much faster than <code>read.table</code> ## Importing Excel Data</p>
 </div>
-<div id="importing-excel-data" class="section level2">
-<h2>Importing Excel Data</h2>
 </div>
 <div id="importing-json" class="section level2">
 <h2>Importing JSON</h2>

@@ -225,9 +225,33 @@ div.tocify {
   line-height: 20px;
 }
 
-.tocify-subheader .tocify-item {
+.tocify-subheader[data-tag="2"] .tocify-item {
   font-size: 0.90em;
   padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify-subheader[data-tag="3"] .tocify-item {
+  font-size: 0.85em;
+  padding-left: 45px;
+  text-indent: 0;
+}
+
+.tocify-subheader[data-tag="4"] .tocify-item {
+  font-size: 0.80em;
+  padding-left: 65px;
+  text-indent: 0;
+}
+
+.tocify-subheader[data-tag="5"] .tocify-item {
+  font-size: 0.75em;
+  padding-left: 85px;
+  text-indent: 0;
+}
+
+.tocify-subheader[data-tag="6"] .tocify-item {
+  font-size: 0.70em;
+  padding-left: 105px;
   text-indent: 0;
 }
 
@@ -320,16 +344,6 @@ div.tocify {
 </div>
 
 
-<script>
-    $(document).ready(function() {
-      $items = $('div#TOC li');
-      $items.each(function(idx) {
-        num_ul = $(this).parentsUntil('#TOC').length;
-        $(this).css({'text-indent': num_ul * 10, 'padding-left': 0});
-      });
-
-    });
-</script>
 <p><img src="images/Rlogo.png" style="margin-bottom: 1.5em; width: 150px" /></p>
 <p><strong>This material is my own process of learning the R programming language. It can be yours, too.</strong></p>
 <p><strong>Originally just notes on R, it grew into a series of presentations</strong> to the <a href="https://www.meetup.com/Victoria-Raspberry-PiMakers-And-Others/">VicPiMakers Meetup Group</a> in <a href="https://www.tourismvictoria.com/">Victoria BC</a> in April and May 2018. Each presentation was created in the <a href="https://www.rstudio.com/">RStudio IDE</a> as a series of <a href="http://rmarkdown.rstudio.com/">RMarkdown</a> documents that were output to <a href="https://en.wikipedia.org/wiki/HTML">HTML</a> then transferred to a Web hosting site by <a href="https://en.wikipedia.org/wiki/File_Transfer_Protocol">FTP</a>.</p>

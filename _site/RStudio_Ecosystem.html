@@ -295,9 +295,33 @@ div.tocify {
   line-height: 20px;
 }
 
-.tocify-subheader .tocify-item {
+.tocify-subheader[data-tag="2"] .tocify-item {
   font-size: 0.90em;
   padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify-subheader[data-tag="3"] .tocify-item {
+  font-size: 0.85em;
+  padding-left: 45px;
+  text-indent: 0;
+}
+
+.tocify-subheader[data-tag="4"] .tocify-item {
+  font-size: 0.80em;
+  padding-left: 65px;
+  text-indent: 0;
+}
+
+.tocify-subheader[data-tag="5"] .tocify-item {
+  font-size: 0.75em;
+  padding-left: 85px;
+  text-indent: 0;
+}
+
+.tocify-subheader[data-tag="6"] .tocify-item {
+  font-size: 0.70em;
+  padding-left: 105px;
   text-indent: 0;
 }
 
@@ -390,16 +414,6 @@ div.tocify {
 </div>
 
 
-<script>
-    $(document).ready(function() {
-      $items = $('div#TOC li');
-      $items.each(function(idx) {
-        num_ul = $(this).parentsUntil('#TOC').length;
-        $(this).css({'text-indent': num_ul * 10, 'padding-left': 0});
-      });
-
-    });
-</script>
 <p><img src="images/RStudio_full_logo.png" /></p>
 <p><strong>The RStudio IDE is the flagship of a comprehensive RStudio ecosystem.</strong></p>
 <div id="r-notebooks" class="section level2">
@@ -409,8 +423,8 @@ div.tocify {
 <p>An R Notebook is an R Markdown document with chunks that can be executed independently and interactively, with output visible immediately beneath the input.</p>
 </blockquote>
 <p><strong>Any R Markdown document can be used as a Notebook, and all R Notebooks can be rendered to other R Markdown document types</strong>.</p>
-<div id="creating-an-r-notebook-file" class="section level3">
-<h3>Creating An R Notebook File</h3>
+<div id="creating-an-r-notebook" class="section level3">
+<h3>Creating An R Notebook</h3>
 <p><strong>The RStudio menu item <em>File -&gt; New File -&gt; R Notebook</em></strong> creates a new <a href="https://rmarkdown.rstudio.com/r_notebooks.html">RStudio Notebook</a> containing instructions on how to use an R Notebook.</p>
 <pre><code>---
 title: &quot;R Notebook&quot;

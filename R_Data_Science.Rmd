@@ -4,17 +4,6 @@ author: "by Stuart Hertzog"
 date: "March&ndash;May 2018"
 ---
 
-<script>
-    $(document).ready(function() {
-      $items = $('div#TOC li');
-      $items.each(function(idx) {
-        num_ul = $(this).parentsUntil('#TOC').length;
-        $(this).css({'text-indent': num_ul * 10, 'padding-left': 0});
-      });
-
-    });
-</script>
-
 > "In Data Science there's always a human in the loop: someone is understanding the insight, seeing the figure, or benefitting from the conclusion."<br /> --- [_David Robinson, Variance Explained Blog_](http://varianceexplained.org/r/ds-ml-ai/)
 
 That person can be called a __Data Scientist__.

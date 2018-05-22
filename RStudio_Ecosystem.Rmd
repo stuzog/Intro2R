@@ -9,17 +9,6 @@ output:
   word_document: default
 ---
 
-<script>
-    $(document).ready(function() {
-      $items = $('div#TOC li');
-      $items.each(function(idx) {
-        num_ul = $(this).parentsUntil('#TOC').length;
-        $(this).css({'text-indent': num_ul * 10, 'padding-left': 0});
-      });
-
-    });
-</script>
-
 ![](images/RStudio_full_logo.png)
 
 **The RStudio IDE is the flagship of a comprehensive RStudio ecosystem.**
@@ -32,7 +21,7 @@ output:
 
 **Any R Markdown document can be used as a Notebook, and all R Notebooks can be rendered to other R Markdown document types**.
 
-### Creating An R Notebook File
+### Creating An R Notebook
 
 **The RStudio menu item _File -> New File -> R Notebook_** creates a new [RStudio Notebook](https://rmarkdown.rstudio.com/r_notebooks.html) containing instructions on how to use an R Notebook.
 

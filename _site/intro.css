@@ -8,8 +8,29 @@
   max-width: 600px;
   }
 
-.tocify-subheader .tocify-subheader {
-  text-indent: 40px !important;
+.tocify-subheader[data-tag="2"] .tocify-item {
+  font-size: 1em !important;
+  padding-left: 1em !important;
+  }
+
+.tocify-subheader[data-tag="3"] .tocify-item {
+  font-size: 1em !important;
+  padding-left: 2em !important;
+  }
+
+.tocify-subheader[data-tag="4"] .tocify-item {
+  font-size: 1em !important;
+  padding-left: 3em !important;
+  }
+
+.tocify-subheader[data-tag="5"] .tocify-item {
+  font-size: 1em !important;
+  padding-left: 4em !important;
+  }
+
+.tocify-subheader[data-tag="6"] .tocify-item {
+  font-size: 1em !important;
+  padding-left: 5em !important;
   }
 
 .section h2 {

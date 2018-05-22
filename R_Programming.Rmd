@@ -4,17 +4,6 @@ author: "by Stuart Hertzog"
 date: "March&ndash;May 2018"
 ---
 
-<script>
-    $(document).ready(function() {
-      $items = $('div#TOC li');
-      $items.each(function(idx) {
-        num_ul = $(this).parentsUntil('#TOC').length;
-        $(this).css({'text-indent': num_ul * 10, 'padding-left': 0});
-      });
-
-    });
-</script>
-
 ## Four Fundamentals
 
 The essence of R:
