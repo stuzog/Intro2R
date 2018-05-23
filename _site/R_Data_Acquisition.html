@@ -618,6 +618,23 @@ div.tocify {
 </div>
 <p><strong><code>fread</code> produces a <code>data.table</code>, an extension of <a href="R_Programming.html#dataframes"><code>data.frame</code></a></strong>. You can see the documentation for this <a href="R-Programming.html#data_structures"><em>data structure</em></a> by entering <code>?data.frame</code> in the <em>Console</em>.</p>
 </div>
+<div id="using-rstudio" class="section level3">
+<h3>Using RStudio</h3>
+<p><img src="images/RStudio-import-dataset.png" style="float: left; margin: 0 1em 0.25em 0;" width=200></p>
+<p><strong>RStudio has tools to import delimited data</strong>. These are accessible from the <em>Import Dataset</em> tab of the <em>Environment pane</em>.</p>
+The two tools for plain-text delimited files are:<br />
+<span style="padding-left: 1em; list-style-position: inside">
+<ul>
+<li>
+<strong>From Text (base)…</strong> – using base R
+</li>
+<li>
+<strong>From Text (readr)…</strong> – using <code>readr</code>
+</li>
+</ul>
+<p></span></p>
+<p>Instructions on their use can be found <a href="https://support.rstudio.com/hc/en-us/articles/218611977-Importing-Data-with-RStudio">here</a>.</p>
+</div>
 </div>
 <div id="importing-excel-data" class="section level2">
 <h2>Importing Excel Data</h2>
@@ -667,6 +684,7 @@ div.tocify {
               cacheOK = TRUE,
               extra = getOption(&quot;download.file.extra&quot;), …)</code></pre>
 <p><strong>You can also read the documentation for this package</strong> in the <em>Viewer pane</em> of RStudio by entering <code>?download.file</code> in the <em>Console pane</em>.</p>
+<p><strong>RStudio’s built-in <em>Import Tools</em> can also handle Excel data</strong> (<a href="#using-rstudio">see above</a>)</p>
 </div>
 <div id="importing-json" class="section level2">
 <h2>Importing JSON</h2>

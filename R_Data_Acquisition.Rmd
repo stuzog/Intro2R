@@ -184,6 +184,22 @@ fitbit
 
 **`fread` produces a `data.table`, an extension of [`data.frame`](R_Programming.html#dataframes)**. You can see the documentation for this [_data structure_](R-Programming.html#data_structures) by entering `?data.frame` in the _Console_. 
 
+### Using RStudio
+
+<img src="images/RStudio-import-dataset.png" style="float: left; margin: 0 1em 0.25em 0;" width=200>
+
+**RStudio has tools to import delimited data**. These are accessible from the _Import Dataset_ tab of the _Environment pane_. 
+
+The two tools for plain-text delimited files are:  
+<span style="padding-left: 1em; list-style-position: inside">
+<ul>
+  <li>**From Text (base)...** -- using base R</li>
+	<li>**From Text (readr)...** -- using `readr`</li>
+</ul>
+</span>
+
+Instructions on their use can be found [here](https://support.rstudio.com/hc/en-us/articles/218611977-Importing-Data-with-RStudio).
+
 ## Importing Excel Data
 
 **Prior to the more widespread use of [`R` for Data Science](R_Data_Science.html)**, data was compiled in [spreadsheets](https://en.wikipedia.orgwiki/Spreadsheet), mostly in **[Microsoft Excel](https://en/wikipedia.org/wiki/Microsoft_Excel), intially released in 1987.**
@@ -241,6 +257,8 @@ download.file(url, destfile, method, quiet = FALSE, mode = "w",
 ```
 
 **You can also read the documentation for this package** in the _Viewer pane_ of RStudio by entering `?download.file` in the _Console pane_.
+
+**RStudio's built-in _Import Tools_ also can handle Excel data** ([see above](#using-rstudio)) 
 
 ## Importing JSON 
 
