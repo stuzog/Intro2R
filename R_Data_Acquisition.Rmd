@@ -316,6 +316,65 @@ head(tidepool)
 
 ## Data In R Binary Files
 
+> RDS files are binary files that represent R objects of any kind. They use the `.rdata` extension, can store a single object or multiple objects, and can be passed among Windows, Mac and Linux computers for use in those operating systems.
+
+### Save All Objects
+
+**Create an RDS file** from the `fitbit` dataframe in memory:
+
+```{r}
+save(fitbit, file="docs/fitbit.rdata")
+```
+
+**To show the use of the `.RDS` file**, remove `fitbit` from memory:
+
+```{r}
+rm(fitbit)
+```
+**If you test for it presence with `head()`**, you will see the error message:
+
+```
+Error in head(fitbit) : object 'fitbit' not found
+```
+
+**Restore it from the `fitbit.rdata` file**:
+
+```{r}
+load("docs/fitbit.rdata")
+head(fitbit)
+```
+
+### Save One Object
+
+**The `load()` function stores all the objects in an `RDS` file** with their names. The **`saveRDS()` function saves just one object** to a binary RDS file, but **without a name**, so when loading it with `readRDS` it must be assigned to an object.
+
+**Create a vector**:
+
+```{r}
+MyVector <- c(1 : 5)
+MyVector
+```
+
+**Save it to an RDS file**:
+
+```{r}
+saveRDS(MyVector, file = "docs/myvector.rdata")
+```
+
+**Read it to another object**:
+
+```{r}
+YourVector <- readRDS("docs/myvector.rdata")
+YourVector
+```
+
+**Check they are identical**:
+
+```{r}
+identical(MyVector, YourVector)
+```
+
+
 ## Data From Databases
 
 ## Data from Web Sites

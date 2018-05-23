@@ -684,7 +684,7 @@ The two tools for plain-text delimited files are:<br />
               cacheOK = TRUE,
               extra = getOption(&quot;download.file.extra&quot;), …)</code></pre>
 <p><strong>You can also read the documentation for this package</strong> in the <em>Viewer pane</em> of RStudio by entering <code>?download.file</code> in the <em>Console pane</em>.</p>
-<p><strong>RStudio’s built-in <em>Import Tools</em> can also handle Excel data</strong> (<a href="#using-rstudio">see above</a>)</p>
+<p><strong>RStudio’s built-in <em>Import Tools</em> also can handle Excel data</strong> (<a href="#using-rstudio">see above</a>)</p>
 </div>
 <div id="importing-json" class="section level2">
 <h2>Importing JSON</h2>
@@ -738,6 +738,43 @@ The two tools for plain-text delimited files are:<br />
 </div>
 <div id="data-in-r-binary-files" class="section level2">
 <h2>Data In R Binary Files</h2>
+<blockquote>
+<p>RDS files are binary files that represent R objects of any kind. They use the <code>.rdata</code> extension, can store a single object or multiple objects, and can be passed among Windows, Mac and Linux computers for use in those operating systems.</p>
+</blockquote>
+<div id="save-all-objects" class="section level3">
+<h3>Save All Objects</h3>
+<p><strong>Create an RDS file</strong> from the <code>fitbit</code> dataframe in memory:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">save</span>(fitbit, <span class="dt">file=</span><span class="st">&quot;docs/fitbit.rdata&quot;</span>)</a></code></pre></div>
+<p><strong>To show the use of the <code>.RDS</code> file</strong>, remove <code>fitbit</code> from memory:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">rm</span>(fitbit)</a></code></pre></div>
+<p><strong>If you test for it presence with <code>head()</code></strong>, you will see the error message:</p>
+<pre><code>Error in head(fitbit) : object &#39;fitbit&#39; not found</code></pre>
+<p><strong>Restore it from the <code>fitbit.rdata</code> file</strong>:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">load</span>(<span class="st">&quot;docs/fitbit.rdata&quot;</span>)</a>
+<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="kw">head</span>(fitbit)</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Date"],"name":[1],"type":["chr"],"align":["left"]},{"label":["TotalSteps"],"name":[2],"type":["int"],"align":["right"]},{"label":["TotalFloorsClimbed"],"name":[3],"type":["int"],"align":["right"]},{"label":["TotalCaloriesBurned"],"name":[4],"type":["int"],"align":["right"]},{"label":["TotalElevationGained"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["TotalElevationGainedUnit"],"name":[6],"type":["chr"],"align":["left"]},{"label":["TotalDistanceCovered"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["TotalDistanceCoveredUnit"],"name":[8],"type":["chr"],"align":["left"]},{"label":["SedentaryMinutes"],"name":[9],"type":["int"],"align":["right"]},{"label":["LightlyActiveMinutes"],"name":[10],"type":["int"],"align":["right"]},{"label":["FairlyActiveMinutes"],"name":[11],"type":["int"],"align":["right"]},{"label":["VeryActiveMinutes"],"name":[12],"type":["int"],"align":["right"]}],"data":[{"1":"May 2, 2018","2":"11708","3":"5","4":"4164","5":"15.24","6":"meters","7":"8.45","8":"kilometers","9":"501","10":"173","11":"26","12":"86"},{"1":"May 3, 2018","2":"5542","3":"3","4":"3335","5":"9.14","6":"meters","7":"4.02","8":"kilometers","9":"813","10":"121","11":"20","12":"43"},{"1":"May 4, 2018","2":"3492","3":"7","4":"3100","5":"21.34","6":"meters","7":"2.54","8":"kilometers","9":"788","10":"89","11":"20","12":"31"},{"1":"May 5, 2018","2":"12275","3":"12","4":"4547","5":"36.58","6":"meters","7":"8.91","8":"kilometers","9":"623","10":"179","11":"60","12":"104"},{"1":"May 6, 2018","2":"6070","3":"12","4":"3562","5":"36.58","6":"meters","7":"4.41","8":"kilometers","9":"733","10":"140","11":"16","12":"55"},{"1":"May 8, 2018","2":"5758","3":"2","4":"3394","5":"6.10","6":"meters","7":"4.18","8":"kilometers","9":"821","10":"71","11":"22","12":"69"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="save-one-object" class="section level3">
+<h3>Save One Object</h3>
+<p><strong>The <code>load()</code> function stores all the objects in an <code>RDS</code> file</strong> with their names. The <strong><code>saveRDS()</code> function saves just one object</strong> to a binary RDS file, but <strong>without a name</strong>, so when loading it with <code>readRDS</code> it must be assigned to an object.</p>
+<p><strong>Create a vector</strong>:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">MyVector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span> <span class="op">:</span><span class="st"> </span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb26-2" data-line-number="2">MyVector</a></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<p><strong>Save it to an RDS file</strong>:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">saveRDS</span>(MyVector, <span class="dt">file =</span> <span class="st">&quot;docs/myvector.rdata&quot;</span>)</a></code></pre></div>
+<p><strong>Read it to another object</strong>:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">YourVector &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">&quot;docs/myvector.rdata&quot;</span>)</a>
+<a class="sourceLine" id="cb29-2" data-line-number="2">YourVector</a></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<p><strong>Check they are identical</strong>:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">identical</span>(MyVector, YourVector)</a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
 </div>
 <div id="data-from-databases" class="section level2">
 <h2>Data From Databases</h2>
