@@ -79,7 +79,7 @@ If the data items consist of multiple words or characters separated by punctuati
 
 **`read.table` is part of `R`'s built-in `utils` package**. It's the easiest way to import delimited data files, and **results in a [_data.frame_](R_Programming.html#dataframes)**.
 
-Here are the first six lines of a `.csv` file containing **data from a [Fitbit tracker](https://www.fitbit.com/en-ca/charge2)**. It is called `fitbit-acivity.csv` and is **located in the `docs` directory of this project**:
+Here are the first six lines of a `.csv` file containing **data from a [Fitbit tracker](https://www.fitbit.com/en-ca/charge2)**. It is called `fitbit-activity.csv` and is **located in the `docs` directory of this project**:
 
 ```{r}
 theFile <- "docs/fitbit-activity.csv"
@@ -139,7 +139,7 @@ The [`readr`](https://readr.tidyverse.org/) package handles many kinds of delimi
 
 **`readr` is much faster than `read.table`**, and it also removes the need to set `stringsAsFactors` to `FALSE` since that argument does not exist in `readr`, which leaves strings "as-is" by default. It also shows a helpful progress bar with very large files.
 
-Let's open the same `fitbit-acivity.csv` file with the `read.delim()` function:
+Let's open the same `fitbit-activity.csv` file with the `read.delim()` function:
 
 ```{r}
 library(readr)
@@ -243,6 +243,58 @@ download.file(url, destfile, method, quiet = FALSE, mode = "w",
 **You can also read the documentation for this package** in the _Viewer pane_ of RStudio by entering `?download.file` in the _Console pane_.
 
 ## Importing JSON 
+
+> JavaScript Object Notation (JSON) is an open-standard file format that uses human-readable text to transmit data objects consisting of attribute–value pairs and array data types. It is widely used for asynchronous browser–server communication -- [Wikipedia](https://en.wikipedia.org/wiki/JSON)
+
+**Although JSON files are plain text, they can carry more complex data than delimited text or Excel files**. They can contain nested data as arrays, even arrays within arrays, and because they are plain text they can be **used for browser/server data communication**.
+
+Here's an example of a JSON file:
+
+```
+{
+    "glossary": {
+        "title": "example glossary",
+		"GlossDiv": {
+            "title": "S",
+			"GlossList": {
+                "GlossEntry": {
+                    "ID": "SGML",
+					"SortAs": "SGML",
+					"GlossTerm": "Standard Generalized Markup Language",
+					"Acronym": "SGML",
+					"Abbrev": "ISO 8879:1986",
+					"GlossDef": {
+                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
+						"GlossSeeAlso": ["GML", "XML"]
+                    },
+					"GlossSee": "markup"
+                }
+            }
+        }
+    }
+}
+
+```
+
+**A JSON file can be found at `docs/tidepool.json` in this project**. It is a selection from a much larger (1.9GB) JSON file downloaded from the [Tidepool](https://tidepool.org) diabetic data repository, a user-contributed data repository available for diabetes-related Data Science research. This data was originally uploaded to Tidepool from an [Abbott Freestyle Libre](https://myfreestyle.ca/en/) flash glucose monitoring (FGM) meter.
+
+**The `R` package [`jsonlite`](https://github.com/jeroen/jsonlite) was developed specifically to bring JSON data into `R`**. It can be installed by entering `install.library("jsonlite")` in the _Console pane_, after which the library can be loaded and used:
+
+```{r}
+library(jsonlite)
+tidepool <- fromJSON("docs/tidepool.json")
+tidepool
+```
+
+To just examine the structure:
+
+```{r}
+head(tidepool)
+```
+
+**[Getting Started With `jsonlite`](https://cran.r-project.org/web/packages/jsonlite/vignettes/json-aaquickstart.html) is available online and in its vignette**, which you can view in RStudio by entering `??jsonlite` in the _Console pane_ and clicking `jsonlite::json-aaquickstart`.
+
+**A  detailed example of working with JSON files** can be found [here](https://blog.exploratory.io/working-with-json-data-in-very-simple-way-ad7ebcc0bb89).
 
 ## Data In R Binary Files
 
