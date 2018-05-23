@@ -739,13 +739,13 @@ The two tools for plain-text delimited files are:<br />
 <div id="data-in-r-binary-files" class="section level2">
 <h2>Data In R Binary Files</h2>
 <blockquote>
-<p>RDS files are binary files that represent R objects of any kind. They use the <code>.rdata</code> extension, can store a single object or multiple objects, and can be passed among Windows, Mac and Linux computers for use in those operating systems.</p>
+<p>RDS files are binary files that represent R objects of any kind. They use the <code>.rdata</code> extension; can store a single object or multiple objects; and can be passed among Windows, Mac and Linux computers for use in those operating systems.</p>
 </blockquote>
 <div id="save-all-objects" class="section level3">
 <h3>Save All Objects</h3>
-<p><strong>Create an RDS file</strong> from the <code>fitbit</code> dataframe in memory:</p>
+<p><strong>To explore this, create an RDS file</strong> from the <code>fitbit</code> dataframe in memory:</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">save</span>(fitbit, <span class="dt">file=</span><span class="st">&quot;docs/fitbit.rdata&quot;</span>)</a></code></pre></div>
-<p><strong>To show the use of the <code>.RDS</code> file</strong>, remove <code>fitbit</code> from memory:</p>
+<p><strong>To show the use of the RDS file</strong>, remove <code>fitbit</code> from memory:</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">rm</span>(fitbit)</a></code></pre></div>
 <p><strong>If you test for it presence with <code>head()</code></strong>, you will see the error message:</p>
 <pre><code>Error in head(fitbit) : object &#39;fitbit&#39; not found</code></pre>
@@ -760,7 +760,7 @@ The two tools for plain-text delimited files are:<br />
 </div>
 <div id="save-one-object" class="section level3">
 <h3>Save One Object</h3>
-<p><strong>The <code>load()</code> function stores all the objects in an <code>RDS</code> file</strong> with their names. The <strong><code>saveRDS()</code> function saves just one object</strong> to a binary RDS file, but <strong>without a name</strong>, so when loading it with <code>readRDS</code> it must be assigned to an object.</p>
+<p><strong>The <code>load()</code> function stores all the objects in an <code>RDS</code> file</strong>, including their names. The <strong><code>saveRDS()</code> function saves just one object</strong> to a binary RDS file, but <strong>without a name</strong>, so when loading it with <code>readRDS</code> it must be assigned to an object.</p>
 <p><strong>Create a vector</strong>:</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">MyVector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span> <span class="op">:</span><span class="st"> </span><span class="dv">5</span>)</a>
 <a class="sourceLine" id="cb26-2" data-line-number="2">MyVector</a></code></pre></div>
@@ -774,6 +774,33 @@ The two tools for plain-text delimited files are:<br />
 <p><strong>Check they are identical</strong>:</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">identical</span>(MyVector, YourVector)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="save-entire-workspace" class="section level3">
+<h3>Save Entire Workspace</h3>
+<p><strong>The function <code>save(image)</code> will save all objects currently in your workspace</strong>. You must use the <code>.rdata</code> file extension for this:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">save.image</span>(<span class="dt">file =</span> <span class="st">&quot;docs/workspace.rdata&quot;</span>)</a></code></pre></div>
+<p><strong>The objects can be loaded into a workspace with <code>load()</code> function</strong>. These will overwrite existing workspace objects, so you may want to check what they are with:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">ls</span>()</a></code></pre></div>
+<pre><code>##  [1] &quot;activity&quot;    &quot;diamonds&quot;    &quot;fitbit&quot;      &quot;mtcars&quot;      &quot;MyVector&quot;   
+##  [6] &quot;sleepname&quot;   &quot;sleepnumber&quot; &quot;theFile&quot;     &quot;tidepool&quot;    &quot;USArrests&quot;  
+## [11] &quot;YourVector&quot;</code></pre>
+<p><strong>You can clear all workspace objects with</strong>:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</a></code></pre></div>
+<p><strong>You’ll see them disappear from the <em>Environment pane</em></strong>. They can be loaded back with:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw">load</span>(<span class="st">&quot;.RData&quot;</span>)</a></code></pre></div>
+</div>
+<div id="save-session" class="section level3">
+<h3>Save Session</h3>
+<p><strong>RStudio saves the current workspace in its <code>&lt;projectname&gt;.RData</code> file</strong>. When you quit an RStudio session, you will be asked whether you wish to save the <em>Session</em>. This will save both the current variables and functions, so you will be able to pick up where you left off in a subsequent RStudio session.</p>
+<p><strong>However, some advise <a href="https://onunicornsandgenes.blog/2017/04/02/using-r-dont-save-your-workspace/">not to do that</a></strong>.</p>
+<p><strong>If you change the <em>Working Directory</em> you will need to <code>load()</code> the workspace</strong> to sync it to the new working directory.</p>
+<p><strong>RStudio enables workspace management from the <em>Session menu</em></strong>:</p>
+<ul>
+<li><strong>Load Workspace…</strong></li>
+<li><strong>Save Workspace As…</strong></li>
+<li><strong>Clear Workspace…</strong> and</li>
+<li><strong>Quit Session…</strong></li>
+</ul>
 </div>
 </div>
 <div id="data-from-databases" class="section level2">

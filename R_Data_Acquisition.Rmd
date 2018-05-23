@@ -316,17 +316,17 @@ head(tidepool)
 
 ## Data In R Binary Files
 
-> RDS files are binary files that represent R objects of any kind. They use the `.rdata` extension, can store a single object or multiple objects, and can be passed among Windows, Mac and Linux computers for use in those operating systems.
+> RDS files are binary files that represent R objects of any kind. They use the `.rdata` extension; can store a single object or multiple objects; and can be passed among Windows, Mac and Linux computers for use in those operating systems.
 
 ### Save All Objects
 
-**Create an RDS file** from the `fitbit` dataframe in memory:
+**To explore this, create an RDS file** from the `fitbit` dataframe in memory:
 
 ```{r}
 save(fitbit, file="docs/fitbit.rdata")
 ```
 
-**To show the use of the `.RDS` file**, remove `fitbit` from memory:
+**To show the use of the RDS file**, remove `fitbit` from memory:
 
 ```{r}
 rm(fitbit)
@@ -346,7 +346,7 @@ head(fitbit)
 
 ### Save One Object
 
-**The `load()` function stores all the objects in an `RDS` file** with their names. The **`saveRDS()` function saves just one object** to a binary RDS file, but **without a name**, so when loading it with `readRDS` it must be assigned to an object.
+**The `load()` function stores all the objects in an `RDS` file**, including their names. The **`saveRDS()` function saves just one object** to a binary RDS file, but **without a name**, so when loading it with `readRDS` it must be assigned to an object.
 
 **Create a vector**:
 
@@ -374,6 +374,47 @@ YourVector
 identical(MyVector, YourVector)
 ```
 
+### Save Entire Workspace
+
+**The function `save(image)` will save all objects currently in your workspace**. You must use the `.rdata` file extension for this:
+
+```{r}
+save.image(file = "docs/workspace.rdata")
+```
+
+**The objects can be loaded into a workspace with `load()` function**. These will overwrite existing workspace objects, so you may want to check what they are with:
+
+```{r}
+ls()
+```
+
+**You can clear all workspace objects with**:
+
+
+```{r}
+rm(list=ls())
+```
+
+**You'll see them disappear from the _Environment pane_**. They can be loaded back with:
+
+```{r}
+load(".RData")
+```
+
+### Save Session
+
+**RStudio saves the current workspace in its `<projectname>.RData` file**. When you quit an RStudio session, you will be asked whether you wish to save the _Session_. This will save both the current variables and functions, so you will be able to pick up where you left off in a subsequent RStudio session.
+
+**However, some advise [not to do that](https://onunicornsandgenes.blog/2017/04/02/using-r-dont-save-your-workspace/)**.
+
+**If you change the _Working Directory_ you will need to `load()` the workspace** to sync it to the new working directory.
+
+**RStudio enables workspace management from the _Session menu_**:
+
+* **Load Workspace...**
+* **Save Workspace As...**
+* **Clear Workspace...** and
+* **Quit Session...**
 
 ## Data From Databases
 
