@@ -418,6 +418,63 @@ load(".RData")
 
 ## Data From Databases
 
+**Most of the available data is held in databases**, including [Microsoft Access](https://en.wikipedia.org/wiki/Microsoft_Access), [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server), [MySQL](https://www.mysql.com/), or [PostgreSQL](https://www.postgresql.org/). 
+
+**To access a database, an [ODBC](https://en.wikipedia.org/wiki/Open_Database_Connectivity) connection is needed.** Open Database Connectivity (ODBC) is a standard application programming interface (API) for accessing database management systems (DBMS). It is independent of operating systems and can be ported to all platforms.
+
+**[RPostgreSQL](http://www.postgresqltutorial.com/), [RMySQL](https://github.com/r-dbi/RMySQL), [ROracle](http://cran.r-project.org/web/packages/ROracle/index.html), and [RJDBC](http://cran.r-project.org/web/packages/RJDBC/index.html) are database-specific `R` packages**, but if the database you wish to query doesn't have a specifc package, the generic [RODBC](https://www.rdocumentation.org/packages/RODBC/versions/1.3-15) package is available. (Complete documentation [here](https://cran.microsoft.com/web/packages/RODBC/RODBC.pdf) (PDF))
+
+**To help with database connection, the [`DBI` package](https://www.rdocumentation.org/packages/DBI/versions/0.5-1) can be used**.
+
+**DataCamp has two comprehensive tutorials on database connectivity**: [Part1](https://www.datacamp.com/community/tutorials/r-data-import-tutorial) and [Part 2](https://www.datacamp.com/community/tutorials/importing-data-r-part-two).
+
+### Using `RSQLite`
+
+**First install the `RSQLite` and `DBI` packages** by entering `install.packages("RSQLite, DBI")` in the _Console pane_.
+
+```{r}
+download.file("https://r.stuzog.com/docs/fitbitactivity.db", destfile = "docs/fitbitactivity.db", mode = "wb")
+```
+
+**Now load `RSQLite` and `DBI` packages to access the downloaded database**:
+
+```{r}
+library(RSQLite)
+library(DBI)
+```
+
+**To connect, first specify the driver using the `dbDriver` function **:
+
+```{r}
+drv <- dbDriver("SQLite")
+class(drv)
+```
+
+**Now connect to the `tidepool` database using the `dbConnect` function**:
+
+```{r}
+fitact <- dbConnect(drv, "docs/fitbitactivity.db")
+class(fitact)
+```
+
+**List the tables in `fitbitactivity` database**:
+
+```{r}
+dbListTables(fitact)
+```
+
+**List the fields in the `fitbitactivity` table**:
+
+```{r}
+dbListFields(fitact, name = "fitbitactivity")
+```
+
+**Now you are connected to the downloaded database and know its fields**, you can make any SQL query and use `dbGetQuery` to return the result as a [_data.frame_](R_Programming.htmml#dataframes). (For more on `SQL queries`, [W3Schools](https://www.w3schools.com/) has an [SQL Tutorial](https://www.w3schools.com/sql/default.asp).)
+
+**It's a good idea to set `stringsAsFactors` to `FALSE`** to cut processing time and preserve `Character` data as `character` -- `dbGetQuery` has this argument.
+
+**You should close the ODBC connection using `dbDisconnect`**, although it will close automatically when the `R` session closes or you open another connection.
+
 ## Data from Web Sites
 
 ## From Other Software

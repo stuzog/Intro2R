@@ -1,0 +1,20 @@
+Date,TotalSteps,TotalFloorsClimbed,TotalCaloriesBurned,TotalElevationGained,TotalElevationGainedUnit,TotalDistanceCovered,TotalDistanceCoveredUnit,SedentaryMinutes,LightlyActiveMinutes,FairlyActiveMinutes,VeryActiveMinutes
+\"May 2, 2018\",11708,5,4164,15.24,meters,8.45,kilometers,501,173,26,86
+\"May 3, 2018\",5542,3,3335,9.14,meters,4.02,kilometers,813,121,20,43
+\"May 4, 2018\",3492,7,3100,21.34,meters,2.54,kilometers,788,89,20,31
+\"May 5, 2018\",12275,12,4547,36.58,meters,8.91,kilometers,623,179,60,104
+\"May 6, 2018\",6070,12,3562,36.58,meters,4.41,kilometers,733,140,16,55
+\"May 8, 2018\",5758,2,3394,6.1,meters,4.18,kilometers,821,71,22,69
+\"May 9, 2018\",8660,15,3843,45.72,meters,6.29,kilometers,732,174,13,70
+\"May 10, 2018\",9911,7,2758,21.34,meters,7.2,kilometers,634,151,27,104
+\"May 11, 2018\",8490,12,2284,36.58,meters,6.16,kilometers,771,146,23,56
+\"May 12, 2018\",13187,8,2679,24.38,meters,9.63,kilometers,570,178,45,88
+\"May 13, 2018\",9606,9,2754,27.43,meters,6.97,kilometers,769,210,78,57
+\"May 14, 2018\",11190,8,2245,24.38,meters,8.12,kilometers,722,119,18,68
+\"May 15, 2018\",13041,11,2287,33.53,meters,9.47,kilometers,676,112,25,85
+\"May 16, 2018\",7072,5,1976,15.24,meters,5.13,kilometers,743,87,19,45
+\"May 17, 2018\",5238,3,1997,9.14,meters,3.8,kilometers,762,114,20,40
+\"May 18, 2018\",3528,8,1830,24.38,meters,2.56,kilometers,774,85,0,21
+\"May 19, 2018\",3538,3,1844,9.14,meters,2.57,kilometers,710,121,17,0
+\"May 20, 2018\",4204,3,1944,9.14,meters,3.05,kilometers,870,101,10,22
+\"May 21, 2018\",7996,21,2084,64.01,meters,5.81,kilometers,673,138,26,36
