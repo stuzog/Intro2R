@@ -781,8 +781,9 @@ The two tools for plain-text delimited files are:<br />
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">save.image</span>(<span class="dt">file =</span> <span class="st">&quot;docs/workspace.rdata&quot;</span>)</a></code></pre></div>
 <p><strong>The objects can be loaded into a workspace with <code>load()</code> function</strong>. These will overwrite existing workspace objects, so you may want to check what they are with:</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">ls</span>()</a></code></pre></div>
-<pre><code>##  [1] &quot;activity&quot;    &quot;diamonds&quot;    &quot;fitbit&quot;      &quot;MyVector&quot;    &quot;sleepname&quot;  
-##  [6] &quot;sleepnumber&quot; &quot;theFile&quot;     &quot;tidepool&quot;    &quot;USArrests&quot;   &quot;YourVector&quot;</code></pre>
+<pre><code>##  [1] &quot;activity&quot;    &quot;diamonds&quot;    &quot;fitbit&quot;      &quot;mtcars&quot;      &quot;MyVector&quot;   
+##  [6] &quot;sleepname&quot;   &quot;sleepnumber&quot; &quot;theFile&quot;     &quot;tidepool&quot;    &quot;USArrests&quot;  
+## [11] &quot;YourVector&quot;</code></pre>
 <p><strong>You can clear all workspace objects with</strong>:</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</a></code></pre></div>
 <p><strong>You’ll see them disappear from the <em>Environment pane</em></strong>. They can be loaded back with:</p>
