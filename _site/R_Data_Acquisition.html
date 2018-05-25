@@ -781,9 +781,8 @@ The two tools for plain-text delimited files are:<br />
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">save.image</span>(<span class="dt">file =</span> <span class="st">&quot;docs/workspace.rdata&quot;</span>)</a></code></pre></div>
 <p><strong>The objects can be loaded into a workspace with <code>load()</code> function</strong>. These will overwrite existing workspace objects, so you may want to check what they are with:</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">ls</span>()</a></code></pre></div>
-<pre><code>##  [1] &quot;activity&quot;    &quot;diamonds&quot;    &quot;fitbit&quot;      &quot;mtcars&quot;      &quot;MyVector&quot;   
-##  [6] &quot;sleepname&quot;   &quot;sleepnumber&quot; &quot;theFile&quot;     &quot;tidepool&quot;    &quot;USArrests&quot;  
-## [11] &quot;YourVector&quot;</code></pre>
+<pre><code>##  [1] &quot;activity&quot;    &quot;diamonds&quot;    &quot;fitbit&quot;      &quot;MyVector&quot;    &quot;sleepname&quot;  
+##  [6] &quot;sleepnumber&quot; &quot;theFile&quot;     &quot;tidepool&quot;    &quot;USArrests&quot;   &quot;YourVector&quot;</code></pre>
 <p><strong>You can clear all workspace objects with</strong>:</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</a></code></pre></div>
 <p><strong>You’ll see them disappear from the <em>Environment pane</em></strong>. They can be loaded back with:</p>
@@ -842,15 +841,66 @@ The two tools for plain-text delimited files are:<br />
 </div>
 <div id="data-from-web-sites" class="section level2">
 <h2>Data from Web Sites</h2>
-<p>install.packages(“XML”)</p>
+<div id="in-html-tables" class="section level3">
+<h3>In HTML Tables</h3>
+<p><strong>Web pages often include data enclosed in an <a href="https://html.com/tables/">HTML Table</a></strong>. This data can be captured and examined using the <a href="https://giventhedata.blogspot.ca/2012/06/r-and-web-for-beginners-part-ii-xml-in.h*tml"><code>XML</code> package</a>,.</p>
+<p><strong>The <code>XML</code> package can parse and generate all types of XML data</strong>. <a href="https://www.w3schools.com/Html/html_xhtml.asp">XHTML</a> and <a href="https://en.wikipedia.org/wiki/HTML5">HTML5</a> now widely used on the Web are XML-compliant versions of <a href="https://en.wikipedia.org/wiki/HTML">HTML</a>.</p>
+<p><strong>First install the package</strong> by entering <code>install.packages(&quot;XML&quot;)</code> in the <em>Console panel</em>, followed by a <code>RETURN</code>.</p>
+<p><strong>Use the page URL to access the data inside an HTML table</strong> contained on a Web page. If the page has more than one table, set <code>which</code> (see example below) to the order number of the table you want to acquire.</p>
+<p><strong>NOTE: The <code>readXMLTable</code> function will NOT work with <code>https://</code> URLs</strong>. You must use the <code>http://</code> format of a URL only. You can also examine a file on your computer by giving the file path without the URL.</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="kw">library</span>(XML)</a>
-<a class="sourceLine" id="cb48-2" data-line-number="2">thefile &lt;-<span class="st"> &quot;docs/fitbit-activity-table.html&quot;</span></a>
-<a class="sourceLine" id="cb48-3" data-line-number="3">fitbtable &lt;-<span class="st"> </span><span class="kw">readHTMLTable</span>(thefile, <span class="dt">which=</span><span class="dv">1</span>, <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb48-4" data-line-number="4">fitbtable</a></code></pre></div>
+<a class="sourceLine" id="cb48-2" data-line-number="2">theURL &lt;-<span class="st"> &quot;http://r.stuzog.com/docs/fitbit-activity-table.html&quot;</span></a>
+<a class="sourceLine" id="cb48-3" data-line-number="3">fitbtable &lt;-<span class="st"> </span><span class="kw">readHTMLTable</span>(theURL, <span class="dt">which=</span><span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb48-4" data-line-number="4">             <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb48-5" data-line-number="5">fitbtable</a></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["V1"],"name":[1],"type":["chr"],"align":["left"]},{"label":["V2"],"name":[2],"type":["chr"],"align":["left"]},{"label":["V3"],"name":[3],"type":["chr"],"align":["left"]},{"label":["V4"],"name":[4],"type":["chr"],"align":["left"]},{"label":["V5"],"name":[5],"type":["chr"],"align":["left"]},{"label":["V6"],"name":[6],"type":["chr"],"align":["left"]},{"label":["V7"],"name":[7],"type":["chr"],"align":["left"]},{"label":["V8"],"name":[8],"type":["chr"],"align":["left"]},{"label":["V9"],"name":[9],"type":["chr"],"align":["left"]},{"label":["V10"],"name":[10],"type":["chr"],"align":["left"]},{"label":["V11"],"name":[11],"type":["chr"],"align":["left"]},{"label":["V12"],"name":[12],"type":["chr"],"align":["left"]},{"label":["V13"],"name":[13],"type":["chr"],"align":["left"]}],"data":[{"1":"May 2","2":"2018","3":"11708","4":"5","5":"4164","6":"15.24","7":"meters","8":"8.45","9":"kilometers","10":"501","11":"173","12":"26","13":"86"},{"1":"May 3","2":"2018","3":"5542","4":"3","5":"3335","6":"9.14","7":"meters","8":"4.02","9":"kilometers","10":"813","11":"121","12":"20","13":"43"},{"1":"May 4","2":"2018","3":"3492","4":"7","5":"3100","6":"21.34","7":"meters","8":"2.54","9":"kilometers","10":"788","11":"89","12":"20","13":"31"},{"1":"May 5","2":"2018","3":"12275","4":"12","5":"4547","6":"36.58","7":"meters","8":"8.91","9":"kilometers","10":"623","11":"179","12":"60","13":"104"},{"1":"May 6","2":"2018","3":"6070","4":"12","5":"3562","6":"36.58","7":"meters","8":"4.41","9":"kilometers","10":"733","11":"140","12":"16","13":"55"},{"1":"May 8","2":"2018","3":"5758","4":"2","5":"3394","6":"6.1","7":"meters","8":"4.18","9":"kilometers","10":"821","11":"71","12":"22","13":"69"},{"1":"May 9","2":"2018","3":"8660","4":"15","5":"3843","6":"45.72","7":"meters","8":"6.29","9":"kilometers","10":"732","11":"174","12":"13","13":"70"},{"1":"May 10","2":"2018","3":"9911","4":"7","5":"2758","6":"21.34","7":"meters","8":"7.2","9":"kilometers","10":"634","11":"151","12":"27","13":"104"},{"1":"May 11","2":"2018","3":"8490","4":"12","5":"2284","6":"36.58","7":"meters","8":"6.16","9":"kilometers","10":"771","11":"146","12":"23","13":"56"},{"1":"May 12","2":"2018","3":"13187","4":"8","5":"2679","6":"24.38","7":"meters","8":"9.63","9":"kilometers","10":"570","11":"178","12":"45","13":"88"},{"1":"May 13","2":"2018","3":"9606","4":"9","5":"2754","6":"27.43","7":"meters","8":"6.97","9":"kilometers","10":"769","11":"210","12":"78","13":"57"},{"1":"May 14","2":"2018","3":"11190","4":"8","5":"2245","6":"24.38","7":"meters","8":"8.12","9":"kilometers","10":"722","11":"119","12":"18","13":"68"},{"1":"May 15","2":"2018","3":"13041","4":"11","5":"2287","6":"33.53","7":"meters","8":"9.47","9":"kilometers","10":"676","11":"112","12":"25","13":"85"},{"1":"May 16","2":"2018","3":"7072","4":"5","5":"1976","6":"15.24","7":"meters","8":"5.13","9":"kilometers","10":"743","11":"87","12":"19","13":"45"},{"1":"May 17","2":"2018","3":"5238","4":"3","5":"1997","6":"9.14","7":"meters","8":"3.8","9":"kilometers","10":"762","11":"114","12":"20","13":"40"},{"1":"May 18","2":"2018","3":"3528","4":"8","5":"1830","6":"24.38","7":"meters","8":"2.56","9":"kilometers","10":"774","11":"85","12":"0","13":"21"},{"1":"May 19","2":"2018","3":"3538","4":"3","5":"1844","6":"9.14","7":"meters","8":"2.57","9":"kilometers","10":"710","11":"121","12":"17","13":"0"},{"1":"May 20","2":"2018","3":"4204","4":"3","5":"1944","6":"9.14","7":"meters","8":"3.05","9":"kilometers","10":"870","11":"101","12":"10","13":"22"},{"1":"May 21","2":"2018","3":"7996","4":"21","5":"2084","6":"64.01","7":"meters","8":"5.81","9":"kilometers","10":"673","11":"138","12":"26","13":"36"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
+</div>
+</div>
+<div id="in-other-html-elements" class="section level3">
+<h3>In Other HTML Elements</h3>
+<p><strong>Not all useful data is contained in HTML tables.</strong> Some may be in ordered or unordered <a href="https://www.w3schools.com/html/html_lists.asp">lists</a>, <a href="https://www.w3schools.com/tags/tag_span.asp"><code>&lt;span&gt;</code></a>s, or other <a href="https://www.w3schools.com/html/html_elements.asp">HTML elements</a>. How to identfy and extract it?</p>
+<div id="using-rvest" class="section level4">
+<h4>Using <code>rvest</code></h4>
+<p><strong>The <a href="https://github.com/hadley/rvest"><code>rvest</code> package</a> was designed by Hadley Wickham to do just this</strong>. Install it by entering <code>install.packages(&quot;rvest&quot;)</code> in the <em>Console pane</em>.</p>
+<p><strong>Let’s use the <a href="https://github.com/hadley/rvest">example tutorial</a> by Hadley Wickham</strong>:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw">library</span>(rvest)</a></code></pre></div>
+<pre><code>## Loading required package: xml2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;rvest&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:XML&#39;:
+## 
+##     xml</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     guess_encoding</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1">lego_movie &lt;-<span class="st"> </span><span class="kw">read_html</span>(<span class="st">&quot;http://www.imdb.com/title/tt1490017/&quot;</span>)</a>
+<a class="sourceLine" id="cb54-2" data-line-number="2">lego_movie</a></code></pre></div>
+<pre><code>## {xml_document}
+## &lt;html xmlns:og=&quot;http://ogp.me/ns#&quot; xmlns:fb=&quot;http://www.facebook.com/2008/fbml&quot;&gt;
+## [1] &lt;head&gt;\n&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset= ...
+## [2] &lt;body id=&quot;styleguide-v2&quot; class=&quot;fixed&quot;&gt;\n            &lt;img height=&quot;1&quot; ...</code></pre>
+<p><strong>That doesn’t tell us too much about the content of the page</strong>, so we need to have <a href="http://www.imdb.com/title/tt1490017/">the Lego movie page</a> open in our Web browser.</p>
+<p><strong>To find the structure, Wickham recommends the open-source tool <a href="http://selectorgadget.com/"><code>selectorgadget</code></a></strong>. You can read his documentation of this useful Web utility by entering <code>vignette(&quot;selectorgadget&quot;)</code> in the <em>Console pane</em>.</p>
+<p><strong>He uses <code>html_node()</code> to find the first node that matches that selector</strong>, extract its contents with <code>html_text()</code>, and convert it to numeric with <code>as.numeric()</code>:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">lego_movie <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb56-2" data-line-number="2"><span class="st">  </span><span class="kw">html_node</span>(<span class="st">&quot;strong span&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb56-3" data-line-number="3"><span class="st">  </span><span class="kw">html_text</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb56-4" data-line-number="4"><span class="st">  </span><span class="kw">as.numeric</span>()</a></code></pre></div>
+<pre><code>## [1] 7.8</code></pre>
+<p><strong>He suggests a similar process to extract the cast</strong>, using <code>html_nodes()</code> to find all nodes that match the selector, converting it to text with <code>html_text()</code>:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1">lego_movie <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb58-2" data-line-number="2"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;#titleCast .itemprop span&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb58-3" data-line-number="3"><span class="st">  </span><span class="kw">html_text</span>()</a></code></pre></div>
+<pre><code>##  [1] &quot;Will Arnett&quot;     &quot;Elizabeth Banks&quot; &quot;Craig Berry&quot;    
+##  [4] &quot;Alison Brie&quot;     &quot;David Burrows&quot;   &quot;Anthony Daniels&quot;
+##  [7] &quot;Charlie Day&quot;     &quot;Amanda Farinos&quot;  &quot;Keith Ferguson&quot; 
+## [10] &quot;Will Ferrell&quot;    &quot;Will Forte&quot;      &quot;Dave Franco&quot;    
+## [13] &quot;Morgan Freeman&quot;  &quot;Todd Hansen&quot;     &quot;Jonah Hill&quot;</code></pre>
+<p><strong>Web scraping is an art. Here’s a <a href="https://rpubs.com/ryanthomas/webscraping-with-rvest">more advanced tutorial</a> that may help</strong>.</p>
+</div>
 </div>
 </div>
 <div id="from-other-software" class="section level2">

@@ -477,16 +477,65 @@ dbListFields(fitact, name = "fitbitactivity")
 
 ## Data from Web Sites
 
-install.packages("XML")
+### In HTML Tables
 
+**Web pages often include data enclosed in an [HTML Table](https://html.com/tables/)**. This data can be captured and examined using the [`XML` package](https://giventhedata.blogspot.ca/2012/06/r-and-web-for-beginners-part-ii-xml-in.h*tml),.
+
+**The `XML` package can parse and generate all types of XML data**. [XHTML](https://www.w3schools.com/Html/html_xhtml.asp) and [HTML5](https://en.wikipedia.org/wiki/HTML5) now 
+widely used on the Web are XML-compliant versions of [HTML](https://en.wikipedia.org/wiki/HTML).
+
+**First install the package** by entering `install.packages("XML")` in the _Console panel_, followed by a `RETURN`.
+
+**Use the page URL to access the data inside an HTML table** contained on a Web page. If the page has more than one table, set `which` (see example below) to the order number of the table you want to acquire.
+
+**NOTE: The `readXMLTable` function will NOT work with `https://` URLs**. You must use the `http://` format of a URL only. You can also examine a file on your computer by giving the file path without the URL.
 
 ```{r}
 library(XML)
-thefile <- "docs/fitbit-activity-table.html"
-fitbtable <- readHTMLTable(thefile, which=1, header=TRUE, stringsAsFactors=FALSE)
+theURL <- "http://r.stuzog.com/docs/fitbit-activity-table.html"
+fitbtable <- readHTMLTable(theURL, which=1, 
+             header=TRUE, stringsAsFactors=FALSE)
 fitbtable
 ```
 
+### In Other HTML Elements
+
+**Not all useful data is contained in HTML tables.** Some may be in ordered or unordered [lists](https://www.w3schools.com/html/html_lists.asp), [`<span>`](https://www.w3schools.com/tags/tag_span.asp)s, or other [HTML elements](https://www.w3schools.com/html/html_elements.asp). How to identfy and extract it?
+
+#### Using `rvest`
+
+**The [`rvest` package](https://github.com/hadley/rvest) was designed by Hadley Wickham to do just this**. Install it by entering `install.packages("rvest")` in the _Console pane_.
+
+**Let's use the [example tutorial](https://github.com/hadley/rvest) by Hadley Wickham**:
+
+```{r}
+library(rvest)
+lego_movie <- read_html("http://www.imdb.com/title/tt1490017/")
+lego_movie
+```
+
+**That doesn't tell us too much about the content of the page**, so we need to have [the Lego movie page](http://www.imdb.com/title/tt1490017/) open in our Web browser.
+
+**To find the structure, Wickham recommends the open-source tool [`selectorgadget`](http://selectorgadget.com/)**. You can read his documentation of this useful Web utility by entering `vignette("selectorgadget")` in the _Console pane_.
+
+**He uses `html_node()` to find the first node that matches that selector**, extract its contents with `html_text()`, and convert it to numeric with `as.numeric()`:
+
+```{r}
+lego_movie %>%
+  html_node("strong span") %>%
+  html_text() %>%
+  as.numeric()
+```
+
+**He suggests a similar process to extract the cast**, using `html_nodes()` to find all nodes that match the selector, converting it to text with `html_text()`:
+
+```{r}
+lego_movie %>%
+  html_nodes("#titleCast .itemprop span") %>%
+  html_text()
+```
+
+**Web scraping is an art. Here's a [more advanced tutorial](https://rpubs.com/ryanthomas/webscraping-with-rvest) that may help**.
 
 ## From Other Software
 
