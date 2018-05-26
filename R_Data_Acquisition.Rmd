@@ -217,6 +217,8 @@ Instructions on their use can be found [here](https://support.rstudio.com/hc/en-
 
 **To do this you will first need to install the `devtools` package**, obtained with `install.packages("devtools")`.
 
+### Using [`readxl](https://readxl.tidyverse.org/)
+
 First check which _sheets_ are in the Excel file:
 
 ```{r}
@@ -296,6 +298,8 @@ Here's an example of a JSON file:
 ```
 
 **A JSON file can be found at `docs/tidepool.json` in this project**. It is a selection from a much larger (1.9GB) JSON file downloaded from the [Tidepool](https://tidepool.org) diabetic data repository, a user-contributed data repository available for diabetes-related Data Science research. This data was originally uploaded to Tidepool from an [Abbott Freestyle Libre](https://myfreestyle.ca/en/) flash glucose monitoring (FGM) meter.
+
+### Using [`jsonlite`](https://github.com/jeroen/jsonlite)
 
 **The `R` package [`jsonlite`](https://github.com/jeroen/jsonlite) was developed specifically to bring JSON data into `R`**. It can be installed by entering `install.library("jsonlite")` in the _Console pane_, after which the library can be loaded and used:
 
@@ -480,10 +484,12 @@ dbListFields(fitact, name = "fitbitactivity")
 
 ### In HTML Tables
 
-**Web pages often include data enclosed in an [HTML Table](https://html.com/tables/)**. This data can be captured and examined using the [`XML` package](https://giventhedata.blogspot.ca/2012/06/r-and-web-for-beginners-part-ii-xml-in.h*tml),.
+**Web pages often include data enclosed in an [HTML Table](https://html.com/tables/)**. This data can be captured and examined using the [`XML`](https://giventhedata.blogspot.ca/2012/06/r-and-web-for-beginners-part-ii-xml-in.html) package.
 
 **The `XML` package can parse and generate all types of XML data**. [XHTML](https://www.w3schools.com/Html/html_xhtml.asp) and [HTML5](https://en.wikipedia.org/wiki/HTML5) now 
 widely used on the Web are XML-compliant versions of [HTML](https://en.wikipedia.org/wiki/HTML).
+
+### Using [`XML`](https://giventhedata.blogspot.ca/2012/06/r-and-web-for-beginners-part-ii-xml-in.html)
 
 **First install the package** by entering `install.packages("XML")` in the _Console panel_, followed by a `RETURN`.
 
@@ -516,6 +522,8 @@ lego_movie
 ```
 
 **That doesn't tell us too much about the content of the page**, so we need to have [the Lego movie page](http://www.imdb.com/title/tt1490017/) open in our Web browser.
+
+#### Using `selectorgadget`
 
 **To find the structure, Wickham recommends the open-source tool [`selectorgadget`](http://selectorgadget.com/)**. You can read his documentation of this useful Web utility by entering `vignette("selectorgadget")` in the _Console pane_.
 

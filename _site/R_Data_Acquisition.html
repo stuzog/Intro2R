@@ -646,6 +646,8 @@ The two tools for plain-text delimited files are:<br />
 <p><strong>It can be brought into <code>R</code> after you have loaded the <code>read_excel</code> package</strong> by entering <code>install.packages(&quot;read-excel&quot;)</code> in the <em>Console pane</em>.</p>
 <p><strong>Note: Depending on your version of <code>R</code></strong>, you may have to install the development version by entering <code>devtools::install_github(&quot;tidyverse/readxl&quot;)</code> in the <em>Console pane</em>.</p>
 <p><strong>To do this you will first need to install the <code>devtools</code> package</strong>, obtained with <code>install.packages(&quot;devtools&quot;)</code>.</p>
+<div id="using-readxl" class="section level3">
+<h3>Using <a href="https://readxl.tidyverse.org/">`readxl</a></h3>
 <p>First check which <em>sheets</em> are in the Excel file:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">library</span>(readxl)</a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw">excel_sheets</span>(<span class="st">&quot;docs/fitbit-export.xlsx&quot;</span>)</a></code></pre></div>
@@ -687,6 +689,7 @@ The two tools for plain-text delimited files are:<br />
 <p><strong>You can also read the documentation for this package</strong> in the <em>Viewer pane</em> of RStudio by entering <code>?download.file</code> in the <em>Console pane</em>.</p>
 <p><strong>RStudio’s built-in <em>Import Tools</em> also can handle Excel data</strong> (<a href="#using-rstudio">see above</a>)</p>
 </div>
+</div>
 <div id="importing-json" class="section level2">
 <h2>Importing JSON</h2>
 <blockquote>
@@ -718,6 +721,8 @@ The two tools for plain-text delimited files are:<br />
 }
 </code></pre>
 <p><strong>A JSON file can be found at <code>docs/tidepool.json</code> in this project</strong>. It is a selection from a much larger (1.9GB) JSON file downloaded from the <a href="https://tidepool.org">Tidepool</a> diabetic data repository, a user-contributed data repository available for diabetes-related Data Science research. This data was originally uploaded to Tidepool from an <a href="https://myfreestyle.ca/en/">Abbott Freestyle Libre</a> flash glucose monitoring (FGM) meter.</p>
+<div id="using-jsonlite" class="section level3">
+<h3>Using <a href="https://github.com/jeroen/jsonlite"><code>jsonlite</code></a></h3>
 <p><strong>The <code>R</code> package <a href="https://github.com/jeroen/jsonlite"><code>jsonlite</code></a> was developed specifically to bring JSON data into <code>R</code></strong>. It can be installed by entering <code>install.library(&quot;jsonlite&quot;)</code> in the <em>Console pane</em>, after which the library can be loaded and used:</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">library</span>(jsonlite)</a>
 <a class="sourceLine" id="cb20-2" data-line-number="2">tidepool &lt;-<span class="st"> </span><span class="kw">fromJSON</span>(<span class="st">&quot;docs/tidepool.json&quot;</span>)</a>
@@ -736,6 +741,7 @@ The two tools for plain-text delimited files are:<br />
 </div>
 <p><strong><a href="https://cran.r-project.org/web/packages/jsonlite/vignettes/json-aaquickstart.html">Getting Started With <code>jsonlite</code></a> is available online and in its vignette</strong>, which you can view in RStudio by entering <code>??jsonlite</code> in the <em>Console pane</em> and clicking <code>jsonlite::json-aaquickstart</code>.</p>
 <p><strong>A detailed example of working with JSON files</strong> can be found <a href="https://blog.exploratory.io/working-with-json-data-in-very-simple-way-ad7ebcc0bb89">here</a>.</p>
+</div>
 </div>
 <div id="data-in-r-binary-files" class="section level2">
 <h2>Data In R Binary Files</h2>
@@ -782,8 +788,9 @@ The two tools for plain-text delimited files are:<br />
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">save.image</span>(<span class="dt">file =</span> <span class="st">&quot;docs/workspace.rdata&quot;</span>)</a></code></pre></div>
 <p><strong>The objects can be loaded into a workspace with <code>load()</code> function</strong>. These will overwrite existing workspace objects, so you may want to check what they are with:</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">ls</span>()</a></code></pre></div>
-<pre><code>##  [1] &quot;activity&quot;    &quot;diamonds&quot;    &quot;fitbit&quot;      &quot;MyVector&quot;    &quot;sleepname&quot;  
-##  [6] &quot;sleepnumber&quot; &quot;theFile&quot;     &quot;tidepool&quot;    &quot;USArrests&quot;   &quot;YourVector&quot;</code></pre>
+<pre><code>##  [1] &quot;activity&quot;    &quot;diamonds&quot;    &quot;fitbit&quot;      &quot;mtcars&quot;      &quot;MyVector&quot;   
+##  [6] &quot;sleepname&quot;   &quot;sleepnumber&quot; &quot;theFile&quot;     &quot;tidepool&quot;    &quot;USArrests&quot;  
+## [11] &quot;YourVector&quot;</code></pre>
 <p><strong>You can clear all workspace objects with</strong>:</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</a></code></pre></div>
 <p><strong>You’ll see them disappear from the <em>Environment pane</em></strong>. They can be loaded back with:</p>
@@ -844,8 +851,11 @@ The two tools for plain-text delimited files are:<br />
 <h2>Data from Web Sites</h2>
 <div id="in-html-tables" class="section level3">
 <h3>In HTML Tables</h3>
-<p><strong>Web pages often include data enclosed in an <a href="https://html.com/tables/">HTML Table</a></strong>. This data can be captured and examined using the <a href="https://giventhedata.blogspot.ca/2012/06/r-and-web-for-beginners-part-ii-xml-in.h*tml"><code>XML</code> package</a>,.</p>
+<p><strong>Web pages often include data enclosed in an <a href="https://html.com/tables/">HTML Table</a></strong>. This data can be captured and examined using the <a href="https://giventhedata.blogspot.ca/2012/06/r-and-web-for-beginners-part-ii-xml-in.html"><code>XML</code></a> package.</p>
 <p><strong>The <code>XML</code> package can parse and generate all types of XML data</strong>. <a href="https://www.w3schools.com/Html/html_xhtml.asp">XHTML</a> and <a href="https://en.wikipedia.org/wiki/HTML5">HTML5</a> now widely used on the Web are XML-compliant versions of <a href="https://en.wikipedia.org/wiki/HTML">HTML</a>.</p>
+</div>
+<div id="using-xml" class="section level3">
+<h3>Using <a href="https://giventhedata.blogspot.ca/2012/06/r-and-web-for-beginners-part-ii-xml-in.html"><code>XML</code></a></h3>
 <p><strong>First install the package</strong> by entering <code>install.packages(&quot;XML&quot;)</code> in the <em>Console panel</em>, followed by a <code>RETURN</code>.</p>
 <p><strong>Use the page URL to access the data inside an HTML table</strong> contained on a Web page. If the page has more than one table, set <code>which</code> (see example below) to the order number of the table you want to acquire.</p>
 <p><strong>NOTE: The <code>readXMLTable</code> function will NOT work with <code>https://</code> URLs</strong>. You must use the <code>http://</code> format of a URL only. You can also examine a file on your computer by giving the file path without the URL.</p>
@@ -884,6 +894,9 @@ The two tools for plain-text delimited files are:<br />
 ## [1] &lt;head&gt;\n&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset= ...
 ## [2] &lt;body id=&quot;styleguide-v2&quot; class=&quot;fixed&quot;&gt;\n            &lt;img height=&quot;1&quot; ...</code></pre>
 <p><strong>That doesn’t tell us too much about the content of the page</strong>, so we need to have <a href="http://www.imdb.com/title/tt1490017/">the Lego movie page</a> open in our Web browser.</p>
+</div>
+<div id="using-selectorgadget" class="section level4">
+<h4>Using <code>selectorgadget</code></h4>
 <p><strong>To find the structure, Wickham recommends the open-source tool <a href="http://selectorgadget.com/"><code>selectorgadget</code></a></strong>. You can read his documentation of this useful Web utility by entering <code>vignette(&quot;selectorgadget&quot;)</code> in the <em>Console pane</em>.</p>
 <p><strong>He uses <code>html_node()</code> to find the first node that matches that selector</strong>, extract its contents with <code>html_text()</code>, and convert it to numeric with <code>as.numeric()</code>:</p>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">lego_movie <span class="op">%&gt;%</span></a>
