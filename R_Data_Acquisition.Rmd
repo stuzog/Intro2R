@@ -540,4 +540,31 @@ lego_movie %>%
 
 ## From Other Software
 
+**`R` is not the only statistical software**. Proprietary commercial and open-source formats pre-exist the popularity of `R`, provided by [SAS](https://en.wikipedia.org/wiki/SAS_(software)), [SPSS](https://en.wikipedia.org/wiki/SPSS), and [Octave](https://www.gnu.org/software/octave/), among [others](https://en.wikipedia.org/wiki/List_of_statistical_packages).
+
+### Using `foreign`
+
+**The [`foreign`](https://www.rdocumentation.org/packages/foreign/versions/0.8-70) package enables reading data into `R`**, returning it as a `data.frame` --- if it succeeds, which often it does not. It includes the following functions for acquiring data from other statistical software:
+
+| Function | Format |
+| :------ | :------ |
+| `read.spss` | SPSS |
+| `read.dta` | Stata |
+| `read.ssd` | SAS |
+| `read.octave` | Octave |
+| `read.mtp` | Minitab |
+| `read.systat` | Systat |
+
+**Note: `read.ssd` normally requires a valid SAS license**, but this can be circumvented by using [Microsoft Machine Learning Server](https://www.microsoft.com/en-us/sql-server/machinelearningserver), which has the [`RxSasData()`](https://docs.microsoft.com/en-us/machine-learning-server/r-reference/revoscaler/rxsasdata) function in its [`RevoScaleR`](https://docs.microsoft.com/en-us/machine-learning-server/r-reference/revoscaler/revoscaler) package.
+
+### Using `haven`
+
+**A Hadley Wickham package called [`haven`](http://haven.tidyverse.org/) is similar to [`foreign`](https://www.rdocumentation.org/packages/foreign/versions/0.8-70)** but uses [`tidyverse`](https://www.tidyverse.org/) conventions and is optimised for speed and convenience. `haven` functions result in a _tibble_ rather than a _data.frame_. They are:
+
+| Function | Format |
+| :------ | :------ |
+| read_spss | SPSS |
+| read_sas | Stata |
+| read_stata | Systat |
+
 <p class="bottom-navbar"><span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> [<span class="bottom-navbar-link">Part 2 - Fundamentals of R</span>](R_Programming.html)&nbsp;&nbsp; |&nbsp; [<span class="bottom-navbar-link">Learning Resources</span>](R_Learning_Resources.html)&nbsp; <span class="glyphicon glyphicon-arrow-right"></span></span></p>

@@ -421,13 +421,14 @@ div.tocify {
 <li><strong>Plain text and delimited files</strong> (<code>.txt</code>, <code>.csv</code>, <code>.tsv</code>)</li>
 <li><strong>Microsoft Word and Excel files</strong> (<code>.doc</code>, <code>.docx</code>, <code>.xls</code>, <code>.xlsx</code>)</li>
 <li><strong>Data contained within databases</strong> (SQLite, MySQL, Microsoft Access)</li>
-<li><p><strong>Data in statistical software</strong> (SAS, SPSS, NCSS, Octave) The data sources can be located:</p>
+<li><strong>Data in statistical software</strong> (SAS, SPSS, NCSS, Octave)</li>
+</ul>
+<p>The data sources can be located:</p>
 <ul>
 <li><strong>in <code>R</code> and <code>R packages</code></strong></li>
 <li><strong>on your computer storage</strong></li>
 <li><strong>on a local or linked network</strong>, or</li>
 <li><strong>anywhere on the global Internet</strong></li>
-</ul></li>
 </ul>
 <div id="built-in-r-datasets" class="section level2">
 <h2>Built-In <code>R</code> Datasets</h2>
@@ -781,9 +782,8 @@ The two tools for plain-text delimited files are:<br />
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">save.image</span>(<span class="dt">file =</span> <span class="st">&quot;docs/workspace.rdata&quot;</span>)</a></code></pre></div>
 <p><strong>The objects can be loaded into a workspace with <code>load()</code> function</strong>. These will overwrite existing workspace objects, so you may want to check what they are with:</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">ls</span>()</a></code></pre></div>
-<pre><code>##  [1] &quot;activity&quot;    &quot;diamonds&quot;    &quot;fitbit&quot;      &quot;mtcars&quot;      &quot;MyVector&quot;   
-##  [6] &quot;sleepname&quot;   &quot;sleepnumber&quot; &quot;theFile&quot;     &quot;tidepool&quot;    &quot;USArrests&quot;  
-## [11] &quot;YourVector&quot;</code></pre>
+<pre><code>##  [1] &quot;activity&quot;    &quot;diamonds&quot;    &quot;fitbit&quot;      &quot;MyVector&quot;    &quot;sleepname&quot;  
+##  [6] &quot;sleepnumber&quot; &quot;theFile&quot;     &quot;tidepool&quot;    &quot;USArrests&quot;   &quot;YourVector&quot;</code></pre>
 <p><strong>You can clear all workspace objects with</strong>:</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</a></code></pre></div>
 <p><strong>You’ll see them disappear from the <em>Environment pane</em></strong>. They can be loaded back with:</p>
@@ -906,9 +906,75 @@ The two tools for plain-text delimited files are:<br />
 </div>
 <div id="from-other-software" class="section level2">
 <h2>From Other Software</h2>
+<p><strong><code>R</code> is not the only statistical software</strong>. Proprietary commercial and open-source formats pre-exist the popularity of <code>R</code>, provided by <a href="https://en.wikipedia.org/wiki/SAS_(software)">SAS</a>, <a href="https://en.wikipedia.org/wiki/SPSS">SPSS</a>, and <a href="https://www.gnu.org/software/octave/">Octave</a>, among <a href="https://en.wikipedia.org/wiki/List_of_statistical_packages">others</a>.</p>
+<div id="using-foreign" class="section level3">
+<h3>Using <code>foreign</code></h3>
+<p><strong>The <a href="https://www.rdocumentation.org/packages/foreign/versions/0.8-70"><code>foreign</code></a> package enables reading data into <code>R</code></strong>, returning it as a <code>data.frame</code> — if it succeeds, which often it does not. It includes the following functions for acquiring data from other statistical software:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Format</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>read.spss</code></td>
+<td align="left">SPSS</td>
+</tr>
+<tr class="even">
+<td align="left"><code>read.dta</code></td>
+<td align="left">Stata</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>read.ssd</code></td>
+<td align="left">SAS</td>
+</tr>
+<tr class="even">
+<td align="left"><code>read.octave</code></td>
+<td align="left">Octave</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>read.mtp</code></td>
+<td align="left">Minitab</td>
+</tr>
+<tr class="even">
+<td align="left"><code>read.systat</code></td>
+<td align="left">Systat</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note: <code>read.ssd</code> normally requires a valid SAS license</strong>, but this can be circumvented by using <a href="https://www.microsoft.com/en-us/sql-server/machinelearningserver">Microsoft Machine Learning Server</a>, which has the <a href="https://docs.microsoft.com/en-us/machine-learning-server/r-reference/revoscaler/rxsasdata"><code>RxSasData()</code></a> function in its <a href="https://docs.microsoft.com/en-us/machine-learning-server/r-reference/revoscaler/revoscaler"><code>RevoScaleR</code></a> package.</p>
+</div>
+<div id="using-haven" class="section level3">
+<h3>Using <code>haven</code></h3>
+<p><strong>A Hadley Wickham package called <a href="http://haven.tidyverse.org/"><code>haven</code></a> is similar to <a href="https://www.rdocumentation.org/packages/foreign/versions/0.8-70"><code>foreign</code></a></strong> but uses <a href="https://www.tidyverse.org/"><code>tidyverse</code></a> conventions and is optimised for speed and convenience. <code>haven</code> functions result in a <em>tibble</em> rather than a <em>data.frame</em>. They are:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Format</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">read_spss</td>
+<td align="left">SPSS</td>
+</tr>
+<tr class="even">
+<td align="left">read_sas</td>
+<td align="left">Stata</td>
+</tr>
+<tr class="odd">
+<td align="left">read_stata</td>
+<td align="left">Systat</td>
+</tr>
+</tbody>
+</table>
 <p class="bottom-navbar">
 <span class="bottom-navbar-contents"><span class="glyphicon glyphicon-arrow-left"> </span> <a href="R_Programming.html"><span class="bottom-navbar-link">Part 2 - Fundamentals of R</span></a>   |  <a href="R_Learning_Resources.html"><span class="bottom-navbar-link">Learning Resources</span></a>  <span class="glyphicon glyphicon-arrow-right"></span></span>
 </p>
+</div>
 </div>
 
 
